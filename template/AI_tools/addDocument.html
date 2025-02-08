@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/addDocument.css' %}">
+<script src="{% static 'js/addDocument.js' %}"></script>
+
+<div class="body-container">
+    <a href="{% url 'ai_tools' %}" class="back-button" style="font-size: 30px; text-decoration: none;font-weight:bolder;">
+        &#8592;
+    </a>
+    <div class="container">
+        <!-- Form Section -->
+        <div id="wrapper">
+            <div id="page" class="market-page" style="margin:20px;padding:20px;">
+                <div class="flat-tabs">
+                    <div class="content-tabs">
+                        <div id="create" class="tabcontent active">
+                            <div class="wrapper-content-create">
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Add Document</h2>
+                                </div>
+                                <div class="widget-tabs relative">
+                                    <div class="widget-content-tab">
+                                        <div class="widget-content-inner upload active">
+                                            <div class="wrap-content w-full">
+                                                <form id="documentform" class="document-form" action="{% url 'document_form' %}" method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+
+                                                    <!-- First Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="title">
+                                                            <label for="{{ form.title.id_for_label }}">Title *</label>
+                                                            {{ form.title }}
+                                                        </fieldset>
+                                                        <fieldset class="document-category">
+                                                            <label for="{{ form.document_category.id_for_label }}">Document Category *</label>
+                                                            {{ form.document_category }}
+                                                        </fieldset>
+                                                        <fieldset class="document-type">
+                                                            <label for="{{ form.document_type.id_for_label }}">Document Type *</label>
+                                                            {{ form.document_type }}
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <!-- Second Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="party-name">
+                                                            <label for="{{ form.party_name.id_for_label }}">Party Name *</label>
+                                                            {{ form.party_name }}
+                                                        </fieldset>
+                                                        <fieldset class="description">
+                                                            <label for="{{ form.description.id_for_label }}">Description *</label>
+                                                            {{ form.description }}
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <!-- File Upload Row -->
+
+                                                    <fieldset class="visiting-card">
+                                                        <label for="{{ form.document_upload.id_for_label }}" ">Upload Agreement *</label>
+                                                        <label class="uploadfile">
+                                                            <img src="assets/images/box-icon/upload.png" alt="">
+                                                            <h5>Upload file</h5>
+                                                            <p class="text">Drag or choose your file to upload</p>
+                                                            <div class="text filename">PNG, JPG, PDF. Max 5Mb.</div>
+                                                            {{ form.document_upload }}
+                                                        </label>
+                                                    </fieldset>
+
+                                                    <!-- Submit Button -->
+                                                    <div class="btn-submit flex gap30 justify-center">
+                                                        <button class="tf-button style-1 h50 w320" type="submit">Submit<i class="icon-arrow-up-right2"></i></button>
+                                                    </div>
+                                                </form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <h2 class="table-header">Document viewer</h2>
+            <table class="todo-table">
+                <thead class="table-head">
+                    <tr class="table-row">
+                        <th class="table-head-cell">Title </th>
+                        <th class="table-head-cell">Category</th>
+                        <th class="table-head-cell">Type</th>
+                        <th class="table-head-cell">Party name</th>
+                        <th class="table-head-cell">Description</th>
+                        <th class="table-head-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    {% for document in documents %}
+                    <tr class="table-row">
+                        <td>{{ document.title }}</td>
+                        <td>{{ document.document_category }}</td>
+                        <td>{{ document.document_type }}</td>
+                        <td>{{ document.party_name }}</td>
+                        <td>{{ document.description }}</td>
+                        <td>
+                            <form action="{% url 'delete_document' document.id %}" method="POST" onsubmit="return confirmDelete()">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" onclick="confirmdelete">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No documents available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

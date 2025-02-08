@@ -1,0 +1,1359 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/internship_home.css' %}" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/college_home.css' %}" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet" />
+
+
+<div class="flat-pages-title-home4 relative">
+    <div class="themesflat-container w-full">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12"
+                 style="margin-top: -70px">
+                <div class="content">
+                    <div class="author flex items-center"
+                         style="margin-bottom: 40px">
+                        <div class="avatar" style="width: 60px">
+                            <img src="{% static 'assets/images/box-item/ritlogo.png' %}"
+                                 alt="Image" />
+                        </div>
+                        <div class="info">
+                            <span>{{user_id}}</span>
+                            <h6><a href="author-2.html">{{college.College_name}}</a></h6>
+                        </div>
+                    </div>
+                    <h1 data-wow-delay="0s"
+                        class="wow fadeInUp">
+                        Empower Progress, Track Excellence
+                    </h1>
+                    <p data-wow-delay="0.1s" class="wow fadeInUp">
+                        Your Gateway to Student Success!
+                    </p>
+                    <div data-wow-delay="0.2s"
+                         class="wow fadeInUp flat-button flex items-center">
+
+                        <a href="#" class="tf-button style-1 h50 w140 active">
+                            Progress<i class="icon-arrow-up-right2"></i>
+                        </a>
+                        <!-- Notification Icon -->
+                        <span class="notification-icon ml-8" onclick="toggleNotification()">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+            <div id="notification-container" class="notification-container">
+                <button class="close-btn" id="close-btn-notification">&times;</button>
+                <div id="notification-inner-container">
+
+                    <div class="widget widget-related-posts">
+                        <h5 class="title-widget" style="text-align: center;">Notifications</h5>
+
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                            </div>
+                            <div class="card-content">
+                                <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="banner__right relative">
+                    <div class="swiper-container swiper-3d-2card"
+                         data-swiper='{
+                        "loop": true,
+                        "spaceBetween": 0,
+                        "slidesPerView": 1,
+                        "centeredSlides": true,
+                        "observer": true,
+                        "observeParents": true,
+                        "freeMode": false,
+                        "watchSlidesProgress": true,
+                        "grabCursor": true,
+                        "navigation": {
+                            "prevEl": ".swiper-button-prev",
+                            "nextEl": ".swiper-button-next"
+                        },
+                        "autoplay": {
+                            "delay": 2000,
+                            "disableOnInteraction": false
+                        }
+                    }'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="http://127.0.0.1:8000/media/{{banner.banner1}}"
+                                                 alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Join Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="http://127.0.0.1:8000/media/{{banner.banner2}}" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="http://127.0.0.1:8000/media/{{banner.banner3}}" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swiper Navigation Buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="tf-section create-sell" style="margin-top: 100px">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div data-wow-delay="0s"
+                         class="wow fadeInUp col-lg-3 col-md-6">
+                        <div class="tf-box-icon style-1 step1 relative">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-01.png' %}"
+                                     alt="" />
+                                <p>Total Number of Students Enrolled</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">
+                                    {{total_intern}}
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div data-wow-delay="0.1s"
+                         class="wow fadeInUp col-lg-3 col-md-6">
+                        <div class="tf-box-icon style-1 step2 relative">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-02.png' %}"
+                                     alt="" />
+                                <p>Number of students COMPLETED INTERNSHIPS</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">
+                                    {{completed_intern}}
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div data-wow-delay="0.2s"
+                         class="wow fadeInUp col-lg-3 col-md-6">
+                        <div class="tf-box-icon style-1 step3 relative">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-03.png' %}"
+                                     alt="" />
+                                <p>Number of students Ongoing Internships</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">{{ongoing_intern}}</a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div data-wow-delay="0.3s"
+                         class="wow fadeInUp col-lg-3 col-md-6">
+                        <div class="tf-box-icon style-1 step4 relative">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-04.png' %}"
+                                     alt="" />
+                                <p>Average Attendance Percentage</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html"> 75 % </a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="tf-section seller">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2 class="tf-title pb-30">Badges</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="swiper-container seller seller-slider2"
+                         data-swiper='{
+                    "loop":false,
+                    "slidesPerView": 2,
+                    "observer": true,
+                    "grabCursor": true,
+                    "observeParents": true,
+                    "spaceBetween": 30,
+                    "navigation": {
+                        "clickable": true,
+                        "nextEl": ".seller-next",
+                        "prevEl": ".seller-prev"
+                    },
+                    "breakpoints": {
+                        "500": {
+                            "slidesPerView": 3
+                        },
+                        "640": {
+                            "slidesPerView": 4
+                        },
+                        "768": {
+                            "slidesPerView": 5
+                        },
+                        "1070": {
+                            "slidesPerView": 6
+                        }
+                    }
+                }'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'images/avatar/avatar-08.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 1</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-09.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 2</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-10.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 3</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-11.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 4</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-12.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 5</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'images/avatar/avatar-08.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 6</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-11.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 7</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-author-box style-3 text-center">
+                                    <div class="author-avatar">
+                                        <img src="{% static 'assets/images/avatar/avatar-12.png' %}"
+                                             alt=""
+                                             class="avatar" />
+                                        <div class="hover-overlay">
+                                            <span class="view-badge-text">View Badge</span>
+                                        </div>
+                                    </div>
+                                    <div class="author-infor">
+                                        <h5><a href="author-2.html">Badge 8</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next seller-next over active"></div>
+                    <div class="swiper-button-prev seller-prev over"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-left: 200px; margin-top: 30px;">
+        <div class="card-content">
+            <div id="line-chart"></div>
+        </div>
+    </div>
+
+    <div id="gender-pie-chart" style="max-width: 400px; margin-left: 950px; margin-top: -430px;"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+
+
+
+
+    <div class="tf-section action" style="margin-top: 150px;">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="action__body m-0">
+                        <div class="tf-tsparticles">
+                            <div id="tsparticles1"
+                                 data-color="#161616"
+                                 data-line="#000"></div>
+                        </div>
+                        <h2 class="text-center capitalize mx-auto mw-667"
+                            style="font-size: 24px">
+                            "Empowering Insights into Every Student's Progress!"
+                        </h2>
+                        <div class="flat-button flex justify-center">
+                            <a href="#"
+                               class="tf-button style-2 h50 w190"
+                               id="submit-idea-btn">
+                                View Details<i class="icon-arrow-up-right2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Overlay Container -->
+    <div id="student_details_overlay" class="overlay">
+        <div class="student_details_inner_container">
+
+            <button id="close-overlay-btn" class="close-btn">&times;</button>
+
+            <div class="tf-section-2 ranking">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12 mb-30">
+                            <div class="widget-tabs relative">
+                                <div class="tf-soft">
+                                    <div class="soft-right">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <span>Department</span>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <h6>Select</h6>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter active" href="#">
+                                                        <span>CSE</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>ECE</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>CCE</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>IT</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>AIDS</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>CSBS</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="widget-menu-tab">
+                                    <div class="widget-search">
+                                        <form action="#" method="get" role="search" class="search-form relative">
+                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="" name="s" title="Search for" required="">
+                                            <button class="search search-submit" type="submit" title="Search">
+                                                <i class="icon-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </ul>
+                                <div class="widget-content-tab pt-10">
+                                    <div class="widget-content-inner active">
+                                        <div class="widget-table-ranking">
+                                            <div data-wow-delay="0s" class="wow fadeInUp table-ranking-heading">
+                                                <div class="column">
+                                                    <h3>SI NO.</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Profile</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Student_id</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Name</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Department</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Intern type</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>View Details</h3>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-ranking-content">
+                                               
+
+                                                <div id="student_view_details_overlay" style="display:none;">
+                                                    <button id="close-view-details-button" title="Close">&times;</button>
+                                                    <div id="student_view_details_inner_container">
+
+
+                                                        <div class="widget-edit mb-30 avatar" style="background-color: #232323;">
+                                                            <form action="#">
+                                                                <div class="uploadfile flex">
+                                                                    <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                                         alt=""
+                                                                         class="avatar"
+                                                                         style="width: 100px;" />
+                                                                    <div class="student-basic-details">
+                                                                        <!-- Display student ID -->
+                                                                        <h6>Student ID: <span id="student-id">ST001</span></h6>
+
+                                                                        <!-- Display student name -->
+                                                                        <h6>Name: <span id="student-name">John Doe</span></h6>
+
+
+                                                                    </div>
+                                                                    <div class="current-intern" style="font-size: 28px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; margin-left: 380px; margin-top: 40px;">Python Developer</div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <div class="tf-section create-sell">
+                                                            <div class="themesflat-container">
+                                                                <div class="row">
+                                                                    <div data-wow-delay="0s"
+                                                                         class="wow fadeInUp col-lg-3 col-md-6">
+                                                                        <div class="tf-box-icon style-1 step1 relative">
+                                                                            <div class="image">
+                                                                                <img src="{% static 'images/box-icon/icon-01.png' %}"
+                                                                                     alt="" />
+                                                                                <p>days attended</p>
+                                                                            </div>
+                                                                            <h4 class="heading">
+                                                                                <a href="contact-us.html">
+                                                                                    12/<span class="small-text">30</span>
+                                                                                </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-wow-delay="0.1s"
+                                                                         class="wow fadeInUp col-lg-3 col-md-6">
+                                                                        <div class="tf-box-icon style-1 step2 relative">
+                                                                            <div class="image">
+                                                                                <img src="{% static 'images/box-icon/icon-02.png' %}"
+                                                                                     alt="" />
+                                                                                <p>TASKS COMPLETED</p>
+                                                                            </div>
+                                                                            <h4 class="heading">
+                                                                                <a href="contact-us.html">
+                                                                                    05/<span class="small-text">15</span>
+                                                                                </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-wow-delay="0.2s"
+                                                                         class="wow fadeInUp col-lg-3 col-md-6">
+                                                                        <div class="tf-box-icon style-1 step3 relative">
+                                                                            <div class="image">
+                                                                                <img src="{% static 'images/box-icon/icon-03.png' %}"
+                                                                                     alt="" />
+                                                                                <p>CERTIFICATES EARNED</p>
+                                                                            </div>
+                                                                            <h4 class="heading">
+                                                                                <a href="contact-us.html">03</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div data-wow-delay="0.3s"
+                                                                         class="wow fadeInUp col-lg-3 col-md-6">
+                                                                        <div class="tf-box-icon style-1 step4 relative">
+                                                                            <div class="image">
+                                                                                <img src="{% static 'images/box-icon/icon-04.png' %}"
+                                                                                     alt="" />
+                                                                                <p>TOKENS</p>
+                                                                            </div>
+                                                                            <h4 class="heading">
+                                                                                <a href="contact-us.html"> 230 </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="internship-activity-status" style="width: 450px; background-color: #232323; border-radius: 20px; margin-top: -20px; height: 320px; overflow-y: auto;">
+                                                            <div class="widget widget-creators" style="padding: 20px;">
+                                                                <div class="flex items-center justify-between">
+                                                                    <h5 class="title-widget" style="margin-bottom: -10px;">Internship Activity</h5>
+
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">1.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Python Development</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status active">Active</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">2.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Web Development</h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">3.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">UI/UX Design</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">4.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Data Analysis</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="student-badge" style="background-color: #232323; width: 250px; border-radius: 20px; margin-left: 470px; margin-top: -320px; height: 320px; overflow-y: auto;">
+                                                            <div class="widget widget-coins" style="padding: 20px;">
+                                                                <h5 class="title-widget" style="text-align: left; margin-bottom: 30px;">Rewards earned</h5>
+                                                                <div class="widget-coins-item flex items-center mb-20">
+                                                                    <img src="{% static 'assets/images/avatar/avatar-09.png' %}" alt="" />
+                                                                    <p><a href="#">Badge 1</a></p>
+                                                                </div>
+                                                                <div class="widget-coins-item flex items-center mb-20">
+                                                                    <img src="{% static 'images/avatar/avatar-08.png' %}" alt="" />
+                                                                    <p><a href="#">Badge 2</a></p>
+                                                                </div>
+                                                                <div class="widget-coins-item flex items-center mb-20">
+                                                                    <img src="{% static 'assets/images/avatar/avatar-10.png' %}" alt="" />
+                                                                    <p><a href="#">Badge 3</a></p>
+                                                                </div>
+                                                                <div class="widget-coins-item flex items-center mb-20">
+                                                                    <img src="{% static 'assets/images/avatar/avatar-11.png' %}" alt="" />
+                                                                    <p><a href="#">Badge 4</a></p>
+                                                                </div>
+
+
+
+
+
+
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div class="internship-activity-status" style="width: 300px; background-color: #232323; border-radius: 20px; margin-left: 740px; margin-top: -320px; overflow-y: auto; ">
+                                                            <div class="widget widget-creators" style="padding: 20px;">
+                                                                <div class="flex items-center justify-between">
+                                                                    <h5 class="title-widget" style="margin-bottom: -10px;">Rankings</h5>
+
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+
+                                                                    <div class="author flex items-center flex-grow">
+                                                                        <img src="{% static 'assets/images/avatar/avatar-small-01.png' %}" alt="" />
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Daily Challenge</h6>
+                                                                            <span><a href="#" style="font-size: 14px;">#2</a></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+
+                                                                    <div class="author flex items-center flex-grow">
+                                                                        <img src="{% static 'assets/images/avatar/avatar-small-02.png' %}" alt="" />
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Weekly Challenge</a></h6>
+                                                                            <span><a href="#">#21</a></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+
+                                                                    <div class="author flex items-center flex-grow">
+                                                                        <img src="{% static 'assets/images/avatar/avatar-small-03.png' %}" alt="" />
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Common Challenge</a></h6>
+                                                                            <span><a href="#">#32</a></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+
+
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="student-attendance-chart" style="width: 600px; margin-top: 30px; background-color: #232323; border-radius: 20px;">
+                                                            <div style=" padding: 20px;">
+                                                                <h3 style="text-align: center;">Attendance Trends</h3>
+                                                                <canvas id="attendanceChart" style="max-width: 100%;
+      height: auto;"></canvas>
+                                                            </div>
+                                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                                        </div>
+
+
+
+
+                                                        <div class="recent-projects-status" style="width: 400px; background-color: #232323; border-radius: 20px; height: 340px; margin-left: 630px; margin-top: -340px; overflow-y: auto;">
+                                                            <div class="widget widget-creators" style="padding: 20px;">
+                                                                <div class="flex items-center justify-between">
+                                                                    <h5 class="title-widget" style="margin-bottom: -10px;">Recent Projects</h5>
+
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">1.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Mobile Application Development</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status active">Active</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">2.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">E-commerce website</h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">3.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">AI chatbot</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">4.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Website design</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                                <div class="widget-creators-item flex items-center mb-20">
+                                                                    <div class="order">5.</div>
+                                                                    <div class="author flex items-center flex-grow">
+
+                                                                        <div class="info">
+                                                                            <h6><a href="#">Face recognition</a></h6>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <span class="status completed">Completed</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+                                                </div>
+
+
+                                                {% for intern in interns %}
+                                                <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
+                                                    <div class="column">
+                                                        <div class="item-rank">2. </div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-avatar">
+                                                            <img src="{% static 'assets/images/avatar/avatar-05.png' %}" alt="" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-name">{{intern.user_id}}</div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <h6>{{intern.student_Name}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <h6>{{intern.Department}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <h6>{{intern.domain}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <button class="view-details-btn" title="View Full Details">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+
+                                                
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="widget-pagination">
+                                <ul class="justify-center">
+                                    <li>
+                                        <a href="#"><i class="icon-keyboard_arrow_left"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">...</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-keyboard_arrow_right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="tf-section seller">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+                        <h2 class="tf-title pb-30">
+                            Top participants
+                            <span class="dropdown" id="select-day">
+                                <span class="btn-selector tf-color">
+                                    <span>Daily</span>
+                                </span>
+                                <ul>
+                                    <li><span><a href="#daily">Daily</a></span></li>
+                                    <li><span><a href="#weekly">Weekly</a></span></li>
+                                    <li><span><a href="#common">Monthly</a></span></li>
+                                </ul>
+                            </span>
+                        </h2>
+                        <a href="#" id="discover-more-btn">Discover more <i class="icon-arrow-right2"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="swiper-container seller seller-slider"
+                         data-swiper='{
+                          "loop":false,
+                          "slidesPerView": 1,
+                          "observer": true,
+                          "grabCursor": true,
+                          "observeParents": true,
+                          "spaceBetween": 30,
+                          "navigation": {
+                              "clickable": true,
+                              "nextEl": ".main-next",
+                              "prevEl": ".main-prev"
+                          }
+                      }'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" id="daily">
+                                <div class="grid-author-box">
+                                    {% for data in dr|slice:':6'%}
+                                    <div class="tf-author-box style-2 type-1 mb-30">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html">{{data.user_id}}</a>
+                                            </h5>
+                                            <h6 class="price gem style-1">
+                                                <i class="icon-gem"></i>no of submission
+                                            </h6>
+                                        </div>
+                                        <div class="order tf-color">#{{data.entry_count}}</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="swiper-slide" id="weekly">
+                                <div class="grid-author-box">
+                                    {% for data in wr|slice:':6'%}
+                                    <div class="tf-author-box style-2 type-1 mb-30">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/avatar/avatar-01.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html">{{data.user_id}}</a>
+                                            </h5>
+                                            <h6 class="price gem style-1">
+                                                <i class="icon-gem"></i>no of submissions
+                                            </h6>
+                                        </div>
+                                        <div class="order tf-color">#{{data.entry_count}}</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="swiper-slide" id="common">
+                                <div class="grid-author-box">
+                                    {% for data in wr|slice:':6'%}
+                                    <div class="tf-author-box style-2 type-1 mb-30">
+                                        <div class="author-avatar">
+                                            <img src="assets/images/avatar/avatar-01.png"
+                                                 alt=""
+                                                 class="avatar" />
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html">{{data.user_id}}</a>
+                                            </h5>
+                                            <h6 class="price gem style-1">
+                                                <i class="icon-gem"></i>no of submissions
+                                            </h6>
+                                        </div>
+                                        <div class="order tf-color">#{{data.entry_count}}</div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="discover-more-container" class="hidden-container">
+        <button class="close-btn" id="close-btn">&times;</button>
+        <div class="inner-container">
+            <div class="tf-section-2 ranking">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12 mb-30">
+                            <div class="widget-tabs relative">
+                                <div class="tf-soft">
+                                    <div class="soft-right">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <span>Daily</span>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <h6>Select</h6>
+                                                <a onclick="document.getElementById('dailyr').style.display = 'block';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'none';" class="dropdown-item">
+                                                    <div class="sort-filter active">
+                                                        <span>Daily</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'block';document.getElementById('commonr').style.display = 'none';" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>Weekly</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+                                                <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'block';" class="dropdown-item">
+                                                    <div class="sort-filter" href="#">
+                                                        <span>Common</span>
+                                                        <span class="icon-tick"><span class="path2"></span></span>
+                                                    </div>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="widget-menu-tab">
+                                    <div class="widget-search">
+                                        <form action="#" method="get" role="search" class="search-form relative">
+                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="" name="s" title="Search for" required="">
+                                            <button class="search search-submit" type="submit" title="Search">
+                                                <i class="icon-search"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </ul>
+                                <div class="widget-content-tab pt-10">
+                                    <div class="widget-content-inner active">
+                                        <div class="widget-table-ranking">
+                                            <div data-wow-delay="0s" class="wow fadeInUp table-ranking-heading">
+
+                                                <div class="column">
+                                                    <h3>Profile</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Student_id</h3>
+                                                </div>
+
+
+                                                <div class="column">
+                                                    <h3>Score</h3>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-ranking-content" id="dailyr" style="display:block">
+                                                {% for data in dr|slice:":10" %}
+                                                <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
+
+                                                    <div class="column">
+                                                        <div class="item-avatar">
+                                                            <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.user_id}}</div>
+
+                                                    </div>
+
+
+                                                    <div class="column">
+                                                        <h6>{{data.entry_count}}</h6>
+                                                    </div>
+                                                </div>
+
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="table-ranking-content" id="weekr" style="display:none">
+                                                {% for data in wr|slice:":10" %}
+                                                <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
+
+                                                    <div class="column">
+                                                        <div class="item-avatar">
+                                                            <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.user_id}}</div>
+
+                                                    </div>
+
+
+                                                    <div class="column">
+                                                        <h6>{{data.entry_count}}</h6>
+                                                    </div>
+                                                </div>
+
+                                                {% endfor %}
+
+                                            </div>
+                                            <div class="table-ranking-content" id="commonr" style="display:none">
+                                                {% for data in cr|slice:":10" %}
+                                                <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
+
+                                                    <div class="column">
+                                                        <div class="item-avatar">
+                                                            <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.user_id}}</div>
+
+                                                    </div>
+
+
+                                                    <div class="column">
+                                                        <h6>{{data.entry_count}}</h6>
+                                                    </div>
+                                                </div>
+
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+          </div>
+        </div>
+
+
+
+<!-- /#footer -->
+      </div>
+<!-- /#page -->
+<!-- Modal Popup Bid -->
+<div class="modal fade popup"
+     id="popup_bid"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="image">
+                    <img src="assets/images/backgroup-section/popup.png" alt="" />
+                </div>
+                <div class="logo-rotate">
+                    <img class=""
+                         src="assets/images/item-background/item6-img.png"
+                         alt="" />
+                </div>
+                <h2>Subscribe to our newsletter</h2>
+                <p>Subscribe for our newsletter to stay in the loop</p>
+                <fieldset class="email">
+                    <input type="email"
+                           class="style-1"
+                           id="email"
+                           placeholder="Email address*"
+                           name="email"
+                           tabindex="2"
+                           value=""
+                           aria-required="true"
+                           required="" />
+                </fieldset>
+                <a href class="tf-button style-1 h50">
+                    Subscribe<i class="icon-arrow-up-right2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+<!-- /#wrapper -->
+
+<div class="tf-mouse tf-mouse-outer"></div>
+<div class="tf-mouse tf-mouse-inner"></div>
+
+<div class="progress-wrap active-progress">
+    <svg class="progress-circle svg-content"
+         width="100%"
+         height="100%"
+         viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+              style="
+            transition: stroke-dashoffset 10ms linear 0s;
+            stroke-dasharray: 307.919, 307.919;
+            stroke-dashoffset: 286.138;
+          "></path>
+    </svg>
+</div>
+
+<!-- Javascript -->
+
+
+
+<script src="{% static 'js/college_home.js' %}"></script>
+
+{% endblock %}

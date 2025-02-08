@@ -1,0 +1,507 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+    {% load static %}
+    <!-- Basic Page Needs -->
+
+    <meta charset="utf-8" />
+    <!--[if IE
+      ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    /><![endif]-->
+    <title>Altruisty</title>
+    <meta name="author" content="themesflat.com" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/responsive.css' %}" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/points.css' %}" />
+
+    <!-- Favicon and Touch Icons -->
+    <!--<link rel="shortcut icon" href="{% static 'icon/Favicon.png' %}" />-->
+    <!--<link
+      rel="apple-touch-icon-precomposed"
+      href="{% static 'icon/Favicon.png' %}"
+    />-->
+    <!-- Internal CSS for "Add Points" button -->
+    <style>
+        #add-points-button {
+            display: none; /* Hidden by default */
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+            #add-points-button:hover {
+                background-color: #45a049;
+            }
+        /* Typewriting animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Apply the typing effect to the #question-text element */
+        #question-text {
+            font-size: 24px;
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide the overflowed text until it appears */
+            display: inline-block;
+            /* Simulate the cursor */
+            width: 0; /* Start with no width */
+            animation: typing 2s steps(40) 1s forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        /* Blinking cursor effect */
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .animate-from-bottom {
+            animation: slideFromBottom 0.3s ease-out;
+        }
+
+        #question-text {
+            width: 90%;
+            word-wrap: break-word; /* Ensures long words break onto the next line */
+            overflow-wrap: break-word; /* A more modern property for better compatibility */
+            white-space: normal; /* Ensures that text can wrap onto the next line */
+            text-align: center;
+        }
+
+        @keyframes slideFromBottom {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="body header-fixed">
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="middle">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
+        </div>
+    </div>
+    <!-- /preload -->
+
+    <div id="wrapper">
+        <div id="page">
+            <!-- header -->
+            <header id="header_main" class="header_1 header-fixed">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="site-header-inner">
+                                <div class="wrap-box flex">
+                                    <div id="site-logo">
+                                        <div id="site-logo-inner">
+                                            <a href="index.html" rel="home" class="main-logo">
+                                                <img id="logo_header"
+                                                     src="{% static 'images/logo/logo-light.png' %}"
+                                                     data-retina="{% static 'images/logo/logo-light.png' %}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-button">
+                                        <span></span>
+                                    </div>
+                                    <div class="flat-title-page">
+                                        <div class="themesflat-container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <!-- <ul class="breadcrumbs flex justify-center">
+                                                                                <li><a href="#">Take this analysis later</a></li>
+                                                                            </ul> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="tf-section-5 tf-list-blog">
+                <div class="themesflat-container">
+                    <div class="row flex flex-wrap">
+                        <div class="wrap-inner col-md-1q col-12">
+                            <article class="tf-card-article"
+                                     style="background-color: #4c4b4b">
+                                <div class="card-media mb-20">
+                                    <img src="{% static 'images/blog/ai.gif' %}" />
+                                    <div class="text_overlay"
+                                         id="question-text"
+                                         style="color: #fff">
+                                        Did you usually submit your projects before the deadline
+                                        in college?
+                                    </div>
+                                    <div class="circle-wrapper">
+                                        <div class="circle-behind"
+                                             style="background-color: #4c4b4b"></div>
+                                        <div class="circle" id="circle-number">1</div>
+                                    </div>
+                                </div>
+
+                                <div class="card-bottom flex items-center justify-between">
+                                    <div class="author flex items-center justify-between">
+                                        <button id="yes-button" onclick="answerQuestion('Yes')">
+                                            <span>Yes</span><img src="{% static 'images/box-icon/icon-01.png' %}" />
+                                        </button>
+                                    </div>
+                                    <div class="author flex items-center justify-between">
+                                        <button id="no-button" onclick="answerQuestion('No')">
+                                            <span>No</span><img src="{% static 'images/box-icon/wrong.png' %}" />
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <!-- Add Points Button -->
+                                <div class="add-po"
+                                     style="justify-content: center; display: flex">
+                                    <button id="add-points-button" onclick="goToPointsPage()">
+                                        Submit
+                                    </button>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="icon-wrapper">
+                            <img class="absolute item1"
+                                 src="{% static 'images/item-background/item1.png' %}"
+                                 alt="" />
+                            <img class="absolute item2"
+                                 src="{% static 'images/item-background/item2.png' %}"
+                                 alt="" />
+                            <img class="absolute item3"
+                                 src="{% static 'images/item-background/item-03.png' %}"
+                                 alt="" />
+                            <img class="absolute item4"
+                                 src="{% static 'images/item-background/item1.png' %}"
+                                 alt="" />
+                            <img class="absolute item5"
+                                 src="{% static 'images/item-background/item1.png' %}"
+                                 alt="" />
+                            <img class="absolute item6"
+                                 src="{% static 'images/item-background/item4.png' %}"
+                                 alt="" />
+                            <img class="absolute item7"
+                                 src="{% static 'images/item-background/item5.png' %}"
+                                 alt="" />
+                            <img class="absolute item8"
+                                 src="{% static 'images/item-background/item5.png' %}"
+                                 alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+    <div class="tf-mouse tf-mouse-outer"></div>
+    <div class="tf-mouse tf-mouse-inner"></div>
+
+    <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content"
+             width="100%"
+             height="100%"
+             viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                  style="
+            transition: stroke-dashoffset 10ms linear 0s;
+            stroke-dasharray: 307.919, 307.919;
+            stroke-dashoffset: 286.138;
+          "></path>
+        </svg>
+    </div>
+
+    <style>
+        .tf-section-5 .icon-wrapper .item1 {
+            left: -7px;
+            top: 201px;
+            animation: flicker 3s infinite linear alternate;
+            animation-delay: 1.5s;
+        }
+
+        .tf-section-5 .icon-wrapper .item2 {
+            left: 20px;
+            top: 72px;
+            animation: rotate360 1.5s infinite linear;
+        }
+
+        .tf-section-5 .icon-wrapper .item3 {
+            left: 69px;
+            top: 268px;
+            width: 60px;
+            animation: movedown 3s infinite linear alternate;
+        }
+
+        .tf-section-5 .icon-wrapper .item4 {
+            left: 341px;
+            top: 307px;
+            animation: flicker 3s infinite linear alternate;
+        }
+
+        .tf-section-5 .icon-wrapper .item5 {
+            right: 357px;
+            top: 271px;
+            animation: flicker 3s infinite linear alternate;
+        }
+
+        .tf-section-5 .icon-wrapper .item6 {
+            right: 80px;
+            top: 103px;
+            animation: moveleft 3s infinite linear;
+        }
+
+        .tf-section-5 .icon-wrapper .item7 {
+            right: 209px;
+            top: 456px;
+            animation: scale1 3s infinite linear;
+            animation-delay: 1.5s;
+        }
+
+        .tf-section-5 .icon-wrapper .item8 {
+            right: 28px;
+            top: 83px;
+            width: 19px;
+            height: 20px;
+            animation: scale1 3s infinite linear;
+        }
+
+        .tf-section-5 .article {
+            background-color: aqua;
+        }
+
+        .text_overlay {
+            font-size: 24px !important;
+        }
+
+        /* Responsive font size for mobile screens */
+        @media (max-width: 768px) {
+            .text_overlay {
+                font-size: 18px !important;
+                overflow: hidden !important;
+                white-space: normal !important;
+                text-align: center !important;
+            }
+
+            .card-bottom {
+                display: flex !important;
+                justify-content: center !important;
+                gap: 10px !important;
+            }
+        }
+    </style>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        // Questions array
+        const questions = [
+            "Did you usually submit your projects before the deadline in college?",
+            "Do you regularly keep up with new trends and innovations in your field?",
+            "Do you often find it difficult to focus on one task for long periods?",
+            "Have you ever missed important deadlines for assignments or projects?",
+            "Do you often procrastinate when starting new tasks?",
+            "Do you feel confident about pitching your ideas to others?",
+            "Do you have experience managing your personal finances or budgets?",
+            "Do you often feel anxious about taking risks?",
+            "Have you ever struggled to complete a project due to lack of motivation?",
+            "Do you have access to resources like workshops or startup programs to help you?",
+            "Do you see any technological advancements that could benefit your business?",
+            "Are there gaps in the market that your product or service can fill?",
+            "Is your business idea aligned with current customer trends or preferences?",
+            "Do you have access to potential mentors or advisors who can help you develop your business?"
+        ];
+
+        // Initialize variables
+        let currentQuestionIndex = 0;
+        let currentCircleNumber = 1;
+
+        let s = []; // Strengths
+        let w = []; // Weaknesses
+        let o = []; // Opportunities
+        let t = []; // Threats
+
+        let answeringInProgress = false;
+
+        // Function to handle answering the questions
+        function answerQuestion(answer) {
+            if (answeringInProgress) return;
+            answeringInProgress = true;
+
+            // Record the answers based on the current question
+            switch (currentQuestionIndex) {
+                case 0:
+                    answer == "Yes" ? s.push('Time management and Discipline') : w.push('Struggle with deadlines');
+                    break;
+                case 1:
+                    answer == "Yes" ? s.push('Adaptable and keen on continuous learning') : w.push('Gap in staying updated with industry changes');
+                    break;
+                case 2:
+                    answer == "Yes" ? w.push('Issues with focus and concentration') : s.push('Focused and concentrated');
+                    break;
+                case 3:
+                    answer == "Yes" ? w.push('Struggle with deadlines') : s.push('Time management and Discipline');
+                    break;
+                case 4:
+                    answer == "Yes" ? w.push('Struggle with procrastination') : s.push('Productivity');
+                    break;
+                case 5:
+                    answer == "Yes" ? s.push('Strong communication skills') : w.push('Lack of communication skills');
+                    break;
+                case 6:
+                    answer == "Yes" ? s.push('Financial Management') : w.push('Financial Management');
+                    break;
+                case 7:
+                    answer == "Yes" ? w.push('Hesitation to take risks') : s.push('Ready to take risks');
+                    break;
+                case 8:
+                    answer == "Yes" ? w.push('Low motivation') : s.push('Highly motivated');
+                    break;
+                case 9:
+                    answer == "Yes" ? o.push('Access to startup resources') : t.push('Lack of resources');
+                    break;
+                case 10:
+                    answer == "Yes" ? o.push('Utilize new technology') : t.push('Missing out on tech innovation');
+                    break;
+                case 11:
+                    answer == "Yes" ? o.push('Gap in market that will be filled with your services') : t.push('Heavy competition may exist');
+                    break;
+                case 12:
+                    answer == "Yes" ? o.push('Aligned with trends') : t.push('Out of sync with trends');
+                    break;
+                case 13:
+                    answer == "Yes" ? o.push('Access to mentorship') : t.push('Lack of mentorship');
+                    break;
+            }
+
+            // Move to the next question
+            currentQuestionIndex++;
+            currentCircleNumber++;
+
+            // Update progress bar and display the next question
+            updateProgress();
+            showNextQuestion();
+
+            answeringInProgress = false;
+        }
+
+        // Function to show the next question
+        // Function to show the next question with typing effect
+        // Function to show the next question with a faster typing effect
+        function showNextQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const questionText = document.getElementById("question-text");
+                questionText.textContent = ''; // Clear previous text
+
+                // Get the current question
+                const question = questions[currentQuestionIndex];
+
+                // Simulate typing the question faster
+                let i = 0;
+                const typingInterval = setInterval(() => {
+                    questionText.textContent += question[i];
+                    i++;
+
+                    // Once the question is fully typed, stop the interval
+                    if (i === question.length) {
+                        clearInterval(typingInterval);
+                    }
+                }, 50); // Adjust the typing speed here (50ms per character, faster than before)
+
+                // Update circle number
+                document.getElementById("circle-number").textContent = currentCircleNumber;
+            } else {
+                document.getElementById("question-text").textContent = "Thank you for completing the questions!";
+                document.getElementById("add-points-button").style.display = 'block';
+            }
+        }
+
+
+
+        // Function to update the progress bar
+        function updateProgress() {
+            
+            //const progressBar = document.getElementById("progress-bar");
+            //const progress = (currentQuestionIndex / questions.length) * 100;
+            //progressBar.style.width = progress + '%';
+         
+        }
+
+        // Function to go to the points page (for now, just logs the answers)
+        function goToPointsPage() {
+            const result = {
+                strength: s,
+                weakness: w,
+                opportunities: o,
+                threat: t
+            };
+            console.log(result);
+            let object1 = `strength--${s}-,,weakness--${w}-,,opportunities--${o}-,,threat--${t}`
+            window.location.href = `http://127.0.0.1:8000/points/${object1}`;
+        }
+
+        // Start with the first question
+        window.onload = function () {
+            showNextQuestion();
+            updateProgress();
+        };
+    </script>
+
+</body>
+</html>

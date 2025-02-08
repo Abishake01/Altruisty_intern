@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<link rel="stylesheet" href="{% static 'css/ideasubmission.css' %}" />
+
+<div class="body-container">
+    <div class="container">
+        <!-- Form Section -->
+        <div id="wrapper">
+            <div id="page" class="market-page" style="margin:20px;padding:20px;">
+                <div class="btn-canvas active">
+                    <div class="canvas">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="flat-tabs">
+                    <div class="content-tabs">
+                        <div id="create" class="tabcontent active">
+                            <div class="wrapper-content-create">
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Idea Submission</h2>
+                                </div>
+                                <div class="widget-tabs relative">
+                                    <div class="widget-content-tab">
+                                        <div class="widget-content-inner upload active">
+                                            <div class="wrap-content w-full">
+                                                <form id="innovationForm" class="innovation-form" onsubmit="ideasubmit(event)">
+                                                    <!-- First Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="innovator-name">
+                                                            <label>Name of the Innovator/Entrepreneur *</label>
+                                                            <input type="text" id="innovator-name" placeholder="Name" name="innovator_name" required>
+                                                        </fieldset>
+                                                        <fieldset class="age">
+                                                            <label>Age *</label>
+                                                            <input type="number" id="age" placeholder="Age" name="age" required>
+                                                        </fieldset>
+                                                        <fieldset class="gender">
+                                                            <label>Gender *</label>
+                                                            <select id="gender" name="gender" required>
+                                                                <option value="">Select Gender</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                <option value="Other">Other</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <!-- Second Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="dob">
+                                                            <label>Date of Birth *</label>
+                                                            <input type="date" id="dob" name="dob" required>
+                                                        </fieldset>
+                                                        <fieldset class="highest-education">
+                                                            <label>Highest Education Qualification *</label>
+                                                            <input type="text" id="highest-education" placeholder="Education Qualification" name="highest_education_qualification" required>
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <!-- Third Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="project-title">
+                                                            <label>Title of the Project *</label>
+                                                            <input type="text" id="project-title" placeholder="Project Title" name="title_of_project" required>
+                                                        </fieldset>
+                                                        <fieldset class="product-name">
+                                                            <label>Name of the Product *</label>
+                                                            <input type="text" id="product-name" placeholder="Product Name" name="product_name" required>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="flex gap30">
+                                                        <fieldset class="description">
+                                                            <label>Description *</label>
+                                                            <textarea id="description" name="description" placeholder="Provide a brief description" required></textarea>
+                                                        </fieldset>
+
+                                                        <fieldset class="uniqueness">
+                                                            <label>Uniqueness *</label>
+                                                            <textarea id="uniqueness" name="uniqueness" placeholder="Explain the uniqueness of your idea" required></textarea>
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <fieldset class="innovation-upgrade">
+                                                        <label>Is this innovation new or an upgrade to an existing product? *</label>
+                                                        <div style="margin-top: 10px;">
+                                                            <label style="display: inline-flex; align-items: center; margin-right: 15px;"> New</label>
+                                                            <input type="radio" name="innovation_type" value="new" required style="margin-right: 5px;">
+
+                                                            <label style="display: inline-flex; align-items: center;"> Upgrade</label>
+                                                            <input type="radio" name="innovation_type" value="upgrade" required style="margin-right: 5px;">
+                                                        </div>
+                                                        <div id="upgrade-details" style="display: none; margin-top: 15px;">
+                                                            <label>Which existing product and what is the upgrade? *</label>
+                                                            <textarea id="existing-product-upgrade"name="existing_product_upgrade" placeholder="Provide details" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">...</textarea>
+                                                        </div>
+                                                    </fieldset>
+
+                                                    <script>// JavaScript to toggle the visibility of the upgrade details
+                                                        const radios = document.querySelectorAll('input[name="innovation_type"]');
+                                                        const upgradeDetails = document.getElementById('upgrade-details');
+
+                                                        radios.forEach(radio => {
+                                                            radio.addEventListener('change', function () {
+                                                                if (this.value === 'upgrade') {
+                                                                    upgradeDetails.style.display = 'block';
+                                                                } else {
+                                                                    upgradeDetails.style.display = 'none';
+                                                                }
+                                                            });
+                                                        });</script>
+
+                                                    <div class="flex gap30">
+                                                        <fieldset class="need">
+                                                            <label>Need of the Project *</label>
+                                                            <textarea id="need" name="need" placeholder="Explain the need for this project" required></textarea>
+                                                        </fieldset>
+
+                                                        <fieldset class="budget">
+                                                            <label>Total Budget of the Project *</label>
+                                                            <input type="number" id="budget" name="budget" placeholder="Enter the total budget" required>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="flex gap30">
+                                                        <fieldset class="price-advantage">
+                                                            <label>What is the Price Advantage to Customers? *</label>
+                                                            <textarea id="price-advantage" name="price_advantage" placeholder="Explain the price advantage" required></textarea>
+                                                        </fieldset>
+
+                                                        <fieldset class="social-impact">
+                                                            <label>Social and Environmental Impact of Idea or Product *</label>
+                                                            <textarea id="social-impact" name="social_impact" placeholder="Describe the impact" required></textarea>
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <!-- Fourth Row -->
+                                                    <fieldset class="proposal-upload">
+                                                        <label>Proposal of the Project *</label>
+                                                        <div class="proposal-note">
+                                                            <strong>Note:</strong> The proposal should contain the following:
+                                                            <ul>
+                                                                <li><strong>a.</strong> Description</li>
+                                                                <li><strong>b.</strong> Uniqueness</li>
+                                                                <li><strong>c.</strong> Is this innovation new or an upgrade to an existing product?</li>
+                                                                <li><strong>d.</strong> Scope of the project</li>
+                                                                <li><strong>e.</strong> Need of the project</li>
+                                                                <li><strong>f.</strong> Competitor and technical advantage</li>
+                                                                <li><strong>g.</strong> Total budget of the project</li>
+                                                                <li><strong>h.</strong> Price advantage to customers</li>
+                                                                <li><strong>i.</strong> Social and environmental impact of the idea or product</li>
+                                                                <li><strong>j.</strong> Business model</li>
+                                                                <li><strong>k.</strong> Market analysis</li>
+                                                            </ul>
+                                                        </div>
+                                                        <label class="uploadfile">
+                                                            <img src="images/box-icon/upload.png" alt="">
+                                                            <h5>Upload Proposal</h5>
+                                                            <p class="text">Drag or choose your file to upload</p>
+                                                            <div class="text filename">PDF, DOCX. Max 10Mb.</div>
+                                                            <input type="file" id="file"  name="proposal_file" accept=".pdf,.doc,.docx" required>
+                                                        </label>
+                                                        <!-- Note Section -->
+
+                                                    </fieldset>
+
+
+                                                    <!-- Submit Button -->
+                                                    <div class="btn-submit flex gap30 justify-center">
+                                                        <button class="tf-button style-1 h50 w320" type="submit">Submit<i class="icon-arrow-up-right2"></i></button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+
+    </div>
+</div>
+<script>
+    async function ideasubmit(event) {
+        event.preventDefault()
+        statement_id = sessionStorage.getItem('statement_id')
+        name_of_innovator = document.getElementById('innovator-name').value
+        age = document.getElementById('age').value
+        gender = document.getElementById('gender').value
+        dob = document.getElementById('dob').value
+        highest_education_qualification = document.getElementById('highest-education').value
+        title_of_project = document.getElementById('project-title').value
+        name_of_product = document.getElementById('product-name').value
+        description = document.getElementById('description').value
+        uniqueness = document.getElementById('uniqueness').value
+        innovation_type = document.querySelector('input[name="innovation_type"]:checked')?.value
+        existing_product_upgrade = document.getElementById('existing-product-upgrade').value
+        need = document.getElementById('need').value
+        budget = document.getElementById('budget').value
+        price_advantage = document.getElementById('price-advantage').value
+        social_impact = document.getElementById('social-impact').value
+        filefeild = document.getElementById('file')
+        proposal_file = filefeild.files[0]
+
+        const formd = new FormData()
+       
+        formd.append('statement_id', statement_id)
+        formd.append('innovator_name', name_of_innovator)
+        formd.append('age', age)
+        formd.append('gender', gender)
+        formd.append('dob', dob)
+        formd.append('highest_education_qualification', highest_education_qualification)
+        formd.append('title_of_project', title_of_project)
+        formd.append('product_name', name_of_product)
+        formd.append('description', description)
+        formd.append('uniqueness', uniqueness)
+        formd.append('innovation_type', innovation_type)
+        formd.append('existing_product_upgrade', existing_product_upgrade)
+        formd.append('need', need)
+        formd.append('budget', budget)
+        formd.append('price_advantage', price_advantage)
+        formd.append('social_impact', social_impact)
+        formd.append('proposal_file', proposal_file)
+        const url = `http://127.0.0.1:8000/api/uploadidea/`
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                body: formd
+            })
+            if (response.ok) {
+                alert('Idea Submitted')
+                window.location.reload()
+            }
+            else {
+                alert('Idea not Submitted')
+            }
+        }
+        catch (err) {
+            alert('error try again')
+        }
+    }
+</script>
+{% endblock %}

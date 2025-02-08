@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  {% load static %}
+
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8" />
+    <title>Altruisty</title>
+    <meta name="author" content="themesflat.com" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/responsive.css' %}"
+    />
+    <link rel="shortcut icon" href="{% static 'icon/Favicon.png' %}" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="{% static 'icon/Favicon.png' %}"
+    />
+  </head>
+
+  <body class="body">
+    <div id="wrapper">
+      <div id="page" class="pt-40 home-1">
+        <header id="header_main" class="header_1 header-fixed">
+          <div class="themesflat-container">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="site-header-inner">
+                  <div class="wrap-box flex">
+                    <div id="site-logo">
+                      <div id="site-logo-inner">
+                        <a
+                          href="{% url 'index' %}"
+                          rel="home"
+                          class="main-logo"
+                        >
+                          <img
+                            id="logo_header"
+                            src="{% static 'images/logo/logo-light.png' %}"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <div class="mobile-button">
+                      <span></span>
+                    </div>
+                    <nav
+                      id="main-nav"
+                      class="main-nav d-flex justify-content-center"
+                    >
+                      <ul id="menu-primary-menu" class="menu">
+                        <li class="menu-item current-menu-item">
+                          <a href="{% url 'internship_home' %}">Home</a>
+                        </li>
+                        <li class="menu-item">
+                          <a href="{% url 'community:community_home' %}"
+                            >Community</a
+                          >
+                        </li>
+                        <li class="menu-item">
+                          <a href="{% url 'ticketing' %}">Ticketing</a>
+                        </li>
+                        {% block menu_items %} {% endblock %}
+                      </ul>
+                    </nav>
+                    <div class="flat-wallet flex">
+                      <div class="" id="wallet-header">
+                        <a
+                          href="{% url 'logout' %}"
+                          id="connectbtn"
+                          class="tf-button style-1"
+                        >
+                          <span>Log out</span>
+                        </a>
+                      </div>
+                      <div class="header-search relative">
+                        <a href="#" class="show-search">
+                          <i class="icon-search"></i>
+                        </a>
+                        <div class="top-search">
+                          <form
+                            action="#"
+                            method="get"
+                            role="search"
+                            class="search-form relative"
+                          >
+                            <input
+                              type="search"
+                              id="search"
+                              class="search-field style-1"
+                              placeholder="Search..."
+                              value=""
+                              name="s"
+                              title="Search for"
+                              required=""
+                            />
+                            <button
+                              class="search search-submit"
+                              type="submit"
+                              title="Search"
+                            >
+                              <i class="icon-search"></i>
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="canvas">
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvas-nav-wrap">
+            <div class="overlay-canvas-nav"></div>
+            <div class="inner-canvas-nav">
+              <div class="side-bar">
+                <a href="index.html" rel="home" class="main-logo">
+                  <img
+                    id="logo_header"
+                    src="{% static 'images/logo/logo-light.png' %}"
+                    data-retina="{% static 'images/logo/logo-light.png' %}"
+                  />
+                </a>
+                <div class="widget-search mt-30">
+                  <form
+                    action="#"
+                    method="get"
+                    role="search"
+                    class="search-form relative"
+                  >
+                    <input
+                      type="search"
+                      id="search"
+                      class="search-field style-1"
+                      placeholder="Search..."
+                      value=""
+                      name="s"
+                      title="Search for"
+                      required=""
+                    />
+                    <button
+                      class="search search-submit"
+                      type="submit"
+                      title="Search"
+                    >
+                      <i class="icon-search"></i>
+                    </button>
+                  </form>
+                </div>
+                <div class="widget widget-categories">
+                  <h5 class="title-widget">Categories</h5>
+                  <ul>
+                    <li>
+                      <div class="cate-item">
+                        <a href="{% url 'index' %}">Home</a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="cate-item">
+                        <a href="about-us.html">Dashboard</a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="cate-item">
+                        <a href="{% url 'ai_tools' %}">AI Tools</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="widget widget-menu style-4">
+                  <h5 class="title-widget">Company</h5>
+                  <ul>
+                    <li><a href="{% url 'ticketing' %}">Ticketing</a></li>
+                  </ul>
+                </div>
+                <div class="widget widget-menu style-4">
+                  <h5 class="title-widget">Join the Community</h5>
+                  <ul>
+                    <li><a href="{% url 'ai_tools' %}">Community</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-nav-wrap">
+            <div class="overlay-mobile-nav"></div>
+            <div class="inner-mobile-nav">
+              <a href="index.html" rel="home" class="main-logo">
+                <img
+                  id="mobile-logo_header"
+                  src="{% static 'images/logo/logo-light.png' %}"
+                  data-retina="{% static 'images/logo/logo-light.png}"
+                />
+              </a>
+              <div class="mobile-nav-close">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  fill="white"
+                  x="0px"
+                  y="0px"
+                  width="20px"
+                  height="20px"
+                  viewBox="0 0 122.878 122.88"
+                  enable-background="new 0 0 122.878 122.88"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <path
+                      d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <nav id="mobile-main-nav" class="mobile-main-nav">
+                <ul id="menu-mobile-menu" class="menu">
+                  <li class="menu-itemcurrent-menu-item">
+                    <a class="item-menu-mobile" href="{% url 'index' %}"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a class="item-menu-mobile" href="about-us.html"
+                      >Dashboard</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a class="item-menu-mobile">Teams</a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="item-menu-mobile">AI Tools</a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="item-menu-mobile">Community</a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="item-menu-mobile">Ticketing</a>
+                  </li>
+                </ul>
+              </nav>
+              <div class="widget-search mt-30">
+                <form
+                  action="#"
+                  method="get"
+                  role="search"
+                  class="search-form relative"
+                >
+                  <input
+                    type="search"
+                    class="search-field style-1"
+                    placeholder="Search..."
+                    value=""
+                    name="s"
+                    title="Search for"
+                    required=""
+                  />
+                  <button
+                    class="search search-submit"
+                    type="submit"
+                    title="Search"
+                  >
+                    <i class="icon-search"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </header>
+        {% block content %} {% endblock %}
+        <footer id="footer" class="no-bg">
+          <div class="themesflat-container">
+            <div class="row">
+              <div class="col-12">
+                <div class="footer-content flex flex-grow">
+                  <div class="widget-logo flex-grow">
+                    <div class="logo-footer" id="logo-footer">
+                      <a href="index.html">
+                        <img
+                          id="logo_footer"
+                          src="{% static 'images/logo/logo-light.png' %}"
+                          data-retina="{% static 'images/logo/logo-light.png' %}"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div class="widget widget-menu style-1">
+                    <h5 class="title-widget">Address</h5>
+                    <ul>
+                      <li>
+                        <a href="#">
+                          16, 2nd St Rd,<br />Urrur Kuppam, Besant Nagar,<br />Chennai,
+                          Tamil Nadu 600090
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="widget widget-menu style-2">
+                    <h5 class="title-widget">Contact</h5>
+                    <ul>
+                      <li><a href="#">+918667839838</a></li>
+                    </ul>
+                  </div>
+                  <div class="widget widget-menu style-3">
+                    <h5 class="title-widget">E-mail</h5>
+                    <ul>
+                      <li><a href="#">altruistybusiness@gmail.com</a></li>
+                    </ul>
+                  </div>
+                  <div class="widget-last">
+                    <div class="widget-menu style-4">
+                      <h5 class="title-widget">Company</h5>
+                      <ul>
+                        <li><a href="#">Help center</a></li>
+                        <li><a href="#">Platform status</a></li>
+                      </ul>
+                    </div>
+                    <h5 class="title-widget mt-30">Join the community</h5>
+                    <div class="widget-social">
+                      <ul class="flex">
+                        <li><a href="#" class="icon-facebook"></a></li>
+                        <li><a href="#" class="icon-twitter"></a></li>
+                        <li><a href="#" class="icon-vt"></a></li>
+                        <li><a href="#" class="icon-tiktok"></a></li>
+                        <li><a href="#" class="icon-youtube"></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer-bottom">
+              <p>2024 - Made By Altruisty</p>
+              <ul class="flex">
+                <li>
+                  <a href="#">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#">Terms of Service</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Create Meeting Button -->
+    <div class="create-meeting-button">
+      <a href="{% url 'lobby' %}" class="tf-button style-1">
+        <span>Create Meeting</span>
+      </a>
+    </div>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/count-down.js' %}"></script>
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/internshiphome.js' %}"></script>
+  </body>
+</html>

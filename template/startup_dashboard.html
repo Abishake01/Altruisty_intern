@@ -1,0 +1,1147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/internship_home.css' %}" />
+
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/startupdashboard.css' %}" />
+
+
+<div class="flat-pages-title-home4 relative">
+    <div class="themesflat-container w-full">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12"
+                 style="margin-top: -100px">
+                <div class="content">
+                    <div class="author flex items-center"
+                         style="margin-bottom: 40px">
+                        <div class="avatar" style="width: 60px">
+                            <img src="{% static 'images/avatar/avatar-box-02.jpg' %}"
+                                 alt="Image" />
+                        </div>
+                        <div class="info">
+                            <span>{{id}}</span>
+                            <h6><a href="author-2.html">{{name}}</a></h6>
+                        </div>
+                    </div>
+                    <h1 data-wow-delay="0s" class="wow fadeInUp">
+                        Your Startup at a Glance<br />Progress, People, and
+                        Possibilities!
+                    </h1>
+                    <p data-wow-delay="0.1s" class="wow fadeInUp">
+                        Your Startup Journey Starts Here
+                    </p>
+                    <div data-wow-delay="0.2s"
+                         class="wow fadeInUp flat-button flex items-center">
+                        <a href="#" class="tf-button style-1 h50 w140 active">
+                            Progress<i class="icon-arrow-up-right2"></i>
+                        </a>
+                        <!-- Notification Icon -->
+                        <span class="notification-icon ml-8"
+                              onclick="toggleNotification()">
+                            <i class="fas fa-bell"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="notification-container" class="notification-container">
+                <button class="close-btn" id="close-btn-notification">
+                    &times;
+                </button>
+                <div id="notification-inner-container">
+                    <div class="widget widget-related-posts">
+                        <h5 class="title-widget" style="text-align: center">
+                            Notifications
+                        </h5>
+
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        <div class="related-posts-item">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-box-04.jpg' %}"
+                                     alt="Image" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">Having a meeting at 8:30pm</a>
+                                </h5>
+                                <div class="item date">Mon, 08 May</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="banner__right relative">
+                    <div class="swiper-container swiper-3d-2card"
+                         data-swiper='{
+                        "loop": true,
+                        "spaceBetween": 0,
+                        "slidesPerView": 1,
+                        "centeredSlides": true,
+                        "observer": true,
+                        "observeParents": true,
+                        "freeMode": false,
+                        "watchSlidesProgress": true,
+                        "grabCursor": true,
+                        "navigation": {
+                            "prevEl": ".swiper-button-prev",
+                            "nextEl": ".swiper-button-next"
+                        },
+                        "autoplay": {
+                            "delay": 2000,
+                            "disableOnInteraction": false
+                        }
+                    }'>
+                        <div class="swiper-wrapper">
+                            {% for entry in banner %}
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{entry.banner1}}"
+                                                 alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Join Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{entry.banner2}}"
+                                                 alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{entry.banner3}}"
+                                                 alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Swiper Navigation Buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
+
+        <!-- Hidden Div -->
+        <div id="classDetails" class="hidden-div">
+            <span id="closeDivButton" class="close-btn">&times;</span>
+            <p><strong>Student ID:</strong> 12345</p>
+            <p><strong>Class ID:</strong> 67890</p>
+            <p><strong>Date:</strong> 27/07/2024</p>
+            <p><strong>Meeting Link:</strong> https:/meetinglink/com</p>
+            <button class="join-class-button">
+                <a href="#" class="join-class" style="color: black">Join class</a>
+            </button>
+        </div>
+
+
+
+        <div class="tf-section create-sell">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-section"></div>
+                    </div>
+                    <div data-wow-delay="0s"
+                         class="wow fadeInUp col-lg-3 col-md-6 step-container completed"
+                         style="border: none">
+                        <div class="tf-box-icon style-1 step1 relative"
+                             style="border: none">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-01.png' %}" />
+                                <p>Step 1</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">Idea Validation</a>
+                            </h4>
+                            <div class="rainbow"></div>
+                            <!-- Overlay for Completed -->
+                            <div class="overlay">
+                                <i class="fa fa-check-circle completed-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-wow-delay="0.1s"
+                         class="wow fadeInUp col-lg-3 col-md-6">
+                        <div class="tf-box-icon style-1 step2 relative">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-02.png' %}" />
+                                <p>Step 2</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">Securing Funding</a>
+                            </h4>
+
+                            <div class="rainbow"></div>
+                        </div>
+                    </div>
+                    <div data-wow-delay="0.2s"
+                         class="wow fadeInUp col-lg-3 col-md-6 step-container locked"
+                         style="border: none">
+                        <div class="tf-box-icon style-1 step3 relative"
+                             style="border: none">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-03.png' %}" />
+                                <p>Step 3</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">Market Entry</a>
+                            </h4>
+                            <div class="rainbow"></div>
+                            <!-- Overlay for Locked Status -->
+                            <div class="overlay">
+                                <i class="fa fa-lock completed-icon"></i>
+                                <!-- Lock symbol -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-wow-delay="0.2s"
+                         class="wow fadeInUp col-lg-3 col-md-6 step-container locked"
+                         style="border: none">
+                        <div class="tf-box-icon style-1 step3 relative"
+                             style="border: none">
+                            <div class="image">
+                                <img src="{% static 'images/box-icon/icon-04.png' %}" />
+                                <p>Step 4</p>
+                            </div>
+                            <h4 class="heading">
+                                <a href="contact-us.html">Operations Scaling</a>
+                            </h4>
+                            <div class="rainbow"></div>
+                            <!-- Overlay for Locked Status -->
+                            <div class="overlay">
+                                <i class="fa fa-lock completed-icon"></i>
+                                <!-- Lock symbol -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="tf-section seller">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-section">
+                            <h2 class="tf-title pb-30">Rewards</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="swiper-container seller seller-slider2"
+                             data-swiper='{
+                    "loop":false,
+                    "slidesPerView": 2,
+                    "observer": true,
+                    "grabCursor": true,
+                    "observeParents": true,
+                    "spaceBetween": 30,
+                    "navigation": {
+                        "clickable": true,
+                        "nextEl": ".seller-next",
+                        "prevEl": ".seller-prev"
+                    },
+                    "breakpoints": {
+                        "500": {
+                            "slidesPerView": 3
+                        },
+                        "640": {
+                            "slidesPerView": 4
+                        },
+                        "768": {
+                            "slidesPerView": 5
+                        },
+                        "1070": {
+                            "slidesPerView": 6
+                        }
+                    }
+                }'>
+                            <div class="swiper-wrapper">
+                                {% if token == 0 %}
+                                <div class="swiper-slide" id="badgeContainer">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5><a href="author-2.html">Badge 1</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-09.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 2</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-10.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 3</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 4</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 5</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-13.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 6</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 7</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 8</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% elif token >= 20 %}
+                                <div class="swiper-slide" id="badgeContainer">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5><a href="author-2.html">Badge 1</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar ">
+                                            <img src="{% static 'images/badges/avatar-09.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html">Badge 2</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-10.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 3</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 4</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 5</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-13.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 6</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 7</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 8</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="swiper-slide" id="badgeContainer">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5><a href="author-2.html">Badge 1</a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/badges/avatar-09.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a>Badge 2</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/badges/avatar-10.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="hover-overlay">
+                                                <span class="view-badge-text">View Badge</span>
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html">Badge 3</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 4</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 5</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-13.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 6</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-11.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 7</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar locked">
+                                            <img src="{% static 'images/badges/avatar-12.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                            <div class="lock-overlay">
+                                                <i class="fas fa-lock"></i>
+                                                <!-- Lock icon -->
+                                            </div>
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5>
+                                                <a href="author-2.html" class="locked-badge">Badge 8</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="swiper-button-next seller-next over active"></div>
+                        <div class="swiper-button-prev seller-prev over"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <div class="container" style="height: 58vh">
+            <div class="heading-section">
+                <h2 class="tf-title pb-30"
+                    style="margin-left: 30px; margin-bottom: 30px">
+                    Funding Progress
+                </h2>
+            </div>
+            <!-- Set the height to 33% of the viewport height -->
+            <canvas id="fundsRaisedChart"></canvas>
+        </div>
+
+
+        <div class="skill-progress">
+            <div class="outer-progress">
+                <div class="inner-progress">
+                    <div id="number">65%</div>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 version="1.1"
+                 width="250px"
+                 height="250px">
+                <defs>
+                    <linearGradient id="GradientColor">
+                        <stop offset="0%" stop-color="#e91e63" />
+                        <stop offset="100%" stop-color="#673ab7" />
+                    </linearGradient>
+                </defs>
+                <circle cx="125" cy="125" r="105" stroke-linecap="round" />
+            </svg>
+        </div>
+
+
+
+
+
+        <div class="tf-section seller" style="margin-top: 200px">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-section">
+                            <h2 class="tf-title pb-30">Investors</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="swiper-container seller seller-slider2"
+                             data-swiper='{
+                          "loop":false,
+                          "slidesPerView": 2,
+                          "observer": true,
+                          "grabCursor": true,
+                          "observeParents": true,
+                          "spaceBetween": 30,
+                          "navigation": {
+                              "clickable": true,
+                              "nextEl": ".seller-next",
+                              "prevEl": ".seller-prev"
+                          },
+                          "breakpoints": {
+                              "500": {
+                                  "slidesPerView": 3
+                              },
+                              "640": {
+                                  "slidesPerView": 4
+                              },
+                              "768": {
+                                  "slidesPerView": 5
+                              },
+                              "1070": {
+                                  "slidesPerView": 6
+                              }
+                          }
+                      }'>
+                            <div class="swiper-wrapper">
+                                {% for entry in investor %}
+                                <div class="swiper-slide">
+                                    <div class="tf-author-box style-3 text-center">
+                                        <div class="author-avatar">
+                                            <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                 alt=""
+                                                 class="avatar" />
+                                        </div>
+                                        <div class="author-infor">
+                                            <h5><a href="author-2.html">{{entry.investor_name}}</a></h5>
+                                            <h6 class="price gem style-1">{{entry.company_name}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="swiper-button-next seller-next over active"></div>
+                        <div class="swiper-button-prev seller-prev over"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+            
+       
+
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section pb-20">
+                        <h2 class="tf-title">Your Teams</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="featured pt-10 swiper-container carousel3"
+                         data-swiper='{
+                        "loop":false,
+                        "slidesPerView": 1,
+                        "spaceBetween": 30,
+                        "observer": true,
+                        "observeParents": true,
+                        "breakpoints": {
+                            "600": {
+                                "slidesPerView": 2
+                            },
+                            "991": {
+                                "slidesPerView": 3
+                            }
+                        }
+                    }'>
+                        <div class="swiper-wrapper">
+                            {% for entry in members %}
+                            <div class="swiper-slide">
+                                <div class="tf-card-collection">
+                                    <a href="author-2.html">
+                                        <div class="media-images-collection">
+                                            <img src="{% static 'images/avatar/avatar-10.png' %}"
+                                                 alt="" />
+
+                                            <img src="{% static 'images/avatar/avatar-11.png' %}"
+                                                 alt="" />
+
+                                            <img src="{% static 'images/avatar/avatar-12.png' %}"
+                                                 alt="" />
+
+                                            <img src="{% static 'images/avatar/avatar-13.png' %}"
+                                                 alt="" />
+
+                                            <div class="author-poster">
+                                                {% if entry.image %}
+                                                <img src="data:image/jpeg;base64,{{entry.image}}"
+                                                     alt=""
+                                                     class="w-full" />
+                                                {% else %}
+                                                <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                     alt=""
+                                                     class="w-full" />
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="author-infor mt-4">
+                                    <h5><a href="author-2.html">{{entry.name}}</a></h5>
+                                    <h6 class="price gem style-1">{{entry.user_id}}</h6>
+                                </div>
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tf-section seller" style="margin-top: 100px">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2 class="tf-title pb-30">
+                                    Top performers
+
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="swiper-container seller seller-slider"
+                                 data-swiper='{
+                                "loop":false,
+                                "slidesPerView": 1,
+                                "observer": true,
+                                "grabCursor": true,
+                                "observeParents": true,
+                                "spaceBetween": 30,
+                                "navigation": {
+                                    "clickable": true,
+                                    "nextEl": ".main-next",
+                                    "prevEl": ".main-prev"
+                                }
+                            }'>
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="grid-author-box">
+                                            {% for entry in uresult %}
+                                            <div class="tf-author-box style-2 type-1 mb-30">
+                                                <div class="author-avatar">
+                                                    {%  if entry.image %}
+                                                    <img src="data:image/jpeg;base64,{{entry.image}}"
+                                                         alt=""
+                                                         class="avatar" />
+                                                    {% else %}
+                                                    <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                         alt=""
+                                                         class="avatar" />
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="author-infor">
+                                                    <h5>
+                                                        <a href="author-2.html">{{entry.name}}</a>
+                                                    </h5>
+                                                    <h6 class="price gem style-1"></h6>
+                                                </div>
+                                                <div class="order tf-color">{{entry.total_score}}</div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="tf-section featured-item style-bottom">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section pb-20">
+                                <h2 class="tf-title">Startups to collaborate</h2>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="featured pt-10 swiper-container carousel"
+                                 data-swiper='{
+                                "loop":false,
+                                "slidesPerView": 1,
+                                "observer": true,
+                                "observeParents": true,
+                                "spaceBetween": 30,
+                                "navigation": {
+                                    "clickable": true,
+                                    "nextEl": ".slider-next",
+                                    "prevEl": ".slider-prev"
+                                },
+                                "pagination": {
+                                    "el": ".swiper-pagination",
+                                    "clickable": true
+                                },
+                                "breakpoints": {
+                                    "768": {
+                                        "slidesPerView": 2,
+                                        "spaceBetween": 30
+                                    },
+                                    "1024": {
+                                        "slidesPerView": 3,
+                                        "spaceBetween": 30
+                                    },
+                                    "1300": {
+                                        "slidesPerView": 4,
+                                        "spaceBetween": 30
+                                    }
+                                }
+                            }'>
+                                <div class="swiper-wrapper">
+                                    {% for entry in os %}
+                                    <div class="swiper-slide">
+                                        <div class="tf-card-box style-4">
+                                            
+                                            <h5 class="name">
+                                                <a href="nft-detail-2.html">{{entry.startup_Name}}</a>
+                                            </h5>
+                                            <div class="meta-info flex items-center justify-between">
+                                                <div class="button-place-bid">
+                                                    <a
+                                                       data-toggle="modal"
+                                                       data-target="#popup_bid"
+                                                       class="tf-button"><span style="color:black" onclick="window.location.href='http://127.0.0.1:8000/user_info/{{entry.user_id}}'">Collaborate</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /#footer -->
+</div>
+<!-- /#page -->
+<!-- Modal Popup Bid -->
+
+
+
+<!-- Javascript -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/swiper.js' %}"></script>
+<script src="{% static 'assets/js/count-down.js' %}"></script>
+<script src="{% static 'assets/js/simpleParallax.min.js' %}"></script>
+<script src="{% static 'assets/js/gsap.js' %}"></script>
+<script src="{% static 'assets/js/SplitText.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/ScrollTrigger.js' %}"></script>
+<script src="{% static 'assets/js/gsap-animation.js' %}"></script>
+<script src="{% static 'assets/js/tsparticles.min.js' %}"></script>
+<script src="{% static 'assets/js/tsparticles.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'js/startupdashboard.js' %}"></script>
+<script src="{% static 'js/internship_home.js' %}"></script>
+ {% endblock %}

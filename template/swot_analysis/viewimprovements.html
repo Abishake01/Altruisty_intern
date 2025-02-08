@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+{% load static %}
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Altruisty</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static 'icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'icon/Favicon.png' %}">
+
+<link rel="stylesheet" href="{% static 'css/master-web-agency.css' %}">
+<link rel="stylesheet" href="{% static 'css/master-services.css' %}">
+
+    
+<style>
+    .service-area {
+        background-color: #161616;
+    }
+    .service-area.section-spacing {
+        padding-bottom: 10px; /* Adjust as needed to decrease gap */
+    }
+    
+    .service-area + .service-area.section-spacing {
+        padding-top: 5px; /* Reduce gap between sections */
+    }
+    .icon-white {
+        filter: brightness(0) invert(1); /* Makes SVGs white */
+        width: 50px; /* Adjust size as needed */
+        height: 50px;
+    }
+    
+</style>
+
+    
+    
+</head>
+
+<body class="overview-body" style="background-color: #161616;">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="middle">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
+        </div>
+    </div>
+    <!-- /preload -->
+
+   <!-- service area start -->
+<section class="service-area">
+    <div class="container">
+        <div class="service-area-inner section-spacing">
+            <!-- Section Header -->
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <div class="title-wrapper has_text_move_anim">
+                        <h2 class="section-title" style="color: rgba(221, 242, 71, 1);">YOUR IMPROVEMENTS</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Improvements Wrapper -->
+            <div class="services-wrapper-box">
+                <div class="services-wrapper">
+                    {% if improvements %}
+                        {% for improvement in improvements %}
+                        <div class="has_fade_anim">
+                            <a href="#">
+                                <div class="service-box">
+                                    <span class="number" style="color: white;">{{ forloop.counter }}.</span>
+                                    <div class="content">
+                                        <h3 class="title" style="color: white;">
+                                            {{ improvement.improvedAttribute }}
+                                        </h3>
+                                        <div class="content-last">
+                                            <p class="text" style="color: rgb(177, 177, 175); font-size:20px;">
+                                                {{ improvement.solution }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: white;">No improvements listed.</p>
+                    {% endif %}
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+  <!-- service area end  -->
+   <!-- Addons Section -->
+<section class="service-area section-spacing" style="margin-bottom: 40px;">
+    <div class="container">
+        <div class="service-top-wrapper">
+            <div class="section-heading">
+                <h2 class="section-title has_text_move_anim" style="color: rgba(221, 242, 71, 1);">ADDONS</h2>
+            </div>
+        </div>
+        <div class="services-wrapper-box">
+            <div class="services-grid">
+                <!-- Strengths -->
+                <div class="service-item has_fade_anim" data-delay="0.15">
+                    <div class="icon">
+                        <img src="{% static 'images/icon/strength.png' %}" alt="strength-icon" class="icon-white"/>
+                    </div>
+                    <h2 class="title" style="color: white;">STRENGTHS</h2>
+                    <ul class="service-features" >
+                        {% if addons.strength %}
+                            {% for strength in addons.strength %}
+                                <li style="color: rgb(177, 177, 175);font-size:20px;">{{ strength }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li style="color: rgb(177, 177, 175);font-size:20px;">No strengths listed.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- Weaknesses -->
+                <div class="service-item has_fade_anim" data-delay="0.30">
+                    <div class="icon">
+                        <img src="{% static 'images/icon/weakness.png' %}" alt="weakness-icon" class="icon-white"/>
+                    </div>
+                    <h2 class="title" style="color: white;">WEAKNESSES</h2>
+                    <ul class="service-features">
+                        {% if addons.weakness %}
+                            {% for weakness in addons.weakness %}
+                                <li style="color: rgb(177, 177, 175);font-size:20px;">{{ weakness }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li style="color: rgb(177, 177, 175);font-size:20px;">No weaknesses listed.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- Opportunities -->
+                <div class="service-item has_fade_anim" data-delay="0.45">
+                    <div class="icon">
+                        <img src="{% static 'images/icon/opportunity.png' %}" alt="opportunity-icon" class="icon-white"/>
+                    </div>
+                    <h2 class="title" style="color: white;">OPPORTUNITIES</h2>
+                    <ul class="service-features">
+                        {% if addons.opportunity %}
+                            {% for opportunity in addons.opportunity %}
+                                <li style="color: rgb(177, 177, 175);font-size:20px;">{{ opportunity }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li style="color: rgb(177, 177, 175);font-size:20px;">No opportunities listed.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- Threats -->
+                <div class="service-item has_fade_anim" data-delay="0.60">
+                    <div class="icon">
+                        <img src="{% static 'images/icon/threat.png' %}" alt="threat-icon" class="icon-white"/>
+                    </div>
+                    <h2 class="title" style="color: white;">THREATS</h2>
+                    <ul class="service-features" >
+                        {% if addons.threat %}
+                            {% for threat in addons.threat %}
+                                <li style="color: rgb(177, 177, 175);font-size:20px;">{{ threat }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li style="color: rgb(177, 177, 175);font-size:20px;">No threats listed.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Javascript -->
+    
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/improve.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/count-down.js' %}"></script>
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'js/counter.js' %}"></script>
+<script src="{% static 'js/progressbar.js' %}"></script>
+<script src="{% static 'js/gsap.min.js' %}"></script>
+<script src="{% static 'js/ScrollSmoother.min.js' %}"></script>
+<script src="{% static 'js/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+<script src="{% static 'js/SplitText.min.js' %}"></script>
+<script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
+<script src="{% static 'js/backToTop.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/error-handling.js' %}"></script>
+<script src="{% static 'js/offcanvas.js' %}"></script>
+
+
+</body>
+
+</html>

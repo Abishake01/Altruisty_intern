@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+{% load static %}
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>Altruisty</title>
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <link rel="shortcut icon" href="{% static 'icon/Favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/master-web-agency.css' %}">
+    <link rel="stylesheet" href="{% static 'css/master-services.css' %}">
+
+    <style>
+        .service-area { background-color: #161616; }
+        .service-area.section-spacing { padding-bottom: 10px; }
+        .service-area + .service-area.section-spacing { padding-top: 5px; }
+        .icon-white { filter: brightness(0) invert(1); width: 50px; height: 50px; }
+        .add-improvement-row { margin-bottom: 15px; display: flex; align-items: center; color: white; }
+        .add-improvement-row input { margin-right: 10px; padding: 5px; }
+        .add-button, .delete-button { cursor: pointer; color: rgba(221, 242, 71, 1); font-size: 1.2em; }
+        .delete-button { margin-left: 10px; color: red; }
+    </style>
+</head>
+
+<body class="overview-body" style="background-color: #161616;">
+
+    <!-- service area start -->
+    <section class="service-area">
+        <div class="container">
+            <div class="service-area-inner section-spacing">
+                <div class="section-header">
+                    <div class="section-title-wrapper">
+                        <div class="title-wrapper has_text_move_anim">
+                            <h2 class="section-title" style="color: rgba(221, 242, 71, 1);">YOUR IMPROVEMENTS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-wrapper-box">
+                    <div id="improvements-container">
+                        <div class="add-improvement-row">
+                            <input type="text" class="attribute-input" placeholder="Enter attribute">
+                            <input type="text" class="solution-input" placeholder="Enter solution">
+                            <span class="delete-button" onclick="deleteRow(this)" style="font-size: 30px;">&times;</span>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div style="text-align: center;margin-top: 20px;">
+                    <span class="add-button" onclick="addImprovementRow()" style="background-color: red; color: white; padding: 10px 30px; border: none; border-radius: 50%; cursor: pointer;font-size: 30px;">+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="service-area section-spacing" style="margin-bottom: 40px;">
+        <div class="container">
+            <div class="service-top-wrapper">
+                <div class="section-heading">
+                    <h2 class="section-title has_text_move_anim" style="color: rgba(221, 242, 71, 1);">ADDONS</h2>
+                </div>
+            </div>
+            <div class="services-wrapper-box">
+                <div class="services-grid">
+                    <!-- Strengths -->
+                    <div class="service-item has_fade_anim" data-delay="0.15">
+                        <div class="icon">
+                            <img src="{% static 'images/icon/strength.png' %}" alt="strength-icon" class="icon-white" />
+                        </div>
+                        <h2 class="title" style="color: white;">STRENGTHS</h2>
+                        <ul class="service-features">
+                            {% for strength in combined_swot.strengths %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">{{ strength }}</li>
+                            {% empty %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">No strengths available.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- Weaknesses -->
+                    <div class="service-item has_fade_anim" data-delay="0.30">
+                        <div class="icon">
+                            <img src="{% static 'images/icon/weakness.png' %}" alt="weakness-icon" class="icon-white" />
+                        </div>
+                        <h2 class="title" style="color: white;">WEAKNESSES</h2>
+                        <ul class="service-features">
+                            {% for weakness in combined_swot.weakness %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">{{ weakness }}</li>
+                            {% empty %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">No weaknesses available.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- Opportunities -->
+                    <div class="service-item has_fade_anim" data-delay="0.45">
+                        <div class="icon">
+                            <img src="{% static 'images/icon/opportunity.png' %}" alt="opportunity-icon" class="icon-white" />
+                        </div>
+                        <h2 class="title" style="color: white;">OPPORTUNITIES</h2>
+                        <ul class="service-features">
+                            {% for opportunity in combined_swot.opportunity %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">{{ opportunity }}</li>
+                            {% empty %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">No opportunities available.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- Threats -->
+                    <div class="service-item has_fade_anim" data-delay="0.60">
+                        <div class="icon">
+                            <img src="{% static 'images/icon/threat.png' %}" alt="threat-icon" class="icon-white" />
+                        </div>
+                        <h2 class="title" style="color: white;">THREATS</h2>
+                        <ul class="service-features">
+                            {% for threat in combined_swot.threat %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">{{ threat }}</li>
+                            {% empty %}
+                                <li style="color: rgb(177, 177, 175); font-size: 20px;">No threats available.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <button onclick="saveImprovements()" class="tf-button style-1 h50 w190 mr-16">
+            Save Improvements
+        </button>
+    </div>
+    
+
+    
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        function addImprovementRow() {
+            const container = document.getElementById("improvements-container");
+            const newRow = document.createElement("div");
+            newRow.classList.add("add-improvement-row");
+
+            newRow.innerHTML = `
+                <input type="text" class="attribute-input" placeholder="Enter attribute">
+                <input type="text" class="solution-input" placeholder="Enter solution">
+                <span class="delete-button" onclick="deleteRow(this)">&times;</span>
+            `;
+            container.appendChild(newRow);
+        }
+
+        function saveImprovements() {
+const improvements = [];
+const rows = document.querySelectorAll(".add-improvement-row");
+
+// Collect improvements data
+rows.forEach(row => {
+    const attribute = row.querySelector(".attribute-input").value;
+    const solution = row.querySelector(".solution-input").value;
+
+    if (attribute && solution) {
+        improvements.push({ improvedAttribute: attribute, solution: solution });
+    }
+});
+
+// Collect addons from the `combined_swot` variable
+const addons = {
+    strength: {{ combined_swot.strengths|safe }},
+    weakness: {{ combined_swot.weakness|safe }},
+    opportunity: {{ combined_swot.opportunity|safe }},
+    threat: {{ combined_swot.threat|safe }}
+};
+
+// Combine improvements and addons in a single payload
+const payload = {
+    improvements: improvements,
+    addons: addons
+};
+
+// Send the payload as JSON
+fetch('/save-improvements/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: JSON.stringify(payload)
+})
+.then(response => response.json())
+.then(data => {
+    if (data.success) {
+        window.location.href = '/swotStartNow/';
+    } else {
+        alert('Failed to save improvements and addons: ' + data.message);
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred while saving improvements and addons.');
+});
+}
+
+
+        function deleteRow(button) {
+            button.parentElement.remove();
+        }
+    </script>
+</body>
+</html>

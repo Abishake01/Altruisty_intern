@@ -1,0 +1,196 @@
+
+    .body-container {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px;
+    }
+
+    .container {
+        margin-top: 50px;
+        display: flex;
+        width: 100%;
+    }
+
+    .form-container {
+        width: 40%;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .form-header {
+        margin-bottom: 20px;
+    }
+
+    .form-container .form-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container .input-field,
+    .form-container .submit-button {
+        margin-bottom: 10px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .form-container .submit-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+        .form-container .submit-button:hover {
+            background-color: #218838;
+        }
+
+    .table-container {
+        width: 55%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .table-header {
+        margin-bottom: 20px;
+    }
+
+    .todo-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .todo-table,
+    .table-head-cell,
+    .table-body-cell {
+        border: 1px solid #ddd;
+    }
+
+    .table-head-cell,
+    .table-body-cell {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .table-head-cell {
+        font-size: 16px;
+    }
+
+    .table-body {
+        display: block;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .table-row {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .table-head {
+        width: calc(100% - 16px); /* Accounts for scrollbar width */
+    }
+
+    .reschedule-button,
+    .delete-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        width: 100px;
+        padding: 5px 10px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .delete-button {
+        background-color: #dc3545;
+    }
+
+        .reschedule-button:hover,
+        .delete-button:hover {
+            background-color: #0056b3;
+        }
+
+    .table-body::-webkit-scrollbar {
+        display: none;
+    }
+
+    .table-body {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        display: none; /* Initially hidden */
+    }
+
+    .modal-content {
+        background-color: black !important;
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        border: 2px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .input-label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .text-input,
+    .text-area {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .modal-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+        .modal-button:hover {
+            background-color: #0056b3;
+        }
+        @media(max-width:600px){
+            .container{
+                flex-direction:column;
+            }
+            .form-container {
+                width:100%;
+            }
+            .table-container {
+                width:100%;
+            }
+        }

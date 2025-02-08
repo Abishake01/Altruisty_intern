@@ -1,0 +1,209 @@
+/* Recent Projects Styling */
+.recent-projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; /* Space between each project */
+}
+
+.content-container {
+  height: 1200px;
+  width: 1100px;
+  background-color: #2d2d2d;
+  padding: 20px;
+  margin-left: -60px;
+  border-radius: 20px;
+}
+.project-container {
+  width: 213px; /* Adjust width as needed */
+  margin: 10px;
+
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect to expand */
+.project-container:hover {
+  transform: scale(1.05); /* Slightly increase the size */
+}
+
+.project-square {
+  width: 240px;
+  height: 200px;
+  background-color: #0f0e0e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Space between rows */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tool-icon {
+  margin-right: 50px; /* Adjust the gap between icons as needed */
+  align-items: center;
+}
+
+.tool-icon .icon-image {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Keep height and width the same for a perfect circle */
+  border-radius: 50%; /* Makes the image circular */
+  padding: 10px; /* Space around the icon inside the circle */
+  background-color: #161616; /* Light background color */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.tool-icon:hover .icon-image {
+  background-color: #ddf247; /* Changes background to white */
+}
+
+.tool_name {
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #f0f0f0;
+}
+
+/* Target the scrollbar inside the widget-categories div */
+.widget-categories::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+/* Scrollbar track */
+.widget-categories::-webkit-scrollbar-track {
+  background: #161616; /* Color of the scrollbar track */
+}
+
+/* Scrollbar thumb */
+.widget-categories::-webkit-scrollbar-thumb {
+  background-color: #2d2d2d; /* Color of the scrollbar handle */
+  border-radius: 10px; /* Round edges for a smoother look */
+}
+
+.project_name {
+  font-size: 14px;
+  margin-top: 5px;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #f0f0f0;
+}
+
+/* Modal background */
+.all-ai-tools {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.656); /* Dimming effect */
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+/* Modal content */
+.ai-items-container {
+  background-color: #2d2d2d;
+  padding: 20px;
+  border-radius: 8px;
+  width: 970px;
+  height: 600px;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popular .scroll-wrapper {
+  overflow-x: hidden; /* Hide overflow for hidden icons */
+  width: 850px; /* Visible container width */
+  position: relative;
+  white-space: nowrap;
+  margin-left: 40px;
+}
+
+.popular .scrollable-container {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  flex-wrap: nowrap;
+}
+
+.popular .tool-icon {
+  width: 50px; /* Set fixed width for each icon */
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking of icons */
+}
+
+.popular .tool-icon img {
+  width: 100px; /* Fixed width for icon image */
+  height: auto;
+}
+
+.arrow-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -57px;
+  position: relative;
+}
+
+.arrow-controls img {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+#rightArrow {
+  position: absolute;
+  right: 0; /* Align the right arrow to the end of the visible container */
+  top: 0;
+}
+
+#recentRightArrow {
+  position: absolute;
+  right: 0; /* Align the right arrow to the end of the visible container */
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .side-bar {
+    display: none;
+  }
+
+  .widget-search {
+    display: none;
+  }
+
+  .themesflat-container {
+    width: 100%;
+  }
+
+  #tsparticles1 {
+    display: none;
+  }
+
+  .action__body {
+    width: 400px;
+    margin: 16px;
+    background-color: #161616;
+  }
+
+  .action__body h2 {
+    text-align: center;
+    color: #ddf247;
+  }
+
+  .content-container {
+    background-color: #161616;
+  }
+}

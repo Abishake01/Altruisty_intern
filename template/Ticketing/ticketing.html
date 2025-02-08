@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/ticketing.css' %}" />
+<div class="body-container">
+    <div class="container">
+        <!-- Form Section -->
+        <div id="wrapper">
+            <div id="page" class="market-page" style="margin:20px;padding:20px;">
+                <div class="btn-canvas active">
+                    <div class="canvas">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="flat-tabs">
+                    <div class="content-tabs">
+                        <div id="create" class="tabcontent active">
+                            <div class="wrapper-content-create">
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Raise Ticket</h2>
+                                </div>
+                                <div class="widget-tabs relative">
+                                    <div class="widget-content-tab">
+                                        <div class="widget-content-inner upload active">
+                                            <div class="wrap-content w-full">
+                                                <form id="meetingform" class="meeting-form" action="{% url 'ticketing' %}" method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <!-- First Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="company-name">
+                                                            <label>Title *</label>
+                                                            <input type="text" id="company-name" placeholder="Title" name="title" required>
+                                                        </fieldset>
+                                                        <fieldset class="document-category">
+                                                            <label>Issue type *</label>
+                                                            <select id="issue_type" name="issue_type" tabindex="2" required>
+                                                                <option value="" disabled selected>Select Issue Type</option> <!-- Disabled placeholder option -->
+                                                                <option value="Technical">Technical</option>
+                                                                <option value="Payment">Payment</option>
+                                                                <option value="Others">Others</option>
+                                                            </select>
+
+                                                        </fieldset>
+                                                    </div>
+                                                    <!-- Second Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="description">
+                                                            <label>Description *</label>
+                                                            <textarea id="description" name="description" rows="4" placeholder="Please provide a description" tabindex="3" required></textarea>
+                                                        </fieldset>
+                                                        
+                                                    </div>
+
+                                                    <!-- Sixth Row -->
+                                                    <fieldset class="visiting-card">
+                                                        <label>Upload Agreement *</label>
+                                                        <label class="uploadfile">
+                                                            <img src="images/box-icon/upload.png" alt="">
+                                                            <h5>Upload file</h5>
+                                                            <p class="text">Drag or choose your file to upload</p>
+                                                            <div class="text filename">PNG, JPG, PDF. Max 5Mb.</div>
+                                                            <input type="file" name="agreement_upload" required>
+                                                        </label>
+                                                    </fieldset>
+                                                    <!-- Seventh Row -->
+                                                    <!-- Submit Button -->
+                                                    <div class="btn-submit flex gap30 justify-center">
+                                                        <button class="tf-button style-1 h50 w320" type="submit">Submit<i class="icon-arrow-up-right2"></i></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <div class="table-header">Tickets</div>
+            <table class="todo-table">
+                <thead class="table-head-cell">
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Title</th>
+                        <th>Issue Type</th>
+                        <th>Created Date</th>
+                        <th>Created Time</th>
+                        <th>Assigned To</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.id }}</td>
+                        <td>{{ ticket.title }}</td>
+                        <td>{{ ticket.issue_type }}</td>
+                        <td>{{ ticket.created_date }}</td>
+                        <td>{{ ticket.created_time }}</td>
+                        <td>{{ ticket.assigned_to }}</td>
+                        <td>{{ ticket.status }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">No tickets available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

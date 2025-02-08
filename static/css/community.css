@@ -1,0 +1,86 @@
+/* Remove default margin and padding for the body and all elements */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures that padding and border are included in the element's total width and height */
+}
+
+/* Ensure no gaps between the row and column */
+.tf-section-5 .themesflat-container {
+    padding: 0; /* Remove padding from container */
+}
+
+/* Flexbox row should have no gap between items */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0; /* Remove any margin */
+}
+
+/* Remove padding and margin from individual columns */
+.wrap-inner {
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for individual blog articles */
+.tf-card-article {
+    width: 100%; /* Full width for each article */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border if any */
+}
+
+/* Flex settings for author and other items */
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add a little space between author and content if necessary */
+}
+
+.avatar img {
+    width: 40px; /* Adjust the size of the avatar */
+    height: 40px;
+    border-radius: 50%; /* Make avatar round */
+    margin-right: 10px; /* Space between avatar and name */
+}
+
+.card-media img {
+    width: 100%; /* Ensure image is full-width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Adjust the meta-info layout */
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px; /* Smaller font size for date/comment */
+    margin: 10px 0; /* Space between meta-info and title */
+}
+
+.card-title {
+    margin-top: 18px; /* Space for the title */
+}
+
+    .card-title h5 {
+        font-size: 16px;
+        line-height: 1.5; /* Space between lines of title */
+    }
+
+.link {
+    text-decoration: none;
+}
+
+    .link i {
+        font-size: 20px; /* Adjust size of the icon */
+    }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .tf-card-article {
+        width: 100%; /* Full width on smaller screens */
+    }
+}

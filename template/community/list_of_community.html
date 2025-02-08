@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Chat</title>
+
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="{% static 'css/chat-message.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chat-tile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/chat-window.css' %}">
+    <link rel="stylesheet" href="{% static 'css/core.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/community_chat.css' %}">
+
+
+
+
+</head>
+
+<body style="background-color:#161616">
+    <h1 style="display:none" id="user">{{id}}</h1>
+    <main>
+        <!-- Sidebar -->
+        
+
+        <!-- Chat Window -->
+        <section id="chat-window">
+            <header id="chat-window-header" style="background-color:#161616;color:rgba(221, 242, 71, 0.8)">
+                <div id="active-chat-details" onclick="info()">
+                    <h3 id="comm_title1" style="background-color: #161616; color: white">Community Name</h3>
+                    <div id="comm_creator" style="background-color:#161616; color:white" class="info">Creator Info</div>
+                    <div id="commid" class="info" style="visibility: hidden;">Community ID</div>
+                </div>
+
+
+            </header>
+            <div id="chat-window-contents" style="background:url(http://127.0.0.1:8000/static/mjy11.jpg)"></div>
+            <footer id="chat-window-footer" style="background-color: #161616; color: white">
+
+                <img src="{% static 'icons/attachment.svg' %}" class="icon" onclick="navigate()" alt="">
+                <input style="background-color: #161616; color: white" type="search" name="message" id="compose-chat-box" placeholder="Type a message" autocomplete="off">
+
+                <img src="{% static 'icons/send.svg' %}" id="sendicon" alt="send" class="icon">
+            </footer>
+        </section>
+
+    </main>
+
+<script src="{% static 'js/community_chat.js' %}"></script>
+
+
+</body>
+
+</html>

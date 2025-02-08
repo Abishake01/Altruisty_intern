@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/investor_form.css' %}">
+<script src="{% static 'js/investor_form.js' %}" defer></script>
+
+
+<div class="body-container">
+    <a href="{% url 'ai_tools' %}" class="back-button" style="font-size: 30px; text-decoration: none;font-weight:bolder;">
+        &#8592;
+    </a>
+    <div class="container">
+        <!-- Form Section -->
+        <div id="wrapper">
+            <div id="page" class="market-page" style="margin:20px;padding:20px;">
+                <div class="flat-tabs">
+                    <div class="content-tabs">
+                        <div id="create" class="tabcontent active">
+                            <div class="wrapper-content-create">
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Add Investor</h2>
+                                </div>
+                                <div class="widget-tabs relative">
+                                    <div class="widget-content-tab">
+                                        <div class="widget-content-inner upload active">
+                                            <div class="wrap-content w-full">
+                                                <form id="meetingform" class="meeting-form" action="{% url 'investor_form' %}" method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+
+                                                    <!-- First Row -->
+                                                    <div class="flex gap30">
+                                                        <fieldset class="investor-name">
+                                                            <label for="id_investor_name">Investor Name *</label>
+                                                            {{ form.investor_name }}
+                                                        </fieldset>
+                                                        <fieldset class="company-name">
+                                                            <label for="id_company_name">Company Name *</label>
+                                                            {{ form.company_name }}
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <fieldset class="description">
+                                                        <label for="id_description">Description *</label>
+                                                        {{ form.description }}
+                                                    </fieldset>
+
+                                                    <div class="flex gap30">
+                                                        <fieldset class="contact-number">
+                                                            <label for="id_contact_number">Contact Number *</label>
+                                                            {{ form.contact_number }}
+                                                        </fieldset>
+                                                        <fieldset class="email-id">
+                                                            <label for="id_email_id">Email ID *</label>
+                                                            {{ form.email_id }}
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <fieldset class="visiting-card">
+                                                        <label for="{{ form.visiting_card.id_for_label }}" ">Upload Agreement *</label>
+                                                        <label class="uploadfile">
+                                                            <img src="assets/images/box-icon/upload.png" alt="">
+                                                            <h5>Upload file</h5>
+                                                            <p class="text">Drag or choose your file to upload</p>
+                                                            <div class="text filename">PNG, JPG, PDF. Max 5Mb.</div>
+                                                            {{ form.visiting_card }}
+                                                        </label>
+                                                    </fieldset>
+
+                                                    <h3 class="schedule-heading" style="margin-bottom:30px;">Schedule Meeting</h3>
+
+                                                    <div class="flex gap30">
+                                                        <fieldset class="purpose">
+                                                            <label for="id_purpose">Purpose</label>
+                                                            {{ form.purpose }}
+                                                        </fieldset>
+                                                        <fieldset class="date">
+                                                            <label for="id_date">Date</label>
+                                                            {{ form.meeting_date }}
+                                                        </fieldset>
+                                                        <fieldset class="time">
+                                                            <label for="id_time">Time</label>
+                                                            {{ form.meeting_time }}
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <div class="btn-submit flex gap30 justify-center">
+                                                        <button class="tf-button style-1 h50 w320" type="submit">Submit<i class="icon-arrow-up-right2"></i></button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <h2 class="table-header">Investors</h2>
+            <table class="todo-table">
+                <thead class="table-head">
+                    <tr class="table-row">
+                        <th class="table-head-cell">Investor name</th>
+                        <th class="table-head-cell">Company name</th>
+                        <th class="table-head-cell">Description</th>
+                        <th class="table-head-cell">Contact number</th>
+                        <th class="table-head-cell">Email</th>
+                        <th class="table-head-cell">Purpose</th>
+                        <th class="table-head-cell">Meeting date</th>
+                        <th class="table-head-cell">Meeting time</th>
+                        <th class="table-head-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    {% for investor in investors %}
+                    <tr class="table-row">
+                        <td>{{ investor.investor_name }}</td>
+                        <td>{{ investor.company_name }}</td>
+                        <td>{{ investor.description }}</td>
+                        <td>{{ investor.contact_number }}</td>
+                        <td>{{ investor.email_id }}</td>
+                        <td>{{ investor.purpose }}</td>
+                        <td>{{ investor.meeting_date }}</td>
+                        <td>{{ investor.meeting_time }}</td>
+                        <td>
+                            <form action="{% url 'delete_investor' investor.id %}" method="POST" onsubmit="return confirmDelete();">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center">No investor available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

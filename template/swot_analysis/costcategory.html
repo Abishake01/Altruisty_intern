@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+{% load static %}
+
+
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Open9 | NFT Marketplace HTML Template</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static ' icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'icon/Favicon.png' %}">
+
+    <style>
+        .rules-heading{
+            font-size: 5rem;
+            color: rgba(221, 242, 71, 1);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .rules-list{
+            font-size: 2rem;
+            line-height: 30px;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+    </style>
+
+</head>
+<body class="body ">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="middle">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
+          </div>
+    </div>
+    <!-- /preload -->
+
+    <div class="background"></div>
+    <div class="galaxy">
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+
+    </div>
+    <div class="falling-stars" id="fallingStars"></div>
+    <div class="gaming-objects" id="gamingObjects"></div>
+        
+    <div id="wrapper">
+        <div id="page" class="pt-40">
+           
+
+            <div class="flat-title-page">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="heading text-center" style="color: rgba(221, 242, 71, 1);">Critical Categories: Shape Your Startup’s Survival</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tf-section-2 discover-item loadmore-12-item">
+                <div class="themesflat-container">
+                    <div class="row">
+                        {% for category in categories %}
+                        <div data-wow-delay="0s" class="wow fadeInUp fl-item col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                            <div class="tf-card-box style-1">
+                                <div class="card-media">
+                                    <a href="#">
+                                        <img src="data:image/jpeg;base64,{{category.category_image}}" alt="">
+
+                                    </a>
+                                    <span class="wishlist-button icon-heart"></span>
+                                    <div class="button-place-bid">
+                                        <a  onclick="playNowFunction('{{category.categroy_name}}')" class="tf-button"><span style="color:black;">Play Now</span></a>
+                                    </div>
+                                </div>
+                                <h5 class="name"><a href="nft-detail-2.html">{{category.categroy_name}}</a></h5>
+
+                            </div>
+                        </div>
+                      {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+
+           
+        
+    </div>
+      <!-- /#wrapper -->
+
+    <div class="tf-mouse tf-mouse-outer"></div>
+    <div class="tf-mouse tf-mouse-inner"></div>
+
+    <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;"></path>
+        </svg>
+    </div>
+
+
+    <!-- Modal Popup Bid -->
+    <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" onclick=" $('#popup_bid').modal('hide');" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body">
+                    <!-- Heading for the rules -->
+                    <h3 class="rules-heading">Game Rules</h3>
+                    <ul class="rules-list">
+                        <li>Each category consists of 10 scenario-based questions with 4 options to choose from.</li>
+                        <li>All options are correct, but you must select the most efficient choice.</li>
+                        <li>Your score is based on how many efficient choices you make.</li>
+                        <li>Review your final score at the end of all questions to see how well you performed.</li>
+                    </ul>
+                    <!-- Get Started Button -->
+                    <a onclick="navigate()" class="tf-button style-1 h50" style="color:black;" >Get Started<i class="icon-arrow-up-right2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+     <!-- Javascript -->
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+     <script src="{% static 'js/swiper.js' %}"></script>
+     <script src="{% static 'js/count-down.js' %}"></script>
+     <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+     <script src="{% static 'js/gsap.js' %}"></script>
+     <script src="{% static 'js/SplitText.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
+     <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+     <script src="{% static 'js/gsap-animation.js' %}"></script>
+     <script src="{% static 'js/tsparticles.min.js' %}"></script>
+     <script src="{% static 'js/tsparticles.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+
+     <script>
+        // Gaming objects
+        const objects = document.getElementById('gamingObjects');
+        const objectTypes = ['spaceship', 'rocket', 'alien', 'planet'];
+        
+        for (let i = 0; i < 8; i++) {
+          const object = document.createElement('div');
+          object.className = `game-object ${objectTypes[i % objectTypes.length]}`;
+          object.style.animationDelay = -Math.random() * 6 + 's';
+          object.style.transform = `scale(${0.9 + Math.random() * 0.3})`;
+          objects.appendChild(object);
+        }
+  
+        // Falling stars
+        const starsContainer = document.getElementById('fallingStars');
+        const createStar = () => {
+          const star = document.createElement('div');
+          star.className = 'star';
+          const startX = Math.random() * window.innerWidth;
+          const duration = 2 + Math.random() * 4;
+          const delay = Math.random() * 3;
+          
+          star.style.setProperty('--startX', `${startX}px`);
+          star.style.setProperty('--duration', `${duration}s`);
+          star.style.setProperty('--delay', `${delay}s`);
+          
+          starsContainer.appendChild(star);
+          
+          setTimeout(() => {
+            star.remove();
+          }, (duration + delay) * 1000);
+        };
+  
+        // Create initial stars
+        for (let i = 0; i < 20; i++) {
+          createStar();
+        }
+  
+        // Continue creating stars
+         setInterval(createStar, 300);
+
+         function playNowFunction(data) {
+             // Your custom logic can go here
+             console.log("The 'Play Now' button was clicked.");
+             sessionStorage.setItem('costcuttingcategory',data)
+             // Now, trigger the modal popup
+             $('#popup_bid').modal('show'); // Shows the modal
+         }
+         function navigate() {
+             data = sessionStorage.getItem('costcuttingcategory')
+             window.location.href=`http://127.0.0.1:8000/costquestions/${data}`
+         }
+      </script>
+
+</body>
+
+
+</html>

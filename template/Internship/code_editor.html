@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/code_editor.css' %}" />
+<br>
+<br>
+<div class="container" style="display: flex; flex-direction: row !important; height: auto; width: 80%; margin: 0 10%; gap: 1rem;">
+    <div class="question-section" style="flex: 2; background: transparent; border: none;">
+        <h4>Question</h4>
+        <p>{{qdata.question}}</p>
+    </div>
+    <div class="sample-section" style="flex: 1; background: transparent; border: none;">
+        <h5>Sample Input</h5>
+        <p>{{qdata.sample_input}}</p>
+    </div>
+    <div class="sample-section" style="flex: 1; background: transparent; border: none;">
+        <h5>Sample Output</h5>
+        <p>{{qdata.sample_output}}</p>
+    </div>
+</div>
+<div class="container">
+    <div class="header">
+        {% if type == 'd' %}
+        <h2>Daily Challenge</h2>
+        <button id="runButton" class="button" onclick="getInputd()">Run Code</button>
+        {% elif type == 'w' %}
+        <h2>Weekly Challenge</h2>
+        <button id="runButton" class="button" onclick="getInputw()">Run Code</button>
+        {% else %}
+        <h2>Common Challenge</h2>
+        <button id="runButton" class="button" onclick="getInputc()">Run Code</button>
+        {% endif %}
+    </div>
+    <div class="editor-output">
+        <div id="editorContainer" style="height: 400px; width: 100%; border: 1px solid #ddd;" class="editor"></div>
+        <div class="output">
+            <pre id="output">Run your code to see the output here...</pre>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/code_editor.js' %}"></script>
+
+{% endblock %}

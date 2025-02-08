@@ -1,0 +1,117 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/todolist.css' %}">
+<script src="{% static 'js/todolist.js' %}"></script>
+
+
+<div class="body-container">
+    <a href="{% url 'ai_tools' %}" class="back-button" style="font-size: 30px; text-decoration: none;font-weight:bolder;">
+        &#8592;
+    </a>
+
+
+    <div class="container">
+        <div class="form-container">
+            <h2 class="form-header">Add To-Do Item</h2>
+            <form id="documentform" class="form-content" action="{% url 'todoList' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <label for="team_member">Team Member</label>
+                <select name="attribute1" class="input-field" required>
+                    <option value="" disabled selected>Select a team member</option>
+                    {% for member in members %}
+                    <option value="{{ member.name }}">{{ member.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="submit-button">Add Task</button>
+            </form>
+
+
+        </div>
+
+        <div class="table-container">
+            <h2 class="table-header">To-Do List</h2>
+            <table class="todo-table">
+                <thead class="table-head">
+                    <tr class="table-row">
+                        <th class="table-head-cell">Title</th>
+                        <th class="table-head-cell">Due Date</th>
+                        <th class="table-head-cell">Assigned To</th>
+                        <th class="table-head-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    {% for task in tasks %}
+                    <tr class="table-row">
+                        <td class="table-body-cell">{{ task.title }}</td>
+                        <td class="table-body-cell">
+                            {{ task.due_date }}
+                            {% if task.attribute2 == "('yes',)" %} * {% endif %}
+                        </td>
+                        <td class="table-body-cell">{{ task.attribute1 }}</td>
+                        <td class="table-body-cell">
+                            <button type="button" class="reschedule-button" onclick="openRescheduleModal({{ task.id }})">Reschedule</button>
+                            <form action="{% url 'delete_task' task.id %}" method="POST" style="display:inline;" onsubmit="return confirmDelete()">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                            <button type="button" class="reschedule-button" onclick="Reassign({{ task.id }})">Reassign</button>
+                            <button type="button" class="reschedule-button" onclick="history({{ task.id }})">History</button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr class="table-row">
+                        <td class="table-body-cell" colspan="3">No tasks found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="rescheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeRescheduleModal()">&times;</span>
+            <h2>Reschedule Task</h2>
+            <form id="rescheduleForm" action="{% url 'reschedule_task' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="taskId" name="task_id">
+                <label class="input-label" for="newDueDate">New Due Date:</label>
+                <input type="datetime-local" id="newDueDate" name="new_due_date" class="text-input" required>
+                <label class="input-label" for="reason">Reason for Reschedule:</label>
+                <textarea id="reason" name="reason" class="text-area" rows="4" required></textarea>
+                <button type="submit" class="modal-button">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div id="reassignModal" class="modal1">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeReassignModal()">&times;</span>
+            <h2>Reschedule Task</h2>
+            <form id="rescheduleForm" action="{% url 'reassign_task' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="taskId1" name="task_id">
+                <label for="team_member">Team Member</label>
+                <select name="attribute1" class="input-field" required>
+                    <option value="" disabled selected>Select a team member to Reassign</option>
+                    {% for member in members %}
+                    <option value="{{ member.name }}">{{ member.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label class="input-label" for="reason">Reason for Reschedule:</label>
+                <textarea id="reason" name="reason" class="text-area" rows="4" required></textarea>
+                <button type="submit" class="modal-button">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    {% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <title>SWOT Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overview.css' %}">
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static ' icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'icon/Favicon.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/master-ai-agency.css' %}">
+
+    <style>
+        .feature-area {
+            background-color: #161616;
+        }
+        .feature-thumb,
+        .feature-box {
+            opacity: 0;
+            transform: translateX(-20px); /* Start from the left */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .feature-thumb.visible,
+        .feature-box.visible {
+            opacity: 1;
+            transform: translateX(0); /* Move to original position */
+        }
+        .btn-wrapper {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: white;
+        }
+        .section-header{
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body class="overview-body">
+        <!-- preload -->
+        <div class="preload preload-container">
+            <div class="middle">
+                <div class="bar bar1"></div>
+                <div class="bar bar2"></div>
+                <div class="bar bar3"></div>
+                <div class="bar bar4"></div>
+                <div class="bar bar5"></div>
+                <div class="bar bar6"></div>
+                <div class="bar bar7"></div>
+                <div class="bar bar8"></div>
+              </div>
+        </div>
+        <!-- /preload -->
+
+    <section class="feature-area">
+        <div class="container">
+            <div class="section-content">
+                <div class="feature-thumb">
+                    <div class="thumb">
+                        <img src="{% static 'images/box-item/banner-04.jpg' %}" alt="image">
+                    </div>
+                    <div class="btn-wrapper">
+                        <a href="{% url 'swot-start-now' %}" class="wc-btn wc-btn-underline btn-text-flip">
+                            <span data-text="START NOW" style="font-weight: bolder; font-size:2.5rem;">START NOW</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="features-wrapper-box">
+                    <div class="features-wrapper">
+                        <div class="feature-box has_fade_anim">
+                            <div class="thumb">
+                                <img src="{% static 'images/shape/img-s-79.webp' %}" alt="SWOT Review icon">
+                            </div>
+                            <div class="content">
+                                <h3 class="title" style="color: white;">Comprehensive SWOT Review</h3>
+                                <p class="text" style="color: rgb(177, 177, 175);">This activity reviews current and past SWOT analyses to track improvements and identify ongoing needs. It aids in creating a roadmap for strategic enhancements.</p>
+                            </div>
+                        </div>
+                        <div class="feature-box has_fade_anim">
+                            <div class="thumb">
+                                <img src="{% static 'images/shape/img-s-80.webp' %}" alt="SWOT Strengths icon">
+                            </div>
+                            <div class="content">
+                                <h3 class="title" style="color: white;">Strengths and Opportunities</h3>
+                                <p class="text" style="color: rgb(177, 177, 175);">Focus on identifying key strengths and exploring new opportunities. This enables leveraging strong areas to drive growth effectively.</p>
+                            </div>
+                        </div>
+                        <div class="feature-box has_fade_anim">
+                            <div class="thumb">
+                                <img src="{% static 'images/shape/img-s-81.webp' %}" alt="SWOT Improvement icon">
+                            </div>
+                            <div class="content">
+                                <h3 class="title" style="color: white;">Areas for Improvement</h3>
+                                <p class="text" style="color: rgb(177, 177, 175);">Pinpoint weaknesses and threats to better understand areas needing attention. Strategic insights lead to targeted improvement actions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Javascript -->
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+     <script src="{% static 'js/swiper.js' %}"></script>
+     <script src="{% static 'js/count-down.js' %}"></script>
+     <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+     <script src="{% static 'js/gsap.js' %}"></script>
+     <script src="{% static 'js/SplitText.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
+     <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+     <script src="{% static 'js/gsap-animation.js' %}"></script>
+     <script src="{% static 'js/tsparticles.min.js' %}"></script>
+     <script src="{% static 'js/tsparticles.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const preloadContainer = document.querySelector('.preload-container');
+    
+            // Wait for the preloader animation to end
+            setTimeout(() => {
+                preloadContainer.style.display = 'none'; // Hide the preloader
+                showFeatureThumb();
+            }, 1000); // Adjust the timeout based on the preloader animation duration
+    
+            function showFeatureThumb() {
+                const featureThumb = document.querySelector('.feature-thumb');
+                featureThumb.classList.add('visible');
+    
+                // Show each feature box one by one after the thumb is visible
+                showFeaturePoints();
+            }
+    
+            function showFeaturePoints() {
+                const featureBoxes = document.querySelectorAll('.feature-box');
+                featureBoxes.forEach((box, index) => {
+                    setTimeout(() => {
+                        box.classList.add('visible');
+                    }, index * 800); // Delay between each feature box
+                });
+            }
+        });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+.card {
+  width: 100%;
+  max-width: 680px;
+  padding: 15px;
+
+  position: relative;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.card::after {
+  z-index: 2;
+  background-color: #232323;
+}
+
+.card-content {
+  position: relative;
+  z-index: 3;
+}
+
+#student_view_details_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#student_view_details_inner_container {
+  position: relative;
+  background: #555555;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  width: 1100px;
+  height: 650px;
+  overflow-y: auto;
+}
+
+#close-view-details-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.student-basic-details {
+  margin-top: 30px;
+}
+
+.student-basic-details h6 {
+  font-size: 24px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #29642b;
+  color: #fff;
+}
+
+.status.completed {
+  background-color: #3f3f3f;
+  color: #fff;
+}
+
+/* Overlay styling */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inner Container Styling */
+.student_details_inner_container {
+  background: #555555;
+  padding: 20px;
+  border-radius: 8px;
+  width: 1100px;
+  height: 650px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+/* Close Button */
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #d32f2f;
+}
+
+/* Style for the eye button */
+.view-details-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ddf247;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.view-details-btn:hover {
+  color: #fff;
+}
+
+/* Align button properly within the column */
+.column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget-creators-item .order {
+  margin-top: 6px;
+}
+
+.widget-coins-item img {
+  margin-top: -7px;
+}
+
+
+.card {
+    width: 100%;
+    max-width: 680px;
+    padding: 15px;
+    position: relative;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.card::after {
+    z-index: 2;
+    background-color: #232323;
+}
+
+.card-content {
+    position: relative;
+    z-index: 3;
+}
+
+#student_view_details_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#student_view_details_inner_container {
+    position: relative;
+    background: #555555;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    text-align: center;
+    width: 1100px;
+    height: 650px;
+    overflow-y: auto;
+}
+
+#close-view-details-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.student-basic-details {
+    margin-top: 30px;
+}
+
+    .student-basic-details h6 {
+        font-size: 24px;
+    }
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+    .status.active {
+        background-color: #29642b;
+        color: #fff;
+    }
+
+    .status.completed {
+        background-color: #3f3f3f;
+        color: #fff;
+    }
+
+/* Overlay styling */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inner Container Styling */
+.student_details_inner_container {
+    background: #555555;
+    padding: 20px;
+    border-radius: 8px;
+    width: 1100px;
+    height: 650px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+/* Close Button */
+.close-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .close-btn:hover {
+        background: #d32f2f;
+    }
+
+/* Style for the eye button */
+.view-details-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #ddf247;
+    cursor: pointer;
+    padding: 5px;
+}
+
+    .view-details-btn:hover {
+        color: #fff;
+    }
+
+/* Align button properly within the column */
+.column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+

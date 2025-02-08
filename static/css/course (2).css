@@ -1,0 +1,90 @@
+.tp-grid-widget-checkbox .from-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Adjusts spacing between checkbox and label */
+  font-size: 15px;
+  color: #c4c4c4;
+}
+
+.tp-grid-widget-checkbox label {
+  margin: 4px;
+}
+
+.tp-grid-widget-checkbox .from-checkbox input[type="checkbox"] {
+  width: 15px; /* Adjust the size */
+  height: 15px; /* Adjust the size */
+  accent-color: #ddf247; /* Set the checkbox color to black (supported in modern browsers) */
+}
+
+.tp-grid-widget-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #ddf247;
+}
+
+.tp-grid-widget-item .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Adjusts spacing between checkbox and label */
+  font-size: 15px;
+  color: #c4c4c4;
+}
+
+/* Make radio button smaller */
+.tp-filter-widget-radio .form-check-input {
+  width: 15px; /* Adjust size */
+  height: 15px; /* Adjust size */
+  accent-color: #ddf247; /* Changes radio color when selected (supported in modern browsers) */
+  cursor: pointer;
+}
+
+/* Change the label and radio button color when selected */
+.tp-filter-widget-radio .form-check-input:checked + .form-check-label {
+  color: #ddf247; /* Changes label color to yellow when selected */
+}
+
+/* For older browsers or fallback styling, use a custom appearance */
+.tp-filter-widget-radio .form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.tp-filter-widget-radio .form-check-input:checked {
+  background-color: #ddf247;
+  border-color: #ddf247;
+}
+
+/* Optional: Add a subtle transition for smooth effect */
+.tp-filter-widget-radio .form-check-input,
+.tp-filter-widget-radio .form-check-label {
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.tp-course-tag span {
+  display: inline-block;
+  border-radius: 3px;
+  background: #9dae1819;
+  color: #abbd23;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  line-height: 1;
+}
+
+.tp-course-btn a {
+  background-color: #ddf247;
+  color: black;
+  border: none;
+}
+.tp-course-btn a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.tp-course-title a:hover {
+  color: #ddf247;
+}

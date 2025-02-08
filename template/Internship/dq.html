@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <div id="wrapper">
+        <div id="page" class="pt-40">
+            <!-- header -->
+            
+
+            <div class="flat-title-page">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="heading text-center">Daily Challenge</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tf-section-2 ranking">
+                <div class="themesflat-container">
+                    <div class="row">
+                        <div class="col-12 mb-30">
+                            <div class="widget-tabs relative">
+                                <div class="tf-soft">
+                                    <div class="soft-right">
+
+                                    </div>
+                                </div>
+
+                                <div class="widget-content-tab pt-10">
+                                    <div class="widget-content-inner active">
+                                        <div class="widget-table-ranking">
+                                            <div data-wow-delay="0s" class="wow fadeInUp table-ranking-heading">
+                                                <div class="column1">
+                                                    <h3>Daily challenges</h3>
+                                                </div>
+
+                                            </div>
+                                            <div class="table-ranking-content">
+                                                {% if qdata %}
+                                                <link rel="stylesheet" href="{% static 'css/showquestions.css' %}" />
+                                                {% for data in qdata %}
+
+                                                <div data-wow-delay="0s" class="wow fadeInUp fl-row-ranking">
+                                                    <div class="td1">
+                                                      
+                                                        <div class="item-name text-white" >
+                                                            {{data.question}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="td4">
+                                                        <h6 class="price gem" onclick="navigatedq('{{ data.id|escapejs }}')">
+                                                            <i class="icon-gem"></i>try
+                                                        </h6>
+                                                    </div>
+
+                                                </div>
+
+                                                {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+          
+
+        </div>
+        <!-- /#page -->
+
+    </div>
+    <!-- /#wrapper -->
+
+  
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/navigatetoeditor.js' %}"></script>
+
+
+{% endblock %}

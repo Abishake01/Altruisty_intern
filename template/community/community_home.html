@@ -1,0 +1,1089 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+<!-- Mirrored from themesflat.co/html/open9/market.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 08 Dec 2024 05:46:52 GMT -->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Altruisty</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'community/css/style.css' %}">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'community/css/responsive.css' %}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static 'assets/icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'community/icon/Favicon.png' %}">
+
+</head>
+
+<body class="body dashboard1">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="middle">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
+        </div>
+    </div>
+    <!-- /preload -->
+
+
+
+    <div id="wrapper">
+        <div id="page" class="market-page">
+
+            <div id="market-header">
+                <div class="market-header flex items-center justify-between">
+                    <div class="widget-search">
+                        <form class="search-form relative">
+                            <input type="search" id="search" autocomplete="off" class="search-field style-1" placeholder="Search user" value="" name="s" title="Search for" required="">
+                            <a class="search search-submit mt-3" title="Search">
+                                <i class="icon-search" onclick="search_user()"></i>
+                            </a>
+                        </form>
+                    </div>
+                    <div class="admin_active" id="header_admin">
+
+                        <div class="popup-user relative">
+                            <div class="user">
+                                {% if profile_image %}
+
+                                <img src="data:image/jpeg;base64,{{profile_image}}" alt="Image">
+
+                                {% else %}
+
+                                <img src="{% static 'images/avatar/avatar-07.png' %}" alt="">
+
+                                {% endif %}
+
+                                <span>{{id}}<i class="icon-keyboard_arrow_down"></i></span>
+                            </div>
+                            <div class="avatar_popup2">
+                                <div class="">
+                                    <div class="links">
+                                        <a class="block mb-30" href="http://127.0.0.1:8000/user_info/{{id}}">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z" fill="white"></path>
+                                            </svg>
+                                            <span>My Profile</span>
+                                        </a>
+
+                                    </div>
+                                    <div class="links">
+                                        <a class="block mb-30" href="http://127.0.0.1:8000/following_info/{{id}}">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z" fill="white"></path>
+                                            </svg>
+                                            <span>Following</span>
+                                        </a>
+
+                                    </div>
+                                    <div class="links">
+                                        <a class="block mb-30" href="http://127.0.0.1:8000/involvedcommunity_info/{{id}}">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z" fill="white"></path>
+                                            </svg>
+                                            <span>Community</span>
+                                        </a>
+
+                                    </div>
+                                    <div class="links">
+                                        <a class="block mb-30" href="http://127.0.0.1:8000/community_myfeed/{{id}}">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z" fill="white"></path>
+                                            </svg>
+                                            <span>My Feed</span>
+                                        </a>
+
+                                    </div>
+                                    <div class="links">
+                                        <a class="block mb-30" href="http://127.0.0.1:8000/editprofile/">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.774902 18.333C0.774902 18.7932 1.14762 19.1664 1.60824 19.1664C2.06885 19.1664 2.44157 18.7932 2.44157 18.333C2.44157 15.3923 4.13448 12.7889 6.77329 11.5578C7.68653 12.1513 8.77296 12.4997 9.94076 12.4997C11.113 12.4997 12.2036 12.1489 13.119 11.5513C13.9067 11.9232 14.6368 12.4235 15.2443 13.0307C16.6611 14.4479 17.4416 16.3311 17.4416 18.333C17.4416 18.7932 17.8143 19.1664 18.2749 19.1664C18.7355 19.1664 19.1083 18.7932 19.1083 18.333C19.1083 15.8859 18.1545 13.5845 16.4227 11.8523C15.8432 11.2725 15.1698 10.7754 14.4472 10.3655C15.2757 9.3581 15.7741 8.06944 15.7741 6.66635C15.7741 3.44979 13.1569 0.833008 9.94076 0.833008C6.72461 0.833008 4.10742 3.44979 4.10742 6.66635C4.10742 8.06604 4.60379 9.35154 5.42863 10.3579C2.56796 11.9685 0.774902 14.9779 0.774902 18.333V18.333ZM9.94076 2.49968C12.2381 2.49968 14.1074 4.36898 14.1074 6.66635C14.1074 8.96371 12.2381 10.833 9.94076 10.833C7.6434 10.833 5.77409 8.96371 5.77409 6.66635C5.77409 4.36898 7.6434 2.49968 9.94076 2.49968V2.49968Z" fill="white"></path>
+                                            </svg>
+                                            <span>Edit Profile</span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-canvas active">
+                <div class="canvas">
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="flat-tabs">
+                <div class="section-menu-left">
+                    <div class="box-logo">
+                        <a href="index.html"><img src="{% static 'assets/images/logo/logo-light-1.png' %}" alt=""></a>
+                    </div>
+                    <div class="create menu-tab">
+                        <a class="tf-button style-1 type-1 tablinks" data-tabs="settings">
+                            <span>Create Post</span>
+                            <i class="icon-create"></i>
+                        </a>
+                    </div>
+                    <div class="over-content">
+                        <div class="content">
+                            <ul class="menu-tab">
+                                <li class="tablinks active" data-tabs="market">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.2">
+                                            <path d="M6.75731 9.35159V15.64" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M11.0351 6.34253V15.64" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M15.2431 12.6746V15.6401" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2954 1.83334H6.70492C3.71048 1.83334 1.8335 3.95275 1.8335 6.95307V15.0469C1.8335 18.0473 3.70175 20.1667 6.70492 20.1667H15.2954C18.2986 20.1667 20.1668 18.0473 20.1668 15.0469V6.95307C20.1668 3.95275 18.2986 1.83334 15.2954 1.83334Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                    </svg>
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.71982 1.83371H15.2806C18.3982 1.83371 20.1582 3.60196 20.1673 6.71954V15.2812C20.1673 18.3979 18.3982 20.167 15.2806 20.167H6.71982C3.60223 20.167 1.83398 18.3979 1.83398 15.2812V6.71954C1.83398 3.60196 3.60223 1.83371 6.71982 1.83371ZM11.0456 16.372C11.4407 16.372 11.7697 16.0787 11.8064 15.6845V6.34371C11.8431 6.05954 11.7065 5.77446 11.459 5.61954C11.2014 5.46371 10.8897 5.46371 10.6432 5.61954C10.3947 5.77446 10.2582 6.05954 10.2847 6.34371V15.6845C10.3315 16.0787 10.6606 16.372 11.0456 16.372ZM15.2628 16.372C15.6478 16.372 15.9769 16.0787 16.0237 15.6845V12.6779C16.0502 12.3836 15.9137 12.1095 15.6652 11.9537C15.4187 11.7979 15.107 11.7979 14.8503 11.9537C14.6019 12.1095 14.4653 12.3836 14.502 12.6779V15.6845C14.5387 16.0787 14.8677 16.372 15.2628 16.372ZM7.534 15.6845C7.49734 16.0787 7.16825 16.372 6.77317 16.372C6.379 16.372 6.049 16.0787 6.01325 15.6845V9.35038C5.98575 9.0653 6.12234 8.78205 6.37075 8.62621C6.61734 8.47038 6.92992 8.47038 7.17742 8.62621C7.424 8.78205 7.56242 9.0653 7.534 9.35038V15.6845Z" fill="#DDF247" />
+                                    </svg>
+                                    Home
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content mt-30">
+                            <h6>Chat and Messages</h6>
+                            <ul class="menu-tab">
+                                <li class="tablinks" data-tabs="history">
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.2">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.0269 3.20831C4.70773 3.20831 3.20898 4.7969 3.20898 7.25631V14.7436C3.20898 17.2031 4.70773 18.7916 7.0269 18.7916H14.9726C17.2927 18.7916 18.7923 17.2031 18.7923 14.7436V7.25631C18.7923 4.7969 17.2936 3.20831 14.9735 3.20831H7.0269ZM14.9726 20.1666H7.0269C3.92032 20.1666 1.83398 17.9868 1.83398 14.7436V7.25631C1.83398 4.01315 3.92032 1.83331 7.0269 1.83331H14.9735C18.0801 1.83331 20.1673 4.01315 20.1673 7.25631V14.7436C20.1673 17.9868 18.0801 20.1666 14.9726 20.1666Z" fill="white" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1084 13.5369C13.9883 13.5369 13.8673 13.5058 13.7564 13.4407L10.648 11.5863C10.4408 11.4616 10.3125 11.237 10.3125 10.9959V6.99744C10.3125 6.61794 10.6205 6.30994 11 6.30994C11.3795 6.30994 11.6875 6.61794 11.6875 6.99744V10.6054L14.4613 12.2582C14.7867 12.4534 14.894 12.8751 14.6997 13.2014C14.5704 13.4169 14.3422 13.5369 14.1084 13.5369Z" fill="white" />
+                                        </g>
+                                    </svg>
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.03051 1.83337H14.978C18.0855 1.83337 20.1663 4.01412 20.1663 7.25912V14.7483C20.1663 17.985 18.0855 20.1667 14.978 20.1667H7.03051C3.92301 20.1667 1.83301 17.985 1.83301 14.7483V7.25912C1.83301 4.01412 3.92301 1.83337 7.03051 1.83337ZM14.2813 14.4925C14.5105 14.4925 14.7397 14.3734 14.868 14.1534C15.0697 13.8316 14.9597 13.41 14.6297 13.2092L11.3663 11.2659V7.02996C11.3663 6.65504 11.0638 6.34246 10.6788 6.34246C10.303 6.34246 9.99134 6.65504 9.99134 7.02996V11.66C9.99134 11.8984 10.1197 12.1275 10.3305 12.2467L13.9238 14.3917C14.0338 14.465 14.1622 14.4925 14.2813 14.4925Z" fill="#DDF247" />
+                                    </svg>
+                                    Chat List
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <p>© 2024 Altruisty</p>
+
+                    </div>
+                </div>
+
+                <div class="content-tabs">
+                    <div id="create" class="tabcontent">
+                        <div class="wrapper-content-create">
+                            <div class="heading-section">
+                                <h2 class="tf-title pb-30">Create New File</h2>
+                            </div>
+                            <div class="widget-tabs relative">
+                                <ul class="widget-menu-tab">
+                                    <li class="item-title active">
+                                        <span class="inner"><span class="order">1</span> Upload your image <i class="icon-keyboard_arrow_right"></i></span>
+                                    </li>
+                                    <li class="item-title">
+                                        <span class="inner"><span class="order">2</span>Description <i class="icon-keyboard_arrow_right"></i></span>
+                                    </li>
+                                    <li class="item-title">
+                                        <span class="inner"><span class="order">3</span>Submit NFT</span>
+                                    </li>
+                                </ul>
+                                <div class="widget-content-tab">
+                                    <div class="widget-content-inner upload active">
+                                        <div class="wrap-upload w-full">
+                                            <form action="#">
+                                                <label class="uploadfile">
+                                                    <img src="{% static 'assets/images/box-icon/upload.png' %}" alt="">
+                                                    <h5>Upload file</h5>
+                                                    <p class="text">Drag or choose your file to upload</p>
+                                                    <div class="text filename">PNG, GIF, WEBP, MP4 or MP3.Max 1Gb.</div>
+                                                    <input type="file" class="" name="file">
+                                                </label>
+                                            </form>
+                                        </div>
+                                        <div class="wrap-content w-full">
+                                            <form id="commentform" class="comment-form" novalidate="novalidate">
+                                                <fieldset class="name">
+                                                    <label>Product name *</label>
+                                                    <input type="text" id="name" placeholder="Product name" name="name" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="message">
+                                                    <label>Description *</label>
+                                                    <textarea id="message" name="message" rows="4" placeholder="Please describe your product*" tabindex="4" aria-required="true" required=""></textarea>
+                                                </fieldset>
+                                                <div class="flex gap30">
+                                                    <fieldset class="price">
+                                                        <label>Price</label>
+                                                        <input type="text" id="price" placeholder="Price" name="price" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="properties">
+                                                        <label>Properties</label>
+                                                        <input type="text" id="properties" placeholder="Properties" name="properties" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="size">
+                                                        <label>Size</label>
+                                                        <input type="text" id="size" placeholder="Size" name="size" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <fieldset class="blockchain">
+                                                    <label>Blockchain</label>
+                                                    <div class="widget-coins flex gap30 flex-wrap">
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-01.png' %}" alt="">
+                                                            <p><a href="#">Bitcoin</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-02.png' %}" alt="">
+                                                            <p><a href="#">Ethereum</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-03.png' %}" alt="">
+                                                            <p><a href="#">Cardano</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-04.png' %}" alt="">
+                                                            <p><a href="#">Solana</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-05.png' %}" alt="">
+                                                            <p><a href="#">Litecoin</a></p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset class="collection">
+                                                    <label>Collection</label>
+                                                    <input type="text" id="collection" placeholder="Collection" name="collection" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="royatity">
+                                                    <label>Royatity</label>
+                                                    <input type="text" id="royatity" placeholder="Royatity" name="royatity" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <div class="btn-submit flex gap30 justify-center">
+                                                    <button class="tf-button style-1 h50 w320 active">Preview<i class="icon-arrow-up-right2"></i></button>
+                                                    <button class="tf-button style-1 h50 w320" type="submit">Submit item<i class="icon-arrow-up-right2"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-inner description">
+                                        <div class="wrap-upload">
+                                            <form action="#" class="h-full">
+                                                <label class="uploadfile h-full flex items-center justify-center">
+                                                    <div class="text-center">
+                                                        <img src="{% static 'assets/images/box-icon/upload.png' %}" alt="">
+                                                        <h5>Upload file</h5>
+                                                        <p class="text">Drag or choose your file to upload</p>
+                                                        <div class="text filename">PNG, GIF, WEBP, MP4 or MP3.Max 1Gb.</div>
+                                                        <input type="file" class="" name="file">
+                                                    </div>
+                                                </label>
+                                            </form>
+                                        </div>
+                                        <div class="wrap-content w-full">
+                                            <form id="commentform" class="comment-form" novalidate="novalidate">
+                                                <fieldset class="name">
+                                                    <label>Product name *</label>
+                                                    <input type="text" id="name" placeholder="Product name" name="name" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="message">
+                                                    <label>Description *</label>
+                                                    <textarea id="message" name="message" rows="4" placeholder="Please describe your product*" tabindex="4" aria-required="true" required=""></textarea>
+                                                </fieldset>
+                                                <div class="flex gap30">
+                                                    <fieldset class="price">
+                                                        <label>Price</label>
+                                                        <input type="text" id="price" placeholder="Price" name="price" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="properties">
+                                                        <label>Properties</label>
+                                                        <input type="text" id="properties" placeholder="Properties" name="properties" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="size">
+                                                        <label>Size</label>
+                                                        <input type="text" id="size" placeholder="Size" name="size" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <fieldset class="blockchain">
+                                                    <label>Blockchain</label>
+                                                    <div class="widget-coins flex gap30 flex-wrap">
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-01.png' %}" alt="">
+                                                            <p><a href="#">Bitcoin</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-02.png' %}" alt="">
+                                                            <p><a href="#">Ethereum</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-03.png' %}" alt="">
+                                                            <p><a href="#">Cardano</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-04.png' %}" alt="">
+                                                            <p><a href="#">Solana</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-05.png' %}" alt="">
+                                                            <p><a href="#">Litecoin</a></p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset class="collection">
+                                                    <label>Collection</label>
+                                                    <input type="text" id="collection" placeholder="Collection" name="collection" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="royatity">
+                                                    <label>Royatity</label>
+                                                    <input type="text" id="royatity" placeholder="Royatity" name="royatity" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <div class="btn-submit flex gap30 justify-center">
+                                                    <button class="tf-button style-1 h50 active">Preview<i class="icon-arrow-up-right2"></i></button>
+                                                    <button class="tf-button style-1 h50" type="submit">Submit item<i class="icon-arrow-up-right2"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-inner submit">
+                                        <div class="wrap-upload w-full">
+                                            <form action="#">
+                                                <label class="uploadfile">
+                                                    <img src="{% static 'assets/images/box-icon/upload.png' %}" alt="">
+                                                    <h5>Upload file</h5>
+                                                    <p class="text">Drag or choose your file to upload</p>
+                                                    <div class="text filename">PNG, GIF, WEBP, MP4 or MP3.Max 1Gb.</div>
+                                                    <input type="file" class="" name="file">
+                                                </label>
+                                            </form>
+                                        </div>
+                                        <div class="wrap-content w-full">
+                                            <form id="commentform" class="comment-form" novalidate="novalidate">
+                                                <fieldset class="name">
+                                                    <label>Product name *</label>
+                                                    <input type="text" id="name" placeholder="Product name" name="name" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="message">
+                                                    <label>Description *</label>
+                                                    <textarea id="message" name="message" rows="4" placeholder="Please describe your product*" tabindex="4" aria-required="true" required=""></textarea>
+                                                </fieldset>
+                                                <div class="flex gap30">
+                                                    <fieldset class="price">
+                                                        <label>Price</label>
+                                                        <input type="text" id="price" placeholder="Price" name="price" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="properties">
+                                                        <label>Properties</label>
+                                                        <input type="text" id="properties" placeholder="Properties" name="properties" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                    <fieldset class="size">
+                                                        <label>Size</label>
+                                                        <input type="text" id="size" placeholder="Size" name="size" tabindex="2" value="" aria-required="true" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <fieldset class="blockchain">
+                                                    <label>Blockchain</label>
+                                                    <div class="widget-coins flex gap30 flex-wrap">
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-01.png' %}" alt="">
+                                                            <p><a href="#">Bitcoin</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-02.png' %}" alt="">
+                                                            <p><a href="#">Ethereum</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-03.png' %}" alt="">
+                                                            <p><a href="#">Cardano</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-04.png' %}" alt="">
+                                                            <p><a href="#">Solana</a></p>
+                                                        </div>
+                                                        <div class="widget-coins-item flex items-center">
+                                                            <img src="{% static 'assets/images/box-icon/coin-05.png' %}" alt="">
+                                                            <p><a href="#">Litecoin</a></p>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                                <fieldset class="collection">
+                                                    <label>Collection</label>
+                                                    <input type="text" id="collection" placeholder="Collection" name="collection" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <fieldset class="royatity">
+                                                    <label>Royatity</label>
+                                                    <input type="text" id="royatity" placeholder="Royatity" name="royatity" tabindex="2" value="" aria-required="true" required="">
+                                                </fieldset>
+                                                <div class="btn-submit flex gap30 justify-center">
+                                                    <button class="tf-button style-1 h50 w320 active">Preview<i class="icon-arrow-up-right2"></i></button>
+                                                    <button class="tf-button style-1 h50 w320" type="submit">Submit item<i class="icon-arrow-up-right2"></i></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="market" class="tabcontent active">
+                        <div class="wrapper-content">
+                            <div class="inner-content">
+                                <div class="action__body w-full mb-40">
+                                    <div class="tf-tsparticles">
+                                        <div id="tsparticles1" data-color="#161616" data-line="#000"></div>
+                                    </div>
+                                    <h3 style="color:#161616;">We grow together as</h3><br />
+                                    <h2> COMMUNITY</h2>
+                                    <div class="flat-button flex">
+                                        <a href="{% url 'community:create_community' %}" class="tf-button style-2 h50 w190 mr-10">Create Community<i class="icon-arrow-up-right2"></i></a>
+
+                                    </div>
+                                    <div class="bg-home7">
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider4reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false,
+         "reverseDirection": true
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="widget-tabs relative mb-40">
+
+
+                                </div>
+                                <div class="heading-section">
+                                    <h2 class="tf-title style-1 pb-30">Recent Post</h2>
+                                </div>
+                                <div class="tf-section-5 tf-list-blog ">
+                                    <div class="themesflat-container">
+                                        <div class="row flex flex-wrap">
+                                            <div class="wrap-inner col-md-12 col-12">
+                                                {% if pd %}
+                                                {% for detail in pd reversed %}
+                                                <article class="tf-card-article">
+                                                    <div class="flex items-center justify-between mb-3">
+                                                        <div class="author flex items-center justify-between">
+                                                            {% if detail.profile_image %}
+                                                            <div class="avatar">
+                                                                <img src="data:image/jpeg;base64,{{detail.profile_image}}" alt="Image">
+                                                            </div>
+                                                            {% else %}
+                                                            <div class="avatar">
+                                                                <img src="{% static 'images/avatar/avatar-box-01.jpg' %}" alt="Image">
+                                                            </div>
+                                                            {% endif %}
+                                                            <div class="info">
+
+                                                                <h3><a>{{detail.posted_by}}</a> </h3>
+                                                            </div>
+                                                        </div>
+                                                        <a class="link" href="#"><i class="icon-arrow-up-right2"></i></a>
+                                                    </div>
+                                                    <div class="card-media mb-20">
+                                                        <a href="blog-detail.html">
+                                                            <img src="data:image/jpeg;base64,{{detail.media}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="meta-info flex">
+
+                                                        <div class="item date">{{detail.posted_on}}</div>
+                                                        <div class="item comment">0 Comment</div>
+                                                    </div>
+                                                    <div class="card-title">
+                                                        <h5 class="mt-18  d-flex justify-content-start"><a>{{detail.caption}}</a></h5>
+
+                                                    </div>
+
+                                                </article>
+                                                {% endfor %}
+                                                {% endif %}
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-bar">
+                                <div class="widget widget-recently">
+                                    <h5 class="title-widget">Your Community</h5>
+
+                                    {% if community_details %}
+                                    {% for mem in community_details %}
+                                    <div class="card-small">
+                                        <div class="author">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="avatar">
+                                            <div class="info">
+                                                <h6><a>{{mem.community_name}}</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="widget widget-creators">
+                                    <div class="flex items-center justify-between">
+                                        <h5 class="title-widget">You can Also Join</h5>
+
+                                    </div>
+                                    {% if ccd %}
+                                    {% for mem in ccd %}
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">{{mem.community_name}}</a></h6>
+
+                                            </div>
+                                        </div>
+                                        <a onclick="edit('{{ mem.community_id|escapejs }}')" class="follow">Join</a>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </div>
+
+                                <div class="widget widget-history">
+                                    <div class="flex items-center justify-between">
+                                        <h5 class="title-widget">Notifications</h5>
+                                        <a class="see-all" href="#">See all</a>
+                                    </div>
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="{% static 'assets/images/avatar/avatar-small-01.png' %}" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">Lorem NFT sold</a></h6>
+                                                <span><a href="#">Sold at 1.32 ETH</a></span>
+                                            </div>
+                                        </div>
+                                        <span class="time">Just now</span>
+                                    </div>
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="{% static 'assets/images/avatar/avatar-small-02.png' %}" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">New NFT uploaded</a></h6>
+                                                <span><a href="#">By Marisol Pena</a></span>
+                                            </div>
+                                        </div>
+                                        <span class="time">1hr ago</span>
+                                    </div>
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="{% static 'assets/images/avatar/avatar-small-03.png' %}" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">You followed a creator</a></h6>
+                                                <span><a href="#">Jane Cooper</a></span>
+                                            </div>
+                                        </div>
+                                        <span class="time">2hr ago</span>
+                                    </div>
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="{% static 'assets/images/avatar/avatar-small-04.png' %}" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">You placed a bid</a></h6>
+                                                <span><a href="#">Whirl wind NFT</a></span>
+                                            </div>
+                                        </div>
+                                        <span class="time">4hr ago</span>
+                                    </div>
+                                    <div class="widget-creators-item flex items-center">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="{% static 'assets/images/avatar/avatar-small-01.png' %}" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">You followed a creator</a></h6>
+                                                <span><a href="#">Courtney Henry</a></span>
+                                            </div>
+                                        </div>
+                                        <span class="time">16hr ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="settings" class="tabcontent">
+                        <div class="wrapper-content">
+                            <div class="inner-content">
+                                <div class="action__body w-full mb-40">
+                                    <div class="tf-tsparticles">
+                                        <div id="tsparticles1" data-color="#161616" data-line="#000"></div>
+                                    </div>
+                                    <h3 style="color:#161616;">We grow together as</h3><br />
+                                    <h2> COMMUNITY</h2>
+                                    <div class="flat-button flex">
+                                        <a href="#" class="tf-button style-2 h50 w190 mr-10">Create Community<i class="icon-arrow-up-right2"></i></a>
+
+                                    </div>
+                                    <div class="bg-home7">
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider4reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false,
+         "reverseDirection": true
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Share your post</h2>
+                                </div>
+                                <div class="widget-edit mb-30 avatar">
+                                    <div class="title">
+                                        <h4>Choose File</h4>
+                                        <i class="icon-keyboard_arrow_up"></i>
+                                    </div>
+                                    <form action="#">
+                                        <div class="uploadfile flex">
+                                            {% if profile_image %}
+
+                                            <img src="data:image/jpeg;base64,{{profile_image}}" style="height:150px;width:150px" alt="Image">
+
+                                            {% else %}
+
+                                            <img src="{% static 'images/avatar/avatar-07.png' %}" alt="">
+
+                                            {% endif %}
+                                            <div>
+                                                <h6>Share your world to the community”</h6>
+                                                <label>
+                                                    <input type="file" class="" id="postfile" name="file" accept="image/*">
+                                                    <span class="text filename">No files selected</span>
+                                                </label>
+                                                <p class="text">Choose your file</p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="widget-edit mb-30 profile">
+                                    <div class="title">
+                                        <h4>Caption</h4>
+                                        <i class="icon-keyboard_arrow_up"></i>
+                                    </div>
+                                    <form id="commentform" class="comment-form" novalidate="novalidate">
+                                        <div class="flex gap30">
+                                            <fieldset class="name">
+                                                <label>Add Caption*</label>
+                                                <input type="text" id="postcaption" placeholder="Add Caption" name="name" tabindex="2" value="" aria-required="true" required="">
+                                            </fieldset>
+
+                                        </div>
+
+                                        <div class="btn-submit">
+                                            <button class="w242 active mr-30">Cancel</button>
+                                            <button class="w242" type="submit" onclick="savepost()">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="side-bar">
+                                <div class="widget widget-recently">
+                                    <h5 class="title-widget">Your Community</h5>
+
+                                    {% if community_details %}
+                                    {% for mem in community_details %}
+                                    <div class="card-small">
+                                        <div class="author">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="avatar">
+                                            <div class="info">
+                                                <h6><a>{{mem.community_name}}</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="widget widget-creators">
+                                    <div class="flex items-center justify-between">
+                                        <h5 class="title-widget">You can Also Join</h5>
+
+                                    </div>
+                                    {% if ccd %}
+                                    {% for mem in ccd %}
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">{{mem.community_name}}</a></h6>
+
+                                            </div>
+                                        </div>
+                                        <a onclick="edit('{{ mem.community_id|escapejs }}')" class="follow">Join</a>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="history" class="tabcontent">
+                        <div class="wrapper-content">
+                            <div class="inner-content">
+                                <div class="action__body w-full mb-40">
+                                    <div class="tf-tsparticles">
+                                        <div id="tsparticles1" data-color="#161616" data-line="#000"></div>
+                                    </div>
+                                    <h3 style="color:#161616;">We grow together as</h3><br />
+                                    <h2> COMMUNITY</h2>
+                                    <div class="flat-button flex">
+                                        <a href="{% url 'community:create_community' %}" class="tf-button style-2 h50 w190 mr-10">Create Community<i class="icon-arrow-up-right2"></i></a>
+
+                                    </div>
+                                    <div class="bg-home7">
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider4reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false,
+         "reverseDirection": true
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-container autoslider3reverse" data-swiper='{
+     "loop":true,
+     "slidesPerView": "auto",
+     "spaceBetween": 14,
+     "direction": "vertical",
+     "speed": 10000,
+     "observer": true,
+     "observeParents": true,
+     "autoplay": {
+         "delay": "0",
+         "disableOnInteraction": false
+     }
+ }'>
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/swotgame.png' %}" alt="">
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img src="{% static 'images/item-background/stepgame.png' %}" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="heading-section">
+                                    <h2 class="tf-title pb-30">Your Chat</h2>
+                                </div>
+                                <div class="widget-search">
+                                    <form class="search-form relative">
+                                        <input type="search" id="search-input" autocomplete="off" class="search-field style-1" placeholder="Search community" value="" name="s" title="Search for" required="">
+                                        <a class="search search-submit mt-3" title="Search">
+                                            <i class="icon-search" onclick="search()"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                                <div class="widget-tabs relative">
+                                    <div class="widget-content-tab pt-10">
+                                        <div class="widget-content-inner active">
+                                            <div class="widget-history">
+                                                {% if community_details %}
+                                                {% for mem in community_details %}
+                                                <div class="widget-creators-item flex items-center" onclick="navigatetochat('{{ mem.community_id|escapejs }}')">
+                                                    <div class="author flex items-center flex-grow">
+                                                        <img src="data:image/jpeg;base64,{{mem.community_image}}" alt="">
+                                                        <div class="info">
+                                                            <h6><a>{{mem.community_name}}</a></h6>
+                                                            <span><a>Created by : {{mem.creator_id}}</a></span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-bar">
+                                <div class="widget widget-recently">
+                                    <h5 class="title-widget">Your Community</h5>
+
+                                    {% if community_details %}
+                                    {% for mem in community_details %}
+                                    <div class="card-small">
+                                        <div class="author">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="avatar">
+                                            <div class="info">
+                                                <h6><a>{{mem.community_name}}</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="widget widget-creators">
+                                    <div class="flex items-center justify-between">
+                                        <h5 class="title-widget">You can Also Join</h5>
+
+                                    </div>
+                                    {% if ccd %}
+                                    {% for mem in ccd %}
+                                    <div class="widget-creators-item flex items-center mb-20">
+                                        <div class="author flex items-center flex-grow">
+                                            <img src="data:image/jpeg;base64,{{mem.community_image}}" style="height:45px;width:45px;object-fit:cover" alt="">
+                                            <div class="info">
+                                                <h6><a href="#">{{mem.community_name}}</a></h6>
+
+                                            </div>
+                                        </div>
+                                        <a class="follow" onclick="edit('{{ mem.community_id|escapejs }}')">Join</a>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page -->
+        <!-- Modal Popup Bid -->
+        <div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="modal-body">
+                        <div class="image">
+                            <img src="{% static 'assets/images/backgroup-section/popup.png' %}" alt="">
+                        </div>
+                        <div class="logo-rotate">
+                            <img class="" src="{% static 'assets/images/item-background/item6-img.png' %}" alt="">
+                        </div>
+                        <h2>Subscribe to our newsletter</h2>
+                        <p>Subscribe for our newsletter to stay in the loop</p>
+                        <fieldset class="email">
+                            <input type="email" class="style-1" id="email" placeholder="Email address*" name="email" tabindex="2" value="" aria-required="true" required="">
+                        </fieldset>
+                        <a href class="tf-button style-1 h50">Subscribe<i class="icon-arrow-up-right2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <div class="tf-mouse tf-mouse-outer"></div>
+    <div class="tf-mouse tf-mouse-inner"></div>
+
+    <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;"></path>
+        </svg>
+    </div>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/countto.js' %}"></script>
+    <script src="{% static 'js/count-down.js' %}"></script>
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/community.js' %}"></script>
+
+
+
+</body>
+</html>

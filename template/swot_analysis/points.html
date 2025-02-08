@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+  <!--<![endif]-->
+
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8" />
+    <!--[if IE
+      ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    /><![endif]-->
+    <title>SWOT Analysis Form</title>
+
+    <meta name="author" content="Your Name" />
+
+    <!-- Mobile Specific Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!-- Load Django static tag -->
+    {% load static %}
+
+    <!-- Theme Style -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+    <!-- Responsive -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/responsive.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/points.css' %}"
+    />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static 'icon/Favicon.png' %}" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="{% static 'icon/Favicon.png' %}"
+    />
+  </head>
+
+  <body class="body header-fixed">
+    <!-- preload -->
+    <div class="preload preload-container">
+      <div class="middle">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+        <div class="bar bar5"></div>
+        <div class="bar bar6"></div>
+        <div class="bar bar7"></div>
+        <div class="bar bar8"></div>
+      </div>
+    </div>
+    <!-- /preload -->
+
+    <form method="POST" action="{% url 'save_swot_analysis' %}">
+      {% csrf_token %}
+      <div class="flat-pages-title">
+        <div class="widget-bg-line"></div>
+        <div class="themesflat-container w1490">
+          <div class="row">
+            <div class="col-12 pages-title">
+              <div class="content">
+                <div class="tf-section create-sell">
+                  <div class="themesflat-container">
+                    <div class="add-points text-center">
+                      <h1 style="text-align: center">
+                        Add Your Own SWOT Points
+                      </h1>
+                      <input
+                        type="text"
+                        name="title"
+                        placeholder="Enter Report Title..."
+                        class="point-input"
+                        required
+                      />
+                      <p class="commas" style="margin-top: 40px">
+                        Please enter your points seperated by commas
+                      </p>
+                    </div>
+
+                    <!-- Responsive card layout using Bootstrap grid -->
+                    <div class="row cards-wrapper">
+                      <!-- Card 1: Strengths -->
+                      <div
+                        class="col-12 col-md-3 grid-box-icon"
+                        style="margin-bottom: 20px"
+                      >
+                        <div class="tf-box-iconify style-1 relative mb-0">
+                          <div class="image">
+                            <img
+                              src="{% static 'images/box-icon/icons8-strength-48.png' %}"
+                              alt="Strengths Icon"
+                            />
+                          </div>
+                          <h4>STRENGTHS</h4>
+                          <div class="input-wrapper">
+                            <textarea
+                              name="strengths"
+                              rows="4"
+                              placeholder="Enter strengths separated by commas..."
+                              required
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card 2: Weaknesses -->
+                      <div class="col-12 col-md-3 grid-box-icon">
+                        <div class="tf-box-iconify style-1 relative mb-0">
+                          <div class="image">
+                            <img
+                              src="{% static 'images/box-icon/icons8-tired-48.png' %}"
+                              alt="Weaknesses Icon"
+                            />
+                          </div>
+                          <h4>WEAKNESSES</h4>
+                          <div class="input-wrapper">
+                            <textarea
+                              name="weakness"
+                              rows="4"
+                              placeholder="Enter weaknesses separated by commas..."
+                              required
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card 3: Opportunities -->
+                      <div class="col-12 col-md-3 grid-box-icon">
+                        <div class="tf-box-iconify style-1 relative mb-0">
+                          <div class="image">
+                            <img
+                              src="{% static 'images/box-icon/icons8-analysis-48.png' %}"
+                              alt="Opportunities Icon"
+                            />
+                          </div>
+                          <h4>OPPORTUNITIES</h4>
+                          <div class="input-wrapper">
+                            <textarea
+                              name="opportunity"
+                              rows="4"
+                              placeholder="Enter opportunities separated by commas..."
+                              required
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card 4: Threats -->
+                      <div class="col-12 col-md-3 grid-box-icon">
+                        <div class="tf-box-iconify style-1 relative mb-0">
+                          <div class="image">
+                            <img
+                              src="{% static 'images/box-icon/icons8-decrease-48.png' %}"
+                              alt="Threats Icon"
+                            />
+                          </div>
+                          <h4>THREATS</h4>
+                          <div class="input-wrapper">
+                            <textarea
+                              name="threat"
+                              rows="4"
+                              placeholder="Enter threats separated by commas..."
+                              required
+                            ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="button-wrapper text-center">
+                      <button type="submit" class="submit">Submit</button>
+                    </div>
+                  </div>
+
+                  <!-- Background floating icons -->
+                  <div class="icon-wrapper">
+                    <img
+                      class="absolute item1"
+                      src="{% static 'images/item-background/item1.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item2"
+                      src="{% static 'images/item-background/item2.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item3"
+                      src="{% static 'images/item-background/item-03.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item4"
+                      src="{% static 'images/item-background/item1.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item5"
+                      src="{% static 'images/item-background/item1.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item6"
+                      src="{% static 'images/item-background/item4.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item7"
+                      src="{% static 'images/item-background/item5.png' %}"
+                      alt=""
+                    />
+                    <img
+                      class="absolute item8"
+                      src="{% static 'images/item-background/item5.png' %}"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <style>
+      .cards-wrapper .grid-box-icon {
+        height: 400px !important;
+        margin-top: -20px;
+      }
+
+      .add-points .point-input {
+        border: 0.3px solid rgb(135, 133, 133);
+      }
+
+      @media (max-width: 600px) {
+        .cards-wrapper .grid-box-icon {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/swot.js' %}"></script>
+    <script src="{% static 'js/points.js' %}"></script>
+  </body>
+</html>

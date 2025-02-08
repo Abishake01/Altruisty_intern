@@ -1,0 +1,940 @@
+{% extends 'video_call/main.html' %} {% load static %} {% block content %}
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    border: 1px solid black;
+    box-sizing: border-box;
+    z-index: 1;
+    position: relative;
+    /* overflow: hidden; */
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+/* Add this to your CSS file or within a <style> tag */
+
+/* Basic Styles */
+.row-9 {
+    display: flex;
+    height: 100vh; /* Full height of the viewport */
+    transition: all 0.3s ease;
+}
+
+/* Video Container */
+.left-section {
+    background-color: transparent; /* Light gray background for visibility */
+    transition: width 0.3s; /* Smooth transition when resizing */
+    border-right: 1px solid black;
+    height: 86vh;
+}
+
+/* Chat Container */
+.right-section {
+    width: 0; /* Initially hidden */
+    top: 0;
+    overflow: hidden; /* Prevent overflow when collapsed */
+    transition: width 0.3s; /* Smooth transition */
+    background-color: rgba(0, 0, 0, 0.85); /* White background for chat */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out; /* Smooth slide-in transition */
+    height: 100vh;
+    padding: 15px;
+}
+
+/* When chat is open */
+.right-section.open {
+    width: 30%; /* 30% of the screen when open */
+}
+
+/* When chat is closed */
+.left-section.chat-open {
+    width: 70%; /* 70% of the screen when chat is open */
+}
+
+/* Full width when chat is closed */
+.left-section {
+    width: 100%; /* Default to full width */
+}
+
+/* Optional styles for cards, messages, etc. */
+.card {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: black;
+    border: 1px solid white;
+    overflow: hidden;
+
+}
+  .card-row-1 {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .card-row-2 {
+    flex: 7.5;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: none;
+  }
+
+  .card-row-2::-webkit-scrollbar {
+    display: none;
+  }
+
+  .message {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+  }
+
+  .message-name {
+    font-weight: bold;
+    color: #ffd700;
+  }
+
+  .message-time {
+    font-style: italic;
+    color: #d3d3d3;
+  }
+
+  .message-text {
+    color: white;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin-top: 10px;
+  }
+
+  .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3182ce;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .full-width {
+    flex: 10;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: center;
+    /* Center all cards in the container */
+    margin: 20px;
+    gap: 10px;
+  }
+
+  /* Styles for a single card */
+  .single-card {
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 25px;
+  }
+
+  /* Styles for two cards */
+  /* Container for two cards to align them horizontally */
+  /* Container for two cards to align them vertically and horizontally centered */
+  .two-cards-container {
+    display: flex;
+    align-items: center;
+    /* Centers horizontally */
+    justify-content: center;
+    /* Centers vertically */
+    gap: 10px;
+    /* Space between the two cards */
+    height: 85vh;
+    /* Ensures container takes full height to center vertically */
+  }
+
+  .two-cards {
+    width: 45%;
+    height: 60vh;
+  }
+
+  /* Styles for three cards */
+  .three-cards {
+    width: 33%;
+    height: 50vh;
+  }
+
+  /* Styles for four or more cards (3 cards per row) */
+  /* Container styling */
+  .multi-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three equal-width columns */
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* Individual card styling */
+  .multi-card {
+    background-color: #f1f1f1;
+    /* Light grey background for cards */
+    border: 1px solid #ccc;
+    /* Border around cards */
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 350px;
+    /* Set each card's height to 450px */
+    min-height: 200px;
+    /* Ensures a minimum card height */
+    overflow: hidden;
+    /* Ensures content inside cards doesn't overflow */
+  }
+
+  .card-item {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 85vh;
+    width: 95%;
+    margin: 0 auto;
+    justify-content: center;
+    position: relative;
+  }
+
+  .card-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Ensures the image fills the circular shape */
+    margin-bottom: 10px;
+  }
+
+  .row-1 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    z-index: 2;
+    gap: 15px;
+  }
+
+  .icon-button {
+    background-color: #333;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .icon-button img {
+    width: 24px;
+    height: auto;
+  }
+
+  .icon-button:hover {
+    background-color: #555;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .right-section {
+      flex: 5;
+    }
+
+    .multi-card-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .right-section {
+      flex: 6;
+    }
+
+    .multi-card-container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  /* Full-width style for right section when active on small screens */
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 100000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-content h2 {
+    color: black;
+    margin-bottom: 20px;
+  }
+
+  #attendeesList {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  #attendeesList div {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .modal-content button:hover {
+    opacity: 0.8;
+  }
+
+  /* Add styles for the attendance list items */
+  .attendance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+
+  .attendance-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .attendance-percentage {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+  }
+
+  .attendance-checkbox {
+    transform: scale(1.2);
+    margin-right: 10px;
+  }
+
+  .attendance-name {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .auto-marked {
+    background-color: #e8f5e9;
+    border-color: #a5d6a7;
+  }
+
+  .modal-content {
+    max-width: 600px !important;
+    width: 90% !important;
+    margin: 20px !important;
+  }
+
+  .attendance-checkbox {
+    accent-color: rgba(221, 242, 71, 1);
+  }
+
+  #attendeesList::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #attendeesList::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  #attendeesList::-webkit-scrollbar-thumb {
+    background: rgba(221, 242, 71, 0.5);
+    border-radius: 4px;
+  }
+
+  .modal-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<main>
+ 
+  <div class="row-9">
+    <!-- Video Container -->
+    <div class="left-section full-width" id="leftSection">
+      <p style="background-color: #ccc; color: #333;">Room Name: <span id="room-name"></span></p>
+      <div id="video-streams"></div>
+      <div
+        class="{% if num_cards >= 4 %}multi-card-container{% elif num_cards == 2 or num_cards == 3 %}two-cards-container{% else %}single-card-container{% endif %}">
+        {% for card in cards %}
+        <div class="card-item" id="video-placeholder-{{ card.id }}" style="display: none;">
+          <img src="{% static 'test_image.png' %}" alt="User placeholder" class="card-image" />
+          <h4 style="
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              margin: 0;
+              padding: 10px;
+              font-weight: normal;
+              color: white;
+            ">
+            Sarvesh
+          </h4>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+     <!-- Chat Container -->
+     <div class="right-section" id="rightSection">
+      <div class="card">
+        <!-- Row 1: Header or title -->
+        <div class="card-row-1">
+          <p style="text-align: center; font-style: italic;">
+            All messages sent in this chat are being recorded.
+          </p>
+        </div>
+
+        <!-- Row 2: Chat messages or content -->
+        <div class="card-row-2" id="chatMessagesContainer">
+          <!-- Hardcoded messages -->
+          <div class="message">
+            <div class="message-header">
+              <span class="message-name">Alice</span>
+              <span class="message-time">10:15 AM</span>
+            </div>
+            <div class="message-text">Hi, how are you?</div>
+          </div>
+          <div class="message">
+            <div class="message-header">
+              <span class="message-name">Bob</span>
+              <span class="message-time">10:17 AM</span>
+            </div>
+            <div class="message-text">I'm good, thanks! How about you?</div>
+          </div>
+          <!-- Add more messages here as needed -->
+        </div>
+
+        <!-- Row 3: Input field -->
+        <div class="card-row-3">
+          <input type="text" id="chatMessageInput" class="input-field" placeholder="Type a message..." />
+          <button id="chatMessageSend">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-1">
+    <!-- Mic Button -->
+    <button class="icon-button" id="mic-btn" title="Mic">
+      <img src="{% static 'icon/video_call_icons/mike_icon.png' %}" alt="Mic Icon" width="24" />
+    </button>
+
+    <!-- Video Button -->
+    <button class="icon-button" id="camera-btn" title="Video">
+      <img src="{% static 'icon/video_call_icons/video_icon.png' %}" alt="Video Icon" width="24" />
+    </button>
+
+    <!-- Hand Raise Button -->
+    <button class="icon-button" title="Hand Raise">
+      <img src="{% static 'icon/video_call_icons/hand_icon.png' %}" alt="Hand Raise Icon" width="24" />
+    </button>
+
+    <!-- Chat Button -->
+    <button class="icon-button" id="chatButton" title="Chat">
+      <img src="{% static 'icon/video_call_icons/chat_icon.png' %}" alt="Chat Icon" width="24" />
+    </button>
+
+
+
+    <!-- Additional buttons for leave and screen sharing -->
+    <button class="icon-button" id="leave-btn" type="button" title="Leave" style="background-color: red">
+      <img src="{% static 'icon/video_call_icons/hang_icon.png' %}" alt="Leave Icon" width="24" />
+    </button>
+
+    <button class="icon-button" id="screen" title="Screen-Sharing">
+      <img src="{% static 'icon/video_call_icons/screen_share_icon.png' %}" alt="Screen Share Icon" width="24" />
+    </button>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const rightSection = document.getElementById('rightSection');
+    const leftSection = document.getElementById('leftSection');
+    const chatButton = document.getElementById('chatButton');
+
+    // Toggle chat container and adjust video container width
+    chatButton.addEventListener('click', () => {
+        rightSection.classList.toggle('open'); // Toggle chat visibility
+        leftSection.classList.toggle('chat-open'); // Adjust video container width
+    });
+});
+    </script>
+
+
+
+  </div>
+
+  <div class="icon-background">
+    {% for i in image_count %}
+    <img class="random-image" src="{% static 'images/item-background/item1.png' %}" alt="" style="
+        position: absolute;
+        width: 5px;
+        height: auto;
+        opacity: 0;
+        transition: opacity 0.5s;
+      " />
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll(".random-image");
+
+      images.forEach((img) => {
+        const randomTop = Math.floor(Math.random() * 100);
+        const randomLeft = Math.floor(Math.random() * 100);
+        img.style.top = randomTop + "%";
+        img.style.left = randomLeft + "%";
+
+        // Function to toggle visibility of the image
+        function toggleVisibility() {
+          img.style.opacity = img.style.opacity === "1" ? "0" : "1";
+        }
+
+        // Set a random interval for showing/hiding the image repeatedly
+        const randomInterval =
+          Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000; // Between 1s and 5s
+        setInterval(toggleVisibility, randomInterval); // Toggle visibility at random intervals
+      });
+    });
+
+  </script>
+</main>
+
+<!-- Replace the existing modal HTML with this styled version -->
+<div id="attendanceModal" class="modal">
+  <div class="modal-content"
+    style="background-color: #161616; border: 2px solid rgba(221, 242, 71, 0.5); border-radius: 15px; color: white;">
+    <h2 style="color: rgba(221, 242, 71, 1); text-align: center; font-size: 24px; margin-bottom: 20px;">
+      Meeting Attendance
+    </h2>
+    <p style="color: #fff; text-align: center; margin-bottom: 20px; font-size: 14px;">
+      Users with ≥75% attendance are automatically marked present
+    </p>
+    <div id="attendeesList" style="
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        ">
+      <!-- Attendees will be listed here -->
+    </div>
+    <div style="margin-top: 20px; text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+      <button onclick="submitAttendance()" style="padding: 10px 20px; 
+                           background-color: rgba(221, 242, 71, 1); 
+                           color: #161616; 
+                           border: none; 
+                           border-radius: 5px; 
+                           cursor: pointer;
+                           font-weight: bold;
+                           transition: all 0.3s ease;">
+        Save & Exit
+      </button>
+      <button onclick="closeModal()" style="padding: 10px 20px; 
+                           background-color: #ff4444; 
+                           color: white; 
+                           border: none; 
+                           border-radius: 5px; 
+                           cursor: pointer;
+                           font-weight: bold;
+                           transition: all 0.3s ease;">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Then your other scripts -->
+<script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.22.2.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/stream.js' %}"></script>
+
+<script>
+  var staticImagePath = "{% static 'test_image.png' %}";
+  var cardStyle = `background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 85vh;
+    width: 95%;
+    margin: 0 auto;
+    justify-content: center;
+    position: relative;`
+  function toggleSections() {
+    const leftSection = document.getElementById("leftSection");
+    const rightSection = document.getElementById("rightSection");
+
+    leftSection.classList.toggle("full-width");
+    rightSection.classList.toggle("hide");
+  }
+</script>
+
+<script>
+  let meetingAttendees = new Map();
+  let isMeetingCreator = false; // Default to false
+  let meetingStartTime = new Date();
+
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', function () {
+    const roomName = sessionStorage.getItem('room');
+    const userName = sessionStorage.getItem('UID');
+    isMeetingCreator = sessionStorage.getItem('isCreator') === 'true';
+
+    console.log('Initializing with room:', roomName, 'and user:', userName);
+
+    // Add the current user
+    meetingAttendees.set(userName, {
+      joinTime: new Date(),
+      isPresent: false,
+      isCreator: isMeetingCreator
+    });
+
+    // Set up leave button handler
+    const leaveBtn = document.getElementById('leave-btn');
+    if (leaveBtn) {
+      // Remove any existing click handlers
+      const newLeaveBtn = leaveBtn.cloneNode(true);
+      leaveBtn.parentNode.replaceChild(newLeaveBtn, leaveBtn);
+
+      // Add new click handler
+      newLeaveBtn.addEventListener('click', handleLeaveClick);
+    }
+
+    // Override the client leave function to prevent automatic navigation
+    if (typeof client !== 'undefined') {
+      const originalLeave = client.leave;
+      client.leave = async function () {
+        return false; // Prevent default leave behavior
+      };
+    }
+  });
+
+  function handleLeaveClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('Leave button clicked');
+    if (isMeetingCreator) {
+      showAttendanceModal();
+    } else {
+      window.location.href = '/lobby/';
+    }
+    return false;
+  }
+
+  function showAttendanceModal() {
+    console.log('Showing attendance modal');
+    calculateAttendance();
+    updateAttendance(); // Use the new updateAttendance function
+
+    const modal = document.getElementById('attendanceModal');
+    modal.style.cssText = `
+        display: block !important;
+        visibility: visible !important;
+        z-index: 999999 !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(0,0,0,0.8) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    `;
+  }
+
+  function calculateAttendance() {
+    const meetingDuration = (new Date() - meetingStartTime) / 1000;
+
+    meetingAttendees.forEach((data, attendee) => {
+      const attendanceDuration = (new Date() - data.joinTime) / 1000;
+      const percentage = (attendanceDuration / meetingDuration) * 100;
+      data.isPresent = percentage >= 75;
+      data.percentage = percentage.toFixed(1);
+      data.autoMarked = percentage >= 75;
+    });
+  }
+
+  async function fetchMemberName(uid, roomName) {
+    console.log(uid, roomName);
+    try {
+      const response = await fetch(`/get_member/?UID=${uid}&room_name=${roomName}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data.name || uid; // Fallback to UID if name is not available
+    } catch (error) {
+      console.error('Error fetching member name:', error);
+      return uid; // Fallback to UID in case of error
+    }
+  }
+
+  async function updateAttendance() {
+    calculateAttendance();
+
+    const attendeesList = document.getElementById('attendeesList');
+    attendeesList.innerHTML = '';
+
+    for (const [attendee, data] of meetingAttendees.entries()) {
+      const name = await fetchMemberName(attendee, sessionStorage.getItem('room'));
+      const div = document.createElement('div');
+      div.style.cssText = `
+            background-color: rgba(221, 242, 71, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(221, 242, 71, 0.2);
+        `;
+
+      const percentage = parseFloat(data.percentage);
+      const isAutoMarked = percentage >= 75;
+
+      div.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" 
+                       class="attendance-checkbox" 
+                       ${data.isPresent ? 'checked' : ''} 
+                       ${isAutoMarked ? 'disabled' : ''} 
+                       value="${attendee}"
+                       style="width: 18px; height: 18px; cursor: pointer;">
+                <span style="color: #fff; font-size: 16px;">${name}</span>
+            </div>
+            <div style="
+                background-color: ${isAutoMarked ? 'rgba(221, 242, 71, 0.8)' : 'rgba(255, 255, 255, 0.2)'};
+                color: ${isAutoMarked ? '#161616' : '#fff'};
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 14px;
+                font-weight: bold;
+            ">
+                ${percentage.toFixed(1)}%
+                ${isAutoMarked ? ' (Auto)' : ''}
+            </div>
+        `;
+
+      attendeesList.appendChild(div);
+    }
+  }
+
+  function submitAttendance() {
+    const roomName = sessionStorage.getItem('room');
+    const userName = sessionStorage.getItem('UID');
+
+    // Prepare attendance data
+    const attendanceData = Array.from(meetingAttendees.entries()).map(([attendee, data]) => {
+      const checkbox = document.querySelector(`input[value="${attendee}"]`);
+      return {
+        attendee: attendee,
+        joinTime: data.joinTime.toISOString(),
+        percentage: parseFloat(data.percentage),
+        isPresent: data.autoMarked ? true : (checkbox ? checkbox.checked : false)
+      };
+    });
+
+    console.log('Submitting attendance:', attendanceData);
+
+    fetch('/mark_attendance/', {  // Corrected URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+      },
+      body: JSON.stringify({
+        room: roomName,
+        creator: userName,
+        attendees: attendanceData,
+        meetingDuration: (new Date() - meetingStartTime) / 1000
+      })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          alert('Attendance saved successfully!');
+          // Only redirect after successful save
+          if (typeof client !== 'undefined') {
+            client.leave().then(() => {
+              window.location.href = '/lobby/';
+            });
+          } else {
+            window.location.href = '/lobby/';
+          }
+        } else {
+          alert('Error saving attendance: ' + (data.error || 'Unknown error'));
+        }
+      })
+      .catch(error => {
+        console.error('Error submitting attendance:', error);
+        alert('Error saving attendance. Please try again.');
+      });
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('attendanceModal');
+    modal.style.display = 'none';
+  }
+
+  // Handle user joined events
+  if (typeof client !== 'undefined') {
+    client.on("user-joined", async function (user) {
+      const userName = user.uid.toString();
+      const name = await fetchMemberName(userName, sessionStorage.getItem('room'));
+      meetingAttendees.set(userName, {
+        joinTime: new Date(),
+        isPresent: false,
+        isCreator: false,
+        name: name
+      });
+      console.log('User joined:', userName);
+    });
+
+    client.on("user-left", function (user) {
+      const userName = user.uid.toString();
+      if (meetingAttendees.has(userName)) {
+        const attendeeData = meetingAttendees.get(userName);
+        attendeeData.leaveTime = new Date();
+        meetingAttendees.set(userName, attendeeData);
+      }
+      console.log('User left:', userName);
+    });
+  }
+
+  // Utility function to get CSRF token
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  // Prevent accidental navigation
+  window.onbeforeunload = function (e) {
+    if (document.getElementById('attendanceModal').style.display === 'block') {
+      return null;
+    }
+    e.preventDefault();
+    e.returnValue = '';
+    return '';
+  };
+
+</script>
+
+{% endblock content %}

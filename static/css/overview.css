@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap');
+
+.overview-body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #161616; /* Updated background color */
+}
+
+.overview-heading {
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: rgba(221, 242, 71, 1); /* Updated heading color */
+}
+
+.overview-card-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 2000px;
+    margin-bottom: 50px;
+}
+
+.overview-card {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.12); /* Updated card background color */
+    padding: 30px; /* Increased padding for height */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    font-size: large;
+    font-family: Playfair Display;
+    transform: translateX(100%);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    color: white; /* Updated text color */
+    height: 300px; /* Set a fixed height for the cards */
+    display: flex; /* Use flexbox to manage inner content */
+    flex-direction: column; /* Arrange content vertically */
+    justify-content: center; /* Center content vertically */
+    line-height: 3rem;
+    text-align: center;
+}
+
+.overview-card.left {
+    transform: translateX(-100%);
+}
+
+.overview-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.overview-card p {
+    font-size: 1.5rem; /* Increase font size for card text */
+    margin: 0; /* Remove default margins */
+    line-height: 1.5px;
+}
+
+.overview-start-now {
+    padding: 10px 20px;
+    background-color: rgba(221, 242, 71, 1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.overview-start-now:hover {
+    background-color: #fff;
+    color: black;
+    transform: scale(1.4);
+}
+
+@media (max-width: 768px) {
+    .overview-card-container {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center align cards */
+    }
+
+    .overview-card {
+        width: 100%; /* Adjust width to fit mobile screen */
+        margin-bottom: 20px; /* Add space between cards */
+        height: fit-content;
+    }
+
+    .overview-heading {
+        font-size: 4rem; /* Decrease heading size for mobile */
+        margin-top: 60px;
+    }
+    .overview-start-now{
+        margin-bottom: 40px;
+    }
+}

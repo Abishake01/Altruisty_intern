@@ -1,0 +1,150 @@
+
+.body-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-container {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.form-header {
+    margin-bottom: 20px;
+}
+
+.form-container .form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: white;
+}
+
+.form-container .input-field,
+.form-container .submit-button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+    .form-container .input-field:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    }
+
+.form-container .submit-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    .form-container .submit-button:hover {
+        background-color: #218838;
+    }
+
+.table-container {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.table-header {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.todo-table {
+    width: 100%;
+}
+
+.todo-table,
+.table-head-cell,
+.table-body-cell {
+    border: 1px solid #ddd;
+}
+
+.table-head-cell,
+.table-body-cell {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-head-cell {
+    font-size: 16px;
+}
+
+.table-body {
+    display: block;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.table-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.reschedule-button,
+.delete-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+    .reschedule-button:hover,
+    .delete-button:hover {
+        background-color: #0056b3;
+    }
+
+.table-body::-webkit-scrollbar {
+    display: none;
+}
+
+.table-body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@media(max-width:600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .table-container {
+        width: 100%;
+    }
+}

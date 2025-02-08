@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated List Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    
+    
+</head>
+<body class="live-body">
+    <h1 class="live-head">Swot Analysis</h1>
+
+
+    <header>
+        <form method="GET" action="{% url 'swot-start-now' %}">
+            <div class="live-search-container animate-search">
+                <input type="text" name="q" class="live-search-input" placeholder="Search by title..." value="{{ search_query }}" maxlength="50">
+                <button type="submit" class="live-search-button">Search</button>
+            </div>
+        </form>
+        
+    </header>
+
+    <div class="live-list-container">
+        {% for report in reports %}
+        <div class="live-list-item animate-item" >
+            <div class="live-list-left" style="margin-left:40px" >
+                <div class="live-heading">{{ report.title }}</div>
+                <div class="live-data">{{ report.timestamp|date:"Y-m-d" }}</div>
+                <div class="live-time">{{ report.timestamp|date:"H:i A" }}</div>
+                <div class="live-buttons">
+                    <a href="{% url 'report-detail' report.id %}" class="live-view-button">
+                        <span class="live-icon">&#128065;</span>
+                        View
+                    </a>
+                    <button class="live-delete-button" onclick="confirmDelete({{ report.id }})">
+                        <span class="live-icon">&#128465;</span>
+                        Delete
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        {% empty %}
+        <p>No reports found with that title.</p>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'create-swot' %}">
+        <button class="live-add-button animate-add">
+            <span class="live-add-icon">+</span>
+            <span class="live-add-text">Add Item</span>
+        </button>
+    </a>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+    <script src="{% static 'js/count-down.js' %}"></script>
+    <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+    <script src="{% static 'js/gsap.js' %}"></script>
+    <script src="{% static 'js/SplitText.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+    <script src="{% static 'js/gsap-animation.js' %}"></script>
+    <script src="{% static 'js/tsparticles.min.js' %}"></script>
+    <script src="{% static 'js/tsparticles.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+    <script>
+        function confirmDelete(reportId) {
+            if (confirm("Are you sure you want to delete this entry?")) {
+                fetch(`/delete-report/${reportId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json'
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        location.reload();
+                    } else {
+                        alert("Error deleting the entry.");
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

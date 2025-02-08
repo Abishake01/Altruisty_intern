@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTRUISTY CHATBOT</title>
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh; /* Ensure body fills the full viewport height */
+            max-width: 100vw; /* Ensure no horizontal overflow */
+            overflow: hidden; /* Prevent scrolling issues */
+            position: relative; /* For absolutely positioned .dot elements */
+        }
+
+
+        html {
+            height: 100%;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1600px;
+            gap: 20px;
+        }
+
+        .container {
+            background-color: black;
+            flex: 2;
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 100vh;
+            overflow: auto;
+        }
+
+        .chatbox {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background-color: transparent;
+            max-height: 80vh;
+        }
+
+        .input-area {
+            display: flex;
+            padding: 12px;
+            background-color: #eef0ff;
+            position: relative;
+        }
+
+        h1 {
+            background-color: rgba(255,255,255,0);
+            color: white;
+            padding-top: 10px;
+            margin: 0;
+            text-align: center;
+            font-size: 26px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        .chatbox .message-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .message-container button {
+            background-color: transparent !important;
+        }
+
+        .chatbox p {
+            margin: 12px 0;
+            padding: 14px;
+            border-radius: 12px;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            flex-grow: 1;
+        }
+
+            .chatbox p.bot {
+                background-color: rgba(255,255,255,0.3);
+                text-align: left;
+                color: white;
+                font-weight: bold;
+                white-space: pre-line;
+            }
+
+
+
+                .chatbox p.bot strong {
+                    color: #3949ab;
+                    font-weight: bold;
+                }
+
+            .chatbox p.user {
+                background-color: rgba(255,255,255,0.3);
+                color: white;
+                text-align: right;
+                font-weight: bold;
+                margin-left: auto;
+                flex-grow: 0.5;
+            }
+
+        input[type="text"] {
+            width: calc(100% - 240px);
+            padding: 16px;
+            border: 1px solid #1a237e;
+            border-radius: 10px;
+            outline: none;
+            font-size: 17px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            width: 100%;
+        }
+
+        button {
+            padding: 14px 24px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-left: 12px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+            button:hover {
+                background: rgba(255,255,255,0.3);
+                transform: scale(1.05);
+            }
+
+        .voice-button, .image-button {
+            background-color: transparent;
+            margin-left: 12px;
+            border-radius: 50%;
+            padding: 14px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+            .voice-button:hover, .image-button:hover {
+                background-color: rgba(255,255,255,0.3);
+                transform: scale(1.1);
+            }
+
+            .voice-button input[type="file"], .image-button input[type="file"] {
+                display: none;
+            }
+
+        .recommendation-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .recommendation-section ul li {
+                margin-bottom: 10px;
+            }
+
+                .recommendation-section ul li a {
+                    color: #1a237e;
+                    text-decoration: none;
+                }
+
+                    .recommendation-section ul li a:hover {
+                        text-decoration: underline;
+                    }
+
+        .language-select {
+            display: none;
+            padding: 20px;
+        }
+
+        .input-area {
+            height: 50px;
+            background-color: transparent;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 15px;
+        }
+
+        .dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Function to create dots
+        function createDots(numDots) {
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                document.body.appendChild(dot);
+                animateDot(dot);
+            }
+        }
+
+        // Function to animate a single dot
+        function animateDot(dot) {
+            const dotSize = 10; // Dot size (width and height)
+            const randomX = Math.random() * (window.innerWidth - dotSize);
+            const randomY = Math.random() * (window.innerHeight - dotSize);
+            const randomDelay = Math.random() * 2000 + 500; // Random delay between 0.5s and 2.5s
+
+            // Position the dot randomly within bounds
+            dot.style.left = `${randomX}px`;
+            dot.style.top = `${randomY}px`;
+
+            // Toggle visibility
+            setTimeout(() => {
+                dot.style.opacity = Math.random() > 0.5 ? 1 : 0;
+                animateDot(dot); // Recursively call to repeat the animation
+            }, randomDelay);
+        }
+
+        // Create 30 dots
+        createDots(30);
+    </script>
+    <div class="main-container" >
+    <div class="container">
+        <a href="{% url 'ai_tools' %}" class="back-button" style="font-size: 30px; text-decoration: none;font-weight:bolder;">
+            &#8592;
+        </a>
+        <h1>START UP - Personal Assistant</h1>
+        {% csrf_token %}
+        <div id="chatbox" class="chatbox"></div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Type a message..." autofocus>
+            <!-- Add Font Awesome via CDN -->
+
+
+            <button class="voice-button" onclick="startVoiceRecognition()">
+                <i class="fas fa-microphone"></i>
+            </button>
+
+            <input type="file" id="imageInput" class="image-button" accept="image/*" onchange="uploadImage()" style="display: none;">
+            <div class="language-select">
+                <h2>Select Language</h2>
+                <div id="google_translate_element"></div>
+            </div>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+            <button onclick="sendMessage()" class="icon-button">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        let speechSynthesisUtterance;
+        let isRecognizing = false;
+        let recognition;
+
+        function addMessageToChatbox(sender, message) {
+            const chatbox = document.getElementById('chatbox');
+
+            const messageContainer = document.createElement('div');
+            messageContainer.className = 'message-container';
+
+            const messageElement = document.createElement('p');
+            messageElement.className = sender === 'user' ? 'user' : 'bot';
+            messageElement.innerHTML = `<strong>${sender === 'user' ? 'You' : 'Bot'}:</strong> ${message}`;
+            messageContainer.appendChild(messageElement);
+
+            if (sender === 'bot') {
+                const readButton = document.createElement('button');
+                readButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+                readButton.style.padding = '10px 16px';
+                readButton.style.marginLeft = '10px';
+                readButton.style.background = '#5c6bc0';
+                readButton.style.color = 'white';
+                readButton.style.border = 'none';
+                readButton.style.borderRadius = '8px';
+                readButton.style.cursor = 'pointer';
+                readButton.title = "Read Message";
+
+                readButton.onclick = () => {
+                    if (speechSynthesis.speaking) {
+                        speechSynthesis.cancel();
+                        readButton.textContent = '🔊 Read';
+                    } else {
+                        speakMessage(message, readButton);
+                    }
+                };
+                messageContainer.appendChild(readButton);
+
+                const pdfButton = document.createElement('button');
+                pdfButton.innerHTML = '<i class="fas fa-file-pdf"></i>';
+                pdfButton.style.padding = '10px 16px';
+                pdfButton.style.marginLeft = '10px';
+                pdfButton.style.background = '#5c6bc0';
+                pdfButton.style.color = 'white';
+                pdfButton.style.border = 'none';
+                pdfButton.style.borderRadius = '8px';
+                pdfButton.style.cursor = 'pointer';
+                pdfButton.onclick = () => downloadFile(message, 'pdf');
+                pdfButton.title = "Download as PDF";
+                messageContainer.appendChild(pdfButton);
+
+                const docxButton = document.createElement('button');
+                docxButton.innerHTML = '<i class="fas fa-file-word"></i>';
+                docxButton.style.padding = '10px 16px';
+                docxButton.style.marginLeft = '10px';
+                docxButton.style.background = '#5c6bc0';
+                docxButton.style.color = 'white';
+                docxButton.style.border = 'none';
+                docxButton.style.borderRadius = '8px';
+                docxButton.style.cursor = 'pointer';
+                docxButton.title = "Download as DOCX";
+                docxButton.onclick = () => downloadFile(message, 'docx');
+                messageContainer.appendChild(docxButton);
+            }
+
+            chatbox.appendChild(messageContainer);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function speakMessage(message, button) {
+            speechSynthesisUtterance = new SpeechSynthesisUtterance();
+            speechSynthesisUtterance.lang = "en-US";
+            speechSynthesisUtterance.text = message;
+            speechSynthesisUtterance.volume = 1;
+            speechSynthesisUtterance.rate = 1;
+            speechSynthesisUtterance.pitch = 1;
+            speechSynthesis.speak(speechSynthesisUtterance);
+
+            button.textContent = '⏹ Stop';
+            speechSynthesisUtterance.onend = () => {
+                button.textContent = '🔊 Read';
+            };
+        }
+
+        function getCsrfToken() {
+            const csrfTokenElement = document.querySelector('[name=csrfmiddlewaretoken]');
+            if (csrfTokenElement) {
+                return csrfTokenElement.value;  // Return the token if found
+            } else {
+                console.error('CSRF token element not found');
+                return '';  // Return an empty string if the token is not found
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const chatButton = document.querySelector('button');
+            if (chatButton) {
+                chatButton.addEventListener('click', sendMessage);
+            }
+        });
+
+        function sendMessage() {
+            const userMessage = document.getElementById('userInput').value;
+            if (userMessage.trim() === "") return;
+
+            addMessageToChatbox('user', userMessage);
+
+            fetch('http://127.0.0.1:8000/chatbot/chat/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',  // Adjust Content-Type if using JSON
+                    'X-CSRFToken': getCsrfToken(),  // Include CSRF token
+                },
+                body: new URLSearchParams({ 'message': userMessage }),  // Use JSON.stringify if Content-Type is JSON
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.response) {
+                        addMessageToChatbox('bot', data.response);
+                    } else {
+                        addMessageToChatbox('bot', "Sorry, I couldn't understand that.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addMessageToChatbox('bot', "Oops! Something went wrong.");
+                });
+
+            document.getElementById('userInput').value = "";  // Clear the input field
+        }
+
+
+        function startVoiceRecognition() {
+            const voiceButton = document.querySelector('.voice-button');
+            if (!recognition) {
+                recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+                recognition.maxAlternatives = 1;
+
+                recognition.onresult = function (event) {
+                    const userMessage = event.results[0][0].transcript;
+                    document.getElementById('userInput').value = userMessage;
+                    sendMessage();
+                };
+
+                recognition.onerror = function (event) {
+                    console.error('Voice recognition error:', event.error);
+                };
+            }
+
+            if (isRecognizing) {
+                recognition.stop();
+                isRecognizing = false;
+                voiceButton.textContent = '🎤';
+            } else {
+                recognition.start();
+                isRecognizing = true;
+                voiceButton.textContent = '⏹';
+            }
+        }
+
+      
+    async function downloadFile(content, fileType) {
+        const formData = new FormData();
+
+        if (fileType === 'pdf') {
+            // Generate PDF file
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFontSize(12);
+            const lines = doc.splitTextToSize(content, 180);
+            let y = 10;
+            let pageHeight = doc.internal.pageSize.getHeight();
+
+            lines.forEach(line => {
+                if (y + 10 > pageHeight) {
+                    doc.addPage();
+                    y = 10;
+                }
+                doc.text(line, 10, y);
+                y += 8;
+            });
+
+            // Convert PDF to Blob
+            const pdfBlob = doc.output('blob');
+
+            // Create a File from the Blob and append it to FormData
+            const pdfFile = new File([pdfBlob], `chat_${new Date().toISOString()}.pdf`, { type: 'application/pdf' });
+            formData.append('file', pdfFile);
+
+        } else if (fileType === 'docx') {
+            const docx = window.docx;
+            const doc = new docx.Document({
+                sections: [
+                    {
+                        properties: {},
+                        children: content.split('\n').map(line => new docx.Paragraph({
+                            children: [
+                                new docx.TextRun(line)
+                            ]
+                        }))
+                    }
+                ]
+            });
+
+            // Generate the DOCX file
+            const blob = await docx.Packer.toBlob(doc);
+
+            // Create a File from the Blob and append it to FormData
+            const docxFile = new File([blob], `chat_${new Date().toISOString()}.docx`, { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+            formData.append('file', docxFile);
+
+        }
+
+        // Send the FormData containing the file to the server
+        try {
+            const response = await fetch('http://127.0.0.1:8000/chatbot/documentdbsave/', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                console.log('File successfully uploaded');
+            } else {
+                console.log('Upload failed', response.statusText);
+            }
+        } catch (error) {
+            console.log('Error uploading the file:', error);
+        }
+    }
+
+
+
+
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        window.onload = function () {
+            setTimeout(() => {
+                addMessageToChatbox('bot', 'Hello! How can I assist you today?');
+            }, 500);
+        };
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@6.0.1/build/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

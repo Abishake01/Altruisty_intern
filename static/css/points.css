@@ -1,0 +1,346 @@
+/* Ensure the body uses a clean background */
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #161616;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Wrapper for cards to make them responsive */
+  .cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  /* title design */
+  
+  .addpoints {
+    text-align: center;
+  }
+  
+  .addpoints input {
+    border: 0.1px solid rgb(111, 109, 109);
+  }
+  
+  .addpoints h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3.5s steps(22, end) 1s forwards,
+      blink 0.75s step-end infinite;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: black;
+    }
+  }
+  
+  /* Card design */
+  
+  .grid-box-icon {
+    background-color: #343232;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin-top: 20px;
+  
+    width: 100%;
+    max-width: 280px;
+  
+    height: 320px;
+  
+    flex-grow: 1;
+    flex-basis: 280px;
+  }
+  
+  .grid-box-icon:hover {
+    transform: scale(1.05);
+  }
+  
+  /* inside card design */
+  
+  .tf-box-iconify {
+    background-color: #343232;
+    padding: 20px;
+  }
+  
+  /* Card image styling */
+  
+  .grid-box-icon .image {
+    perspective: 1000px;
+  }
+  
+  .grid-box-icon .image img {
+    max-width: 48px;
+    margin-bottom: 15px;
+    transition: transform 0.5s;
+  }
+  
+  .grid-box-icon:hover .image img {
+    animation: rotate-left-right 1.5s forwards;
+  }
+  
+  @keyframes rotate-left-right {
+    0% {
+      transform: rotateY(0deg);
+    }
+    25% {
+      transform: rotateY(-90deg);
+    }
+    50% {
+      transform: rotateY(90deg);
+    }
+    75% {
+      transform: rotateY(-90deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
+  }
+  
+  /* Heading in the cards */
+  .grid-box-icon h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #d6d3d3;
+  }
+  
+  /* Input wrapper inside cards */
+  .input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+  
+    gap: 10px;
+  }
+  
+  /* Input box styling */
+  .point-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Change border color on focus */
+  .point-input:focus {
+    border-color: #3498db;
+  }
+
+ 
+  /* Add point button styling */
+  .add-point {
+    background-color: #d6d3d3;
+    color: black;
+    border: none;
+    padding: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .add-point:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Align the buttons in a row at the bottom */
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .submit {
+    background-color: #ddf247;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit:hover {
+    background-color: #d6d3d3;
+    color: black;
+  }
+  
+  /* Preloader styling */
+  .preload-container {
+    background-color: #f4f4f9;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bar {
+    width: 10px;
+    height: 30px;
+    background-color: #3498db;
+    margin: 5px;
+    animation: loading 0.8s infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      height: 30px;
+    }
+  
+    50% {
+      height: 50px;
+    }
+  
+    100% {
+      height: 30px;
+    }
+  }
+  
+  /* icons styling */
+  
+  .flat-pages-title .icon-wrapper .item1 {
+    left: 57px;
+    top: 201px;
+    animation: flicker 3s infinite linear alternate;
+    animation-delay: 1.5s;
+  }
+  
+  .flat-pages-title .icon-wrapper .item2 {
+    left: 140px;
+    top: 72px;
+    animation: rotate360 1.5s infinite linear;
+  }
+  
+  .flat-pages-title .icon-wrapper .item3 {
+    left: 69px;
+    top: 308px;
+    width: 60px;
+    animation: movedown 3s infinite linear alternate;
+  }
+  
+  .flat-pages-title .icon-wrapper .item4 {
+    left: 341px;
+    top: 307px;
+    animation: flicker 3s infinite linear alternate;
+  }
+  
+  .flat-pages-title .icon-wrapper .item5 {
+    right: 357px;
+    top: 271px;
+    animation: flicker 3s infinite linear alternate;
+  }
+  
+  .flat-pages-title .icon-wrapper .item6 {
+    right: 80px;
+    top: 153px;
+    animation: moveleft 3s infinite linear;
+  }
+  
+  .flat-pages-title .icon-wrapper .item7 {
+    right: 119px;
+    top: 436px;
+    animation: scale1 3s infinite linear;
+    animation-delay: 1.5s;
+  }
+  
+  .flat-pages-title .icon-wrapper .item8 {
+    right: 28px;
+    top: 103px;
+    width: 19px;
+    height: 20px;
+    animation: scale1 3s infinite linear;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  /* @media (max-width: 768px) {
+    .cards-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .grid-box-icon {
+      max-width: 100%;
+    }
+  } */
+  /* Tablet view: 2 cards per row */
+@media (max-width: 1024px) {
+  .cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+}
+.addpoints{
+  width:90%;
+}
+
+/* Mobile view: 1 card per row */
+@media (max-width: 768px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .addpoints{
+    width:100%;
+  }
+  
+
+  .grid-box-icon {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:480px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .addpoints{
+    width:100%;
+  }
+  .addpoints h1{
+    font-size: 16px;
+  }
+
+  .grid-box-icon {
+    max-width: 100%;
+  }
+}
+  
+
+
+  

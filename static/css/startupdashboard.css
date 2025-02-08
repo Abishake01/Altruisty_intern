@@ -1,0 +1,160 @@
+
+.skill-progress {
+    width: 250px; /* Increased size */
+    height: 250px; /* Increased size */
+    position: relative;
+    transition: all 0.3s ease;
+    margin-left: 1100px;
+    margin-top: -300px;
+}
+
+.outer-progress {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-progress {
+    width: 180px; /* Increased size */
+    height: 180px; /* Increased size */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#number {
+    font-weight: 600;
+    color: #555;
+    font-size: 24px; /* Increased font size */
+}
+
+.skill-progress circle {
+    fill: none;
+    stroke: #ddf247;
+    stroke-width: 25px; /* Increased stroke width for a thicker progress circle */
+    stroke-dasharray: 660; /* Updated for the new circle size */
+    stroke-dashoffset: 660;
+    animation: anim 2s ease forwards;
+}
+
+@keyframes anim {
+    100% {
+        stroke-dashoffset: 231; /* Updated to match the new circle size (65% progress) */
+    }
+}
+
+.skill-progress svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Base container styles */
+.step-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Ensures rounded corners for overlay */
+}
+
+.tf-box-icon {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Overlay for completed steps */
+.step-container.completed .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.751); /* Darker overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 1;
+    pointer-events: none;
+    border-radius: 10px; /* Match the container's border-radius */
+}
+
+/* Optional animation for completed icon */
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.completed-icon {
+    font-size: 50px;
+    color: #fff; /* Green checkmark */
+    animation: popIn 0.3s ease-in-out;
+}
+
+/* Base container styles */
+.step-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px; /* Ensures rounded corners for overlay */
+}
+
+.tf-box-icon {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Overlay for locked steps */
+.step-container.locked .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 1;
+    pointer-events: none;
+    border-radius: 10px; /* Match the container's border-radius */
+}
+
+/* Styling for the Lock icon */
+.step-container.locked .completed-icon {
+    font-size: 50px;
+    color: #ffffff; /* White lock symbol */
+    animation: popIn 0.3s ease-in-out; /* Optional animation */
+}
+
+/* Optional animation for lock symbol */
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+

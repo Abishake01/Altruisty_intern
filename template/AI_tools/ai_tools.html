@@ -1,0 +1,817 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'css/ai-tools.css' %}" />-->
+<!--Style starts -->
+
+<!--Style Ends -->
+<link rel="stylesheet" href="{% static 'css/ai_tools1.css' %}"/>
+<div class="tf-section-5 tf-list-blog" style="margin-top: 40px">
+    <div class="themesflat-container">
+        <div class="row flex flex-wrap">
+            <!-- Left Sidebar with Categories and Create Project Button -->
+            <div class="side-bar col-md-4 col-12" style="margin-left: -180px">
+                <button class="create-project-btn"
+                        onclick="openModal('createProject')"
+                        style="width: 200px; height: 42px; margin-left: 15px">
+                    <span>+</span> Create a Project
+                </button>
+                <div class="widget widget-categories"
+                     style="
+                    height: 600px;
+                    width: 300px;
+                    background-color: #161616;
+                    overflow-y: auto;
+                  ">
+                    <h5 class="title-widget" style="margin-top: 10px">
+                        Recent projects
+                    </h5>
+                    <ul id="project-list">
+                        <li>
+                            <div class="cate-item" style="margin-top: 20px">
+                                <a href="#">Project 1</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="cate-item"><a href="#">Project 2</a></div>
+                        </li>
+                        <li>
+                            <div class="cate-item"><a href="#">Project 3</a></div>
+                        </li>
+                        <li>
+                            <div class="cate-item"><a href="#">Project 4</a></div>
+                        </li>
+                        <li>
+                            <div class="cate-item"><a href="#">Project 5</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 6</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 7</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 8</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 9</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 10</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 11</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 12</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 13</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 14</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 15</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 16</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 17</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 18</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 19</a></div>
+                        </li>
+                        <li class="hidden-project" style="display: none">
+                            <div class="cate-item"><a href="#">Project 20</a></div>
+                        </li>
+                    </ul>
+
+                    <div class="see_more"
+                         style="margin: 30px; margin-left: 100px">
+                        <a href="#"
+                           style="
+                        font-size: 14px;
+                        color: #908c8c;
+                        font-family: 'Franklin Gothic Medium', 'Arial Narrow',
+                          Arial, sans-serif;
+                      "
+                           onclick="showMoreProjects()">See all</a>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Main Content Area on the Right -->
+            <div class="main-content col-md-8 col-12">
+                <div class="content-container">
+                    <div class="widget-search"
+                         style="width: 500px; margin-left: 270px; ">
+                        <form action="#"
+                              method="get"
+                              role="search"
+                              class="search-form relative">
+                            <input type="search"
+                                   id="search"
+                                   class="search-field style-1"
+                                   placeholder="Search for ai tool..."
+                                   value=""
+                                   name="s"
+                                   title="Search for"
+                                   required="" />
+                            <button class="search search-submit"
+                                    type="submit"
+                                    title="Search">
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="tf-section action" style="margin-top: 20px">
+                        <div class="themesflat-container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="action__body">
+                                        <div class="tf-tsparticles">
+                                            <div id="tsparticles1"
+                                                 data-color="#161616"
+                                                 data-line="#000"></div>
+                                        </div>
+                                        <h2>AI Tools for Student Innovators</h2>
+                                        <div class="flat-button flex">
+                                            <a href="#"
+                                               class="tf-button style-2 h50 w190 mr-10">
+                                                Explore now<i class="icon-arrow-up-right2"></i>
+                                            </a>
+                                            <a href="#" class="tf-button style-2 h50 w230">
+                                                Create your first project<i class="icon-arrow-up-right2"></i>
+                                            </a>
+                                        </div>
+                                        <div class="bg-home7">
+                                            <div class="swiper-container autoslider3reverse" data-swiper='{
+                                  "loop":true,
+                                  "slidesPerView": "auto",
+                                  "spaceBetween": 14,
+                                  "direction": "vertical",
+                                  "speed": 10000,
+                                  "observer": true,
+                                  "observeParents": true,
+                                  "autoplay": {
+                                      "delay": "0",
+                                      "disableOnInteraction": false
+                                  }
+                              }'>
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/banner-ai1.png' %}" alt="" style="width: 200px;">
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/ai_project5.jpg' %}" alt="" style="width: 200px;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="swiper-container autoslider4reverse" data-swiper='{
+                                  "loop":true,
+                                  "slidesPerView": "auto",
+                                  "spaceBetween": 14,
+                                  "direction": "vertical",
+                                  "speed": 10000,
+                                  "observer": true,
+                                  "observeParents": true,
+                                  "autoplay": {
+                                      "delay": "0",
+                                      "disableOnInteraction": false,
+                                      "reverseDirection": true
+                                  }
+                              }'>
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/banner-ai1.png' %}" alt="" style="width: 200px;">
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/ai_project5.jpg' %}" alt="" style="width: 200px;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="swiper-container autoslider3reverse" data-swiper='{
+                                  "loop":true,
+                                  "slidesPerView": "auto",
+                                  "spaceBetween": 14,
+                                  "direction": "vertical",
+                                  "speed": 10000,
+                                  "observer": true,
+                                  "observeParents": true,
+                                  "autoplay": {
+                                      "delay": "0",
+                                      "disableOnInteraction": false
+                                  }
+                              }'>
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/banner-ai1.png' %}" alt="" style="width: 200px;">
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <img src="{% static 'images/Ai_tools/ai_project5.jpg' %}" alt="" style="width: 200px;">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-tools-container d-flex justify-content-start align-items-center"
+                         style="margin-left: 110px; margin-bottom: 10px">
+
+
+                        <!-- AI Tool Icons within circles -->
+                        <div class="tool-icon me-5 ">
+                            <a href="{% url 'chatbot' %}">
+
+                                <img src="{% static 'images/Ai_tools/tool1.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+
+
+                            </a>
+                            <p class="tool_name">AI Chat bot</p>
+
+                        </div>
+                        <div class="tool-icon me-5 ">
+                            <a href="{% url 'todoList' %}">
+                                <img src="{% static 'images/Ai_tools/tool2.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+
+                            </a>
+                            <p class="tool_name">ToDo List</p>
+
+                        </div>
+                        <div class="tool-icon me-5" style="margin-top: 26px;">
+                            <a href="{% url 'document_form' %}">
+                                <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Document<br>wallet</p>
+
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="{% url 'vendor_form' %}">
+                                <img src="{% static 'images/Ai_tools/tool4.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Vendor</p>
+
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="{% url 'investor_form' %}">
+                                <img src="{% static 'images/Ai_tools/tool7.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Investor</p>
+
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="{% url 'addExpense' %}">
+                                <img src="{% static 'images/Ai_tools/tool5.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Expense Tracker</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="{%  url 'scheduler' %}">
+                                <img src="{% static 'images/Ai_tools/tool6.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Scheduler</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool8.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Connect</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#" onclick="openCreateProjectModal()">
+                                <img src="{% static 'images/Ai_tools/more-icon.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">More</p>
+                        </div>
+                    </div>
+                    <div class="recent_projects">
+                        <h2 style="
+                        margin-top: 50px;
+                        margin-left: 20px;
+                        font-size: 24px;
+                      ">
+                            Recent Documents
+                        </h2>
+                    </div>
+
+                    <!-- Recent Projects Grid -->
+                    <div class="recent-projects-container d-flex flex-wrap justify-content-start"
+                         style="margin-top: 40px; margin-left: 5px">
+                        <!-- Project 1 -->
+                        {% if documents %}
+                        {% for document in documents %}
+                        <div class="project-container">
+                            <div class="project-square">
+                                <img src="data:image/jpeg;base64,{{document.document_upload}}" style="object-fit:cover;height: 150px; width: 350px;object-position:center" alt="Document Image">
+                            </div>
+                            <p class="project_name mx-2">{{ document.title }}</p>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <!--
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project2.jpg' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project3.jpg' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project5.png' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project1.jpg' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project2.jpg' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project3.jpg' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div>
+
+    <div class="project-container">
+        <div class="project-square">
+            <img src="{% static 'images/Ai_tools/ai_project5.png' %}">
+        </div>
+        <p class="project_name">Untitled</p>
+    </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+
+<!-- Container for the AI Tools -->
+<div id="createProjectModal" class="all-ai-tools">
+    <div class="ai-items-container">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <div class="widget-search" style="width: 500px; margin-left: 215px;">
+            <form action="#" method="get" role="search" class="search-form relative">
+                <input type="search" id="search" class="search-field style-1" placeholder="Search for ai tool..." name="s" required="" />
+                <button class="search search-submit" type="submit" title="Search">
+                    <i class="icon-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="popular">
+            <div class="tools-name" style="text-align: left; margin: 20px;">
+                <h3 style="font-size: 20px;">Recent</h3>
+            </div>
+
+            <div class="scroll-wrapper">
+                <div class="scrollable-container" id="recentScrollableContainer">
+
+                    <div class="ai-tools-container d-flex justify-content-start align-items-center">
+                        <!-- AI Tool Icons -->
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool1.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Chatting</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool2.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">InVideo</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Copy</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool4.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Paradox</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool5.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Jasper</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool6.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Chatgpt</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool7.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Connect</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool8.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Tomb</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool9.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Design</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool11.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">picsart</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool1.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">chatbot</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool2.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">InVideo</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                     alt="AI Tool 1"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Design</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Controls -->
+        <div class="arrow-controls">
+            <img id="recentLeftArrow" src="{% static 'images/Ai_tools/left-arrow.png' %}" alt="left-arrow" style="display: none;" onclick="scrollLeftRecent()" />
+            <img id="recentRightArrow" src="{% static 'images/Ai_tools/right_arrow.png' %}" alt="right-arrow" onclick="scrollRightRecent()" />
+        </div>
+
+        <div class="popular" style="margin-top: 100px;">
+            <div class="tools-name" style="text-align: left; margin: 20px;">
+                <h3 style="font-size: 20px;">Popular</h3>
+            </div>
+
+            <div class="scroll-wrapper">
+                <div class="scrollable-container" id="scrollableContainer">
+
+                    <div class="ai-tools-container d-flex justify-content-start align-items-center">
+                        <!-- AI Tool Icons -->
+                        <div class="tool-icon me-5">
+                            <a href="#"><img src="{% static 'images/Ai_tools/tool1.png' %}" alt="AI Tool 1" class="icon-image" /></a>
+                            <p class="tool_name">Chatting</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#"><img src="{% static 'images/Ai_tools/tool2.png' %}" alt="AI Tool 2" class="icon-image" /></a>
+                            <p class="tool_name">InVideo</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                     alt="AI Tool 3"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Copy</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool4.png' %}"
+                                     alt="AI Tool 4"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Paradox</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool5.png' %}"
+                                     alt="AI Tool 5"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Jasper</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool6.png' %}"
+                                     alt="AI Tool 6"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Chatgpt</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool7.png' %}"
+                                     alt="AI Tool 7"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Connect</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool8.png' %}"
+                                     alt="AI Tool 8"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Tomb</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool9.png' %}"
+                                     alt="AI Tool 9"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Design</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool11.png' %}"
+                                     alt="AI Tool 9"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">picsart</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool1.png' %}"
+                                     alt="AI Tool 9"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Chatbot</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool2.png' %}"
+                                     alt="AI Tool 9"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">InVideo</p>
+                        </div>
+
+                        <div class="tool-icon me-5">
+                            <a href="#">
+                                <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                     alt="AI Tool 9"
+                                     class="icon-image" />
+                            </a>
+                            <p class="tool_name">Design</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Controls -->
+        <div class="arrow-controls">
+            <img id="leftArrow" src="{% static 'images/Ai_tools/left-arrow.png' %}" alt="left-arrow" style="display: none;" onclick="scrollLeftTools()" />
+            <img id="rightArrow" src="{% static 'images/Ai_tools/right_arrow.png' %}" alt="right-arrow" onclick="scrollRight()" />
+        </div>
+
+
+
+
+        <div class="popular" style="margin-top: 100px;">
+            <div class="tools-name" style="text-align: left; margin: 20px;">
+                <h3 style="font-size: 20px;">Enterprise</h3>
+            </div>
+
+
+
+            <!-- Scrollable Wrapper and Container -->
+            <div class="scroll-wrapper">
+                <div class="scrollable-container" id="scrollableContainer">
+                    <div class="ai-tools-container d-flex justify-content-start align-items-center">
+                        <!-- AI Tool Icons -->
+                        <div class="tool-icon me-5">
+                            <a href="{% url 'chatbot' %}"><img src="{% static 'images/Ai_tools/tool1.png' %}" alt="AI Tool 1" class="icon-image" /></a>
+                            <p class="tool_name">Chat bot</p>
+                        </div>
+                        <div class="tool-icon me-5">
+                            <a href="{% url 'todoList' %}"><img src="{% static 'images/Ai_tools/tool2.png' %}" alt="AI Tool 2" class="icon-image" /></a>
+                            <p class="tool_name">To do list</p>
+                        </div>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="{% url 'addExpense' %}">
+                            <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                 alt="AI Tool 3"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Expense tracker</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="{% url 'document_form' %}">
+                            <img src="{% static 'images/Ai_tools/tool4.png' %}"
+                                 alt="AI Tool 4"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Document wallet</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="{% url 'vendor_form' %}">
+                            <img src="{% static 'images/Ai_tools/tool5.png' %}"
+                                 alt="AI Tool 5"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Vendor</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="{% url 'investor_form' %}">
+                            <img src="{% static 'images/Ai_tools/tool6.png' %}"
+                                 alt="AI Tool 6"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Investor</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="{% url 'scheduler' %}">
+                            <img src="{% static 'images/Ai_tools/tool7.png' %}"
+                                 alt="AI Tool 7"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Scheduler</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="">
+                            <img src="{% static 'images/Ai_tools/tool8.png' %}"
+                                 alt="AI Tool 8"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">chat gpt</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="">
+                            <img src="{% static 'images/Ai_tools/tool9.png' %}"
+                                 alt="AI Tool 9"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Design</p>
+                    </div>
+                    <div class="tool-icon me-5">
+                        <a href="">
+                            <img src="{% static 'images/Ai_tools/tool11.png' %}"
+                                 alt="AI Tool 9"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">picsart</p>
+                    </div>
+
+                    <div class="tool-icon me-5">
+                        <a href="#">
+                            <img src="{% static 'images/Ai_tools/tool1.png' %}"
+                                 alt="AI Tool 9"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Chatbot</p>
+                    </div>
+
+                    <div class="tool-icon me-5">
+                        <a href="#">
+                            <img src="{% static 'images/Ai_tools/tool2.png' %}"
+                                 alt="AI Tool 9"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">InVideo</p>
+                    </div>
+
+                    <div class="tool-icon me-5">
+                        <a href="#">
+                            <img src="{% static 'images/Ai_tools/tool3.png' %}"
+                                 alt="AI Tool 9"
+                                 class="icon-image" />
+                        </a>
+                        <p class="tool_name">Design</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arrow Controls -->
+        <div class="arrow-controls">
+            <img id="leftArrow" src="{% static 'images/Ai_tools/left-arrow.png' %}" alt="left-arrow" style="display: none;" onclick="scrollLeftTools()" />
+            <img id="rightArrow" src="{% static 'images/Ai_tools/right_arrow.png' %}" alt="right-arrow" onclick="scrollRight()" />
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+{% endblock %}

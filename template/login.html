@@ -1,0 +1,267 @@
+{% extends 'Login/main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/video_chat.css' %}" />
+
+
+<body style="background:#161616;">
+    <div class="flat-pages-title">
+
+        <div class="themesflat-container w1490">
+            <div class="row">
+                <div class="col-12">
+                    <div class="">
+
+                        <section id="form-container" style="background: linear-gradient(to bottom right, rgba(22, 22, 22, 0.8), rgba(22, 22, 22, 0.8)),url('https://i.pinimg.com/564x/4d/da/5a/4dda5a60167236df4eafab6b9c7eff80.jpg'); background-size: cover ">
+                            <img id="logo" src="{% static 'images/chat-icon.png' %}" />
+
+                            <div id="welcome-message" style="color: rgba(221, 242, 71,1)">
+                                <h1>Login</h1>
+                                <p style="color: rgba(221, 242, 71,1)"> let's shape the future of business together!</p>
+                            </div>
+
+                            <form >
+                                <div class="field-wrapper">
+                                    <div class="form-field">
+                                        <label style="color: rgba(221, 242, 71,1)">User id:</label>
+                                        <input name="username"
+                                               placeholder="Enter a User id..." id="username"
+                                               style="text-transform: uppercase; color:black" />
+                                    </div>
+
+                                    <div class="form-field">
+                                        <label style="color: rgba(221, 242, 71,1)">Password:</label>
+                                        <input name="password" id="password" type="password"
+                                               placeholder="Enter your Password..."
+                                               style="color: white" />
+                                    </div>
+
+                                    <div class="btn d-flex justify-content-center" style="color: rgba(221, 242, 71,1)">
+                                        <input type="button" onclick="navigation()" value="Login" />
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+
+
+
+
+                    </div>
+                    <div class="icon-background">
+                        <img class="absolute item1" style="margin-top:100px;margin-left:200px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+
+                        <img class="absolute " style="margin-top:50px;margin-left:300px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute " style="margin-top:-50px;margin-left:150px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute " style="margin-top:50px;margin-left:1100px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute " style="margin-top:-100px;margin-left:1200px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute " style="margin-top:-200px;margin-left:400px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute item1" style="margin-top:-80px;margin-left:900px;"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+
+                        <img class="absolute item1"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item2"
+                             src="{% static 'images/item-background/item2.png' %}"
+                             alt="" />
+                        <img class="absolute item3"
+                             src="{% static 'images/item-background/item-03.png' %}"
+                             alt="" style="width: 65px;" />
+                        <img class="absolute" style="margin-top: -80px; margin-left: 900px; width: 65px; transform: rotateX(1)"
+                             src="{% static 'images/item-background/item-031.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -80px; margin-left: 900px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -80px; margin-left: 800px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -50px; margin-left: 100px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -200px; margin-left: -100px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -200px; margin-left: 900px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -300px; margin-left: 700px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -400px; margin-left: 50px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item4" style="margin-top: -400px; margin-left: -300px;"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item5"
+                             src="{% static 'images/item-background/item1.png' %}"
+                             alt="" />
+                        <img class="absolute item6"
+                             src="{% static 'images/item-background/item-04.png' %}"
+                             alt="" style="width: 60px;" />
+
+                        <img class="absolute item7"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute item7"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute item8"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute item9"
+                             src="{% static 'images/item-background/item5.png' %}"
+                             alt="" />
+                        <img class="absolute item5"
+                             src="{% static 'images/item-background/item2.png' %}"
+                             alt="" />
+                        <img class="absolute item" style="margin-top:300px;margin-left:100px;"
+                             src="{% static 'images/item-background/item4.png' %}"
+                             alt="" />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Inline CSS for responsive adjustments -->
+    <style>
+        /* Laptop and above - original layout */
+        @media (min-width: 1024px) {
+            .grid-box-iconify {
+                flex-direction: row;
+                flex-basis: 50%;
+            }
+
+            .tf-box-icon {
+                flex-basis: 48%;
+            }
+
+            .box-icon-img {
+                display: block;
+            }
+        }
+
+        /* Tablet screens (landscape mode) */
+        @media (max-width: 1024px) and (min-width: 768px) {
+            .grid-box-iconify {
+                flex-direction: row;
+                flex-basis: 50%;
+            }
+
+            .tf-box-icon {
+                flex-basis: 48%;
+            }
+
+            .box-icon-img {
+                display: none;
+            }
+        }
+
+        /* Tablet screens (portrait mode) */
+        @media (max-width: 768px) and (min-width: 600px) {
+            .grid-box-iconify {
+                flex-direction: column;
+            }
+
+            .tf-box-icon {
+                flex-basis: 100%;
+                margin-bottom: 15px;
+                width: 700px;
+            }
+
+            .box-icon-img {
+                display: none;
+            }
+        }
+
+        /* Mobile screens (iPhone, Android) */
+        @media (max-width: 600px) {
+            .grid-box-iconify {
+                flex-direction: column;
+                flex-basis: 100%;
+            }
+
+            .tf-box-icon {
+                flex-basis: 100%;
+                margin-bottom: 15px;
+                width: 330px;
+            }
+
+            .box-icon-img {
+                display: none;
+            }
+        }
+    </style>
+
+
+
+    <div class="tf-section seller">
+        <div class="themesflat-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-section">
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tf-section action">
+        <div class="themesflat-container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="tf-section top-collector">
+
+    </div>
+
+    <div class="tf-section top-collections">
+        <div class="themesflat-container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    <div class="widget-bg-line">
+        <div class="wraper">
+            <div class="bg-grid-line y bottom">
+                <div class="bg-line"></div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/login.js' %}"></script>
+    <script>
+        console.log(sessionStorage.getItem('user_id'))
+    </script>
+</body>
+<!-- Footer -->
+        {% endblock %}

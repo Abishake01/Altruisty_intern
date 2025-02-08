@@ -1,0 +1,31 @@
+
+.fl-row-ranking {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.td1 {
+    flex: 3; /* Extend this section */
+    display: flex;
+    align-items: center;
+}
+
+.item-name {
+    cursor: pointer;
+    color: #333;
+    text-decoration: underline;
+}
+
+.td2 {
+    flex: 1;
+    text-align: center;
+}
+
+.price {
+    cursor: pointer;
+    font-weight: bold;
+}
+

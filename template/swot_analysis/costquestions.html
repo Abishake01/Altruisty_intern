@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+{% load static %}
+
+
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Open9 | NFT Marketplace HTML Template</title>
+
+    <meta name="author" content="themesflat.com">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Theme Style -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/costquestions.css' %}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Reponsive -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="{% static ' icon/Favicon.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'icon/Favicon.png' %}">
+
+</head>
+<body class="body " style="overflow-y: auto ;">
+
+    <!-- preload -->
+    <div class="preload preload-container">
+        <div class="middle">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+            <div class="bar bar4"></div>
+            <div class="bar bar5"></div>
+            <div class="bar bar6"></div>
+            <div class="bar bar7"></div>
+            <div class="bar bar8"></div>
+          </div>
+    </div>
+    <!-- /preload -->
+
+    <div class="background"></div>
+    <div class="galaxy">
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+      <div class="galaxy-layer"></div>
+
+    </div>
+    <div class="falling-stars" id="fallingStars"></div>
+    <div class="gaming-objects" id="gamingObjects"></div>
+    <div class="tf-mouse tf-mouse-outer"></div>
+    <div class="tf-mouse tf-mouse-inner"></div>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>Cost-Cutting Survival</h1>
+            <p class="subtitle">Test your financial wisdom</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="quiz-card">
+            <div class="progress">
+                <span id="questionNumber">Question 1/10</span>
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+            </div>
+
+            <div id="question" class="question">
+                Loading question...
+            </div>
+
+            <div class="options-grid">
+                <button class="option" data-index="0">
+                    <span class="option-text"></span>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill"></div>
+                        <span class="percentage-text"></span>
+                    </div>
+                    <div id="descriptionArea" class="description-area" style="display: block; color: aqua;"></div>
+                </button>
+                <button class="option" data-index="1">
+                    <span class="option-text"></span>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill"></div>
+                        <span class="percentage-text"></span>
+                    </div>
+                    <div id="descriptionArea" class="description-area" style="display: block; color: aqua;"></div>
+                </button>
+                <button class="option" data-index="2">
+                    <span class="option-text"></span>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill"></div>
+                        <span class="percentage-text"></span>
+                    </div>
+                    <div id="descriptionArea" class="description-area" style="display: block; color: aqua;"></div>
+                </button>
+                <button class="option" data-index="3">
+                    <span class="option-text"></span>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill"></div>
+                        <span class="percentage-text"></span>
+                    </div>
+                    <div id="descriptionArea" class="description-area" style="display: block; color: aqua;"></div>
+                </button>
+            </div>
+
+            <button id="nextButton" class="next-button" style="display: none;">
+                Next Question
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <div id="results" class="results" style="display: none;">
+            <div class="trophy">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                    <path d="M4 22h16"/>
+                    <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                    <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                </svg>
+            </div>
+            <h2>Mission Accomplished!</h2>
+            <p id="score">Your Efficiency : 0/10</p>
+            <div class="cost-container">
+                <button id="restartButton" class="restart-button">Try Again</button>
+            </div>
+            <div class="cost-button-container">
+                <button id="Backtocategories" class="restart-button">Back To Categories</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="progress-wrap active-progress">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 286.138;"></path>
+        </svg>
+    </div> -->
+
+     <!-- Javascript -->
+     <script src="{% static 'js/jquery.min.js' %}"></script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+     <script src="{% static 'js/swiper.js' %}"></script>
+     <script src="{% static 'js/count-down.js' %}"></script>
+     <script src="{% static 'js/simpleParallax.min.js' %}"></script>
+     <script src="{% static 'js/gsap.js' %}"></script>
+     <script src="{% static 'js/SplitText.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
+     <script src="{% static 'js/ScrollTrigger.js' %}"></script>
+     <script src="{% static 'js/gsap-animation.js' %}"></script>
+     <script src="{% static 'js/tsparticles.min.js' %}"></script>
+     <script src="{% static 'js/tsparticles.js' %}"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+     <script src="{% static 'js/costcuttingquestions.js' %}"></script>
+
+     <script>
+        document.getElementById('Backtocategories').addEventListener('click', function() {
+            window.location.href = "{% url 'costcategory' %}";
+        });
+    </script>
+    
+
+     <script>
+        // Gaming objects
+        const objects = document.getElementById('gamingObjects');
+        const objectTypes = ['spaceship', 'rocket', 'alien', 'planet'];
+        
+        for (let i = 0; i < 8; i++) {
+          const object = document.createElement('div');
+          object.className = `game-object ${objectTypes[i % objectTypes.length]}`;
+          object.style.animationDelay = -Math.random() * 6 + 's';
+          object.style.transform = `scale(${0.9 + Math.random() * 0.3})`;
+          objects.appendChild(object);
+        }
+  
+        // Falling stars
+        const starsContainer = document.getElementById('fallingStars');
+        const createStar = () => {
+          const star = document.createElement('div');
+          star.className = 'star';
+          const startX = Math.random() * window.innerWidth;
+          const duration = 2 + Math.random() * 4;
+          const delay = Math.random() * 3;
+          
+          star.style.setProperty('--startX', `${startX}px`);
+          star.style.setProperty('--duration', `${duration}s`);
+          star.style.setProperty('--delay', `${delay}s`);
+          
+          starsContainer.appendChild(star);
+          
+          setTimeout(() => {
+            star.remove();
+          }, (duration + delay) * 1000);
+        };
+  
+        // Create initial stars
+        for (let i = 0; i < 20; i++) {
+          createStar();
+        }
+  
+        // Continue creating stars
+        setInterval(createStar, 300);
+      </script>
+
+</body>
+
+
+</html>

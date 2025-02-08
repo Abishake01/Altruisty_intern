@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>MyChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Load jQuery before any other scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- Your other scripts and styles -->
+    <link rel="stylesheet" href="{% static 'css/video_chat.css' %}" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/responsive.css' %}" />
+
+    <!-- Move main.js after jQuery -->
+    <script defer src="{% static 'js/main.js' %}"></script>
+    <!-- <link rel="stylesheet"
+       type="text/css"
+       href="{% static 'css/style.css' %}" /> -->
+ <link rel="stylesheet"
+       type="text/css"
+       href="{% static 'css/responsive.css' %}" />
+  </head>
+  <body>
+    {% block content %} {% endblock content %}
+  </body>
+  <!-- <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.8.0.js' %}"></script> -->
+</html>

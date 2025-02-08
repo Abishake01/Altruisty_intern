@@ -1,0 +1,15 @@
+ docx
+ pillow
+ jazzmin
+ exception
+ whitenoise
+ fitz
+ daphne
+ channels
+ tools
+ mysqlclient
+ filetype
+ agora_token_builder
+ groq
+ reportlab
+ 

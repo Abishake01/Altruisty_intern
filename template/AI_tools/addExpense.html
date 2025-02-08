@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Link to external CSS file -->
+<link rel="stylesheet" href="{% static 'css/add_expense.css' %}">
+<!-- Link to external JS file -->
+<script src="{% static 'js/add_expense.js' %}"></script>
+
+<div class="body-container">
+    <a href="{% url 'ai_tools' %}" class="back-button" style="font-size: 30px; text-decoration: none;font-weight:bolder;">
+        &#8592;
+    </a>
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2 class="form-header">Add Expense</h2>
+            <form id="expenseform" class="form-content" action="{% url 'addExpense' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <label for="id_product_name" class="input-label">Product Name:</label>
+                {{ form.product_name }}
+
+                <label for="id_shop_name" class="input-label">Shop Name:</label>
+                {{ form.shop_name }}
+
+                <label for="id_date_of_purchase" class="input-label">Date of Purchase:</label>
+                {{ form.date_of_purchase }}
+
+                <label for="id_amount" class="input-label">Amount:</label>
+                {{ form.amount }}
+
+                <label for="id_invoice" class="input-label">Upload File:</label>
+                {{ form.invoice }}
+
+                <button type="submit" class="submit-button">Add Expense</button>
+            </form>
+
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <h2 class="table-header">Expense List</h2>
+            <table class="todo-table">
+                <thead class="table-head">
+                    <tr class="table-row">
+                        <th class="table-head-cell">Product</th>
+                        <th class="table-head-cell">Shop name</th>
+                        <th class="table-head-cell">Date of purchase</th>
+                        <th class="table-head-cell">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    {% for expense in expenses %}
+                    <tr class="table-row">
+                        <td class="table-body-cell">{{ expense.product_name }}</td>
+                        <td class="table-body-cell">{{ expense.shop_name }}</td>
+                        <td class="table-body-cell">{{ expense.date_of_purchase }}</td>
+                        <td class="table-body-cell">{{ expense.amount }}</td>
+                        <td class="table-body-cell">
+                            <form action="{% url 'delete_expense' expense.id %}" method="POST" onsubmit="return confirmDelete()">
+                                {% csrf_token %}
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr class="table-row">
+                        <td class="table-body-cell" colspan="4">No tasks found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
