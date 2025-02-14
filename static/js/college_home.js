@@ -276,7 +276,7 @@ function toggleNotification() {
 document
     .getElementById("close-btn-notification")
     .addEventListener("click", function () {
-        document.getElementById("notification-container").console.log();
+        document.getElementById("notification-container").style.display = "none";
     });
 
 document
@@ -291,5 +291,4 @@ document
     .addEventListener("click", function () {
         document.getElementById("idea-form-container").style.display = "none";
     });
-
 

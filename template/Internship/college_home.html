@@ -2,12 +2,9 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/internship_home.css' %}" />
-
 <link rel="stylesheet" type="text/css" href="{% static 'css/college_home.css' %}" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet" />
-
-
 <div class="flat-pages-title-home4 relative">
     <div class="themesflat-container w-full">
         <div class="row">
@@ -35,7 +32,7 @@
                     <div data-wow-delay="0.2s"
                          class="wow fadeInUp flat-button flex items-center">
 
-                        <a href="#" class="tf-button style-1 h50 w140 active">
+                        <a href="#" class="tf-button style-1 h50 w140 active" id="discover-more-btn">
                             Progress<i class="icon-arrow-up-right2"></i>
                         </a>
                         <!-- Notification Icon -->
@@ -43,10 +40,6 @@
                             <i class="fas fa-bell"></i>
                         </span>
                     </div>
-
-
-
-
                 </div>
             </div>
 
@@ -133,8 +126,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="banner__right relative">
                     <div class="swiper-container swiper-3d-2card"
@@ -171,9 +162,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="swiper-slide">
                                 <div class="tf-card-box style-2 type-2">
                                     <div class="card-media">
@@ -207,17 +195,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
         <div class="tf-section create-sell" style="margin-top: 100px">
             <div class="themesflat-container">
                 <div class="row">
@@ -281,11 +258,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
     <div class="tf-section seller">
         <div class="themesflat-container">
             <div class="row">
@@ -339,15 +311,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
@@ -471,13 +434,7 @@
 
     <div id="gender-pie-chart" style="max-width: 400px; margin-left: 950px; margin-top: -430px;"></div>
 
-
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-
-
-
-
 
     <div class="tf-section action" style="margin-top: 150px;">
         <div class="themesflat-container">
@@ -505,9 +462,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!-- Overlay Container -->
     <div id="student_details_overlay" class="overlay">
@@ -773,18 +727,10 @@
                                                                     <p><a href="#">Badge 3</a></p>
                                                                 </div>
                                                                 <div class="widget-coins-item flex items-center mb-20">
-                                                                    <img src="{% static 'assets/images/avatar/avatar-11.png' %}" alt="" />
+                                                                    <img src="{% static 'assets/images/avatar/avatar-08.png' %}" alt="" />
                                                                     <p><a href="#">Badge 4</a></p>
                                                                 </div>
-
-
-
-
-
-
                                                             </div>
-
-
                                                         </div>
 
                                                         <div class="internship-activity-status" style="width: 300px; background-color: #232323; border-radius: 20px; margin-left: 740px; margin-top: -320px; overflow-y: auto; ">
@@ -826,10 +772,6 @@
                                                                     </div>
 
                                                                 </div>
-
-
-
-
                                                             </div>
                                                         </div>
 
@@ -842,10 +784,6 @@
                                                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
                                                         </div>
-
-
-
-
                                                         <div class="recent-projects-status" style="width: 400px; background-color: #232323; border-radius: 20px; height: 340px; margin-left: 630px; margin-top: -340px; overflow-y: auto;">
                                                             <div class="widget widget-creators" style="padding: 20px;">
                                                                 <div class="flex items-center justify-between">
@@ -909,13 +847,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
-
                                                     </div>
                                                 </div>
-
 
                                                 {% for intern in interns %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
@@ -949,10 +882,6 @@
                                                     </div>
                                                 </div>
                                                 {% endfor %}
-
-                                                
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -991,19 +920,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="tf-section seller">
         <div class="themesflat-container">
             <div class="row">
@@ -1022,7 +938,7 @@
                                 </ul>
                             </span>
                         </h2>
-                        <a href="#" id="discover-more-btn">Discover more <i class="icon-arrow-right2"></i></a>
+                         
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -1224,8 +1140,6 @@
                                                         <div class="item-name">{{data.user_id}}</div>
 
                                                     </div>
-
-
                                                     <div class="column">
                                                         <h6>{{data.entry_count}}</h6>
                                                     </div>
@@ -1237,55 +1151,35 @@
                                             <div class="table-ranking-content" id="commonr" style="display:none">
                                                 {% for data in cr|slice:":10" %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
-
                                                     <div class="column">
                                                         <div class="item-avatar">
                                                             <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
                                                         </div>
-
                                                     </div>
                                                     <div class="column">
                                                         <div class="item-name">{{data.user_id}}</div>
-
                                                     </div>
-
-
                                                     <div class="column">
                                                         <h6>{{data.entry_count}}</h6>
                                                     </div>
                                                 </div>
 
                                                 {% endfor %}
-
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-
-
-
-
-
-
-
 </div>
-          </div>
-        </div>
-
-
-
+         
 <!-- /#footer -->
-      </div>
+      
 <!-- /#page -->
 <!-- Modal Popup Bid -->
 <div class="modal fade popup"
@@ -1330,7 +1224,7 @@
         </div>
     </div>
 </div>
-    </div>
+    
 <!-- /#wrapper -->
 
 <div class="tf-mouse tf-mouse-outer"></div>
@@ -1351,9 +1245,6 @@
 </div>
 
 <!-- Javascript -->
-
-
-
 <script src="{% static 'js/college_home.js' %}"></script>
 
 {% endblock %}
