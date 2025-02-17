@@ -39,7 +39,7 @@ class InternRegistartion(models.Model):
     contact_phonenumber = models.CharField(max_length=15)
     College_name= models.CharField(max_length=50)
     Department= models.CharField(max_length=30)
-    Current_year = models.CharField(max_length=25,null=True,blank=True)
+    Current_year = models.CharField(max_length=25,null=True,blank=True) 
     Year_of_graduation = models.CharField(max_length=5,null=True,blank=True)
     student_skills = models.CharField(max_length=50)
     Address_line_1 = models.CharField(max_length=30)

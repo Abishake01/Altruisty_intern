@@ -299,7 +299,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/avatar/avatar-08.png' %}"
+                                        <img src="{% static 'images/badges/avatar-08.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -314,7 +314,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-09.png' %}"
+                                        <img src="{% static 'assets/images/badges/avatar-08.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -330,7 +330,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-10.png' %}"
+                                        <img src="{% static 'assets/images/badges/avatar-10.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -345,7 +345,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-11.png' %}"
+                                        <img src="{% static 'assets/images/badges/avatar-11.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -360,7 +360,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-12.png' %}"
+                                        <img src="{% static 'assets/images/badges/avatar-12.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -375,7 +375,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/avatar/avatar-08.png' %}"
+                                        <img src="{% static 'images/badges/avatar-13.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -715,19 +715,19 @@
                                                             <div class="widget widget-coins" style="padding: 20px;">
                                                                 <h5 class="title-widget" style="text-align: left; margin-bottom: 30px;">Rewards earned</h5>
                                                                 <div class="widget-coins-item flex items-center mb-20">
-                                                                    <img src="{% static 'assets/images/avatar/avatar-09.png' %}" alt="" />
+                                                                    <img src="{% static 'assets/images/badges/avatar-09.png' %}" alt="" />
                                                                     <p><a href="#">Badge 1</a></p>
                                                                 </div>
                                                                 <div class="widget-coins-item flex items-center mb-20">
-                                                                    <img src="{% static 'images/avatar/avatar-08.png' %}" alt="" />
+                                                                    <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
                                                                     <p><a href="#">Badge 2</a></p>
                                                                 </div>
                                                                 <div class="widget-coins-item flex items-center mb-20">
-                                                                    <img src="{% static 'assets/images/avatar/avatar-10.png' %}" alt="" />
+                                                                    <img src="{% static 'assets/images/badges/avatar-10.png' %}" alt="" />
                                                                     <p><a href="#">Badge 3</a></p>
                                                                 </div>
                                                                 <div class="widget-coins-item flex items-center mb-20">
-                                                                    <img src="{% static 'assets/images/avatar/avatar-08.png' %}" alt="" />
+                                                                    <img src="{% static 'assets/images/badges/avatar-08.png' %}" alt="" />
                                                                     <p><a href="#">Badge 4</a></p>
                                                                 </div>
                                                             </div>
@@ -1056,13 +1056,13 @@
                                                     </div>
                                                 </a>
                                                 <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'block';document.getElementById('commonr').style.display = 'none';" class="dropdown-item">
-                                                    <div class="sort-filter" href="#">
+                                                    <div class="sort-filter " href="#">
                                                         <span>Weekly</span>
                                                         <span class="icon-tick"><span class="path2"></span></span>
                                                     </div>
                                                 </a>
                                                 <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'block';" class="dropdown-item">
-                                                    <div class="sort-filter" href="#">
+                                                    <div class="sort-filter " href="#">
                                                         <span>Common</span>
                                                         <span class="icon-tick"><span class="path2"></span></span>
                                                     </div>
@@ -1082,7 +1082,6 @@
                                             </button>
                                         </form>
                                     </div>
-
                                 </ul>
                                 <div class="widget-content-tab pt-10">
                                     <div class="widget-content-inner active">
@@ -1095,10 +1094,17 @@
                                                 <div class="column">
                                                     <h3>Student_id</h3>
                                                 </div>
-
-
+                                                <div class="column">
+                                                    <h3>Student_Name</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>Rank</h3>
+                                                </div>
                                                 <div class="column">
                                                     <h3>Score</h3>
+                                                </div>
+                                                <div class="column">
+                                                    <h3>View</h3>
                                                 </div>
 
                                             </div>
@@ -1110,16 +1116,21 @@
                                                         <div class="item-avatar">
                                                             <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
                                                         </div>
-
                                                     </div>
                                                     <div class="column">
                                                         <div class="item-name">{{data.user_id}}</div>
-
                                                     </div>
-
-
+                                                    <div class="column">
+                                                        <h6>{{data.student_name}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.user_id}}</div>
+                                                    </div>
                                                     <div class="column">
                                                         <h6>{{data.entry_count}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <i class="fas fa-eye"></i>
                                                     </div>
                                                 </div>
 

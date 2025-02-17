@@ -8,22 +8,22 @@ from django.db.models import Count
 def college_home(request):
     # Retrieve the user_id from session storage
     user_id = request.session.get('user_id', None)
-    
+    student_name=request.session.get('student_Name',None)
     # Initialize the variables to None or 0
     college = None
     total_intern = 0
     completed_intern = 0
     ongoing_intern = 0
-
+  
     banner = bannerupload.objects.filter().values()
     
-    if user_id:
+    if user_id: 
         # Retrieve the college data for the current user
         college = collegeRegistartion.objects.filter(user_id=user_id).first()
         
         if college:
             # Get the total number of interns from the same college
-            interns = InternRegistartion.objects.filter(College_name=college.Name)
+            interns = InternRegistartion.objects.filter(College_name=college.Name,student_Name=student_name)
             total_intern = interns.count()
             
             # Get the number of completed interns
@@ -40,6 +40,7 @@ def college_home(request):
     return render(request, 'Internship/college_home.html', {
         'user_id': user_id,
         'college': college,
+        'student_name':student_name,
         'banner' : banner,
         "wr":result2,
         "dr":result,
