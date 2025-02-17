@@ -122,7 +122,6 @@ def showcq(request):
     return render (request,'internship/cq.html',context)
 
 
-
 def getdq(request,pk):
     qd = list(dailyquestion.objects.filter(id=pk).values())
     qdata = qd[0]

@@ -5,11 +5,9 @@ from django.db import models
 class collegeRegistartion(models.Model):
     user_id=models.CharField(max_length=30,null=True,blank=True)
     Name = models.CharField(max_length=50)
-    
     contact_email = models.CharField(max_length=50)
     contact_phonenumber = models.CharField(max_length=15)
     College_name = models.CharField(max_length=50)
-    
     Address_line_1 = models.CharField(max_length=30)
     Area = models.CharField(max_length=15)
     city = models.CharField(max_length=15)
@@ -24,7 +22,7 @@ class collegeRegistartion(models.Model):
     
     
 
-    def _str_(self):
+    def __str__(self):
         return self.Name
 
     class Meta:
@@ -62,7 +60,7 @@ class InternRegistartion(models.Model):
     
     
 
-    def _str_(self):
+    def __str__(self):
         return self.student_Name
 
     class Meta:
@@ -74,7 +72,7 @@ class bannerupload(models.Model):
     banner3 = models.FileField(upload_to='banner/', null=True, blank=True)
     
 
-    def _str_(self):
+    def __str__(self):
         return self.id
     class Meta:
         db_table = 'collegebanner'

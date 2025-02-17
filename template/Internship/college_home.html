@@ -52,7 +52,7 @@
 
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -65,7 +65,7 @@
 
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="related-posts-item">
                             <div class="item-avatar">
-                                <img src="{% static 'assets/images/avatar/avatar-04.png' %}" alt="Profile">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile">
                             </div>
                             <div class="card-content">
                                 <h5><a href="nft-detail-2.html">Having a meeting at 8:30pm</a></h5>
@@ -314,7 +314,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/badges/avatar-08.png' %}"
+                                        <img src="{% static 'images/badges/avatar-08.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -330,7 +330,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/badges/avatar-10.png' %}"
+                                        <img src="{% static 'images/badges/avatar-10.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -345,7 +345,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/badges/avatar-11.png' %}"
+                                        <img src="{% static 'images/badges/avatar-11.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -360,7 +360,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/badges/avatar-12.png' %}"
+                                        <img src="{% static 'images/badges/avatar-12.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -390,7 +390,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-11.png' %}"
+                                        <img src="{% static 'images/avatar/avatar-11.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -405,7 +405,7 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'assets/images/avatar/avatar-12.png' %}"
+                                        <img src="{% static 'images/avatar/avatar-12.png' %}"
                                              alt=""
                                              class="avatar" />
                                         <div class="hover-overlay">
@@ -1075,8 +1075,8 @@
 
                                 <ul class="widget-menu-tab">
                                     <div class="widget-search">
-                                        <form action="#" method="get" role="search" class="search-form relative">
-                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="" name="s" title="Search for" required="">
+                                        <form action="{% url 'college_home' %}" method="get" role="search" class="search-form relative">
+                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="{{ search_query }}" name="s" title="Search for" required="">
                                             <button class="search search-submit" type="submit" title="Search">
                                                 <i class="icon-search"></i>
                                             </button>
@@ -1087,7 +1087,9 @@
                                     <div class="widget-content-inner active">
                                         <div class="widget-table-ranking">
                                             <div data-wow-delay="0s" class="wow fadeInUp table-ranking-heading">
-
+                                                <div class="column">
+                                                    <h3>Rank</h3>
+                                                </div>
                                                 <div class="column">
                                                     <h3>Profile</h3>
                                                 </div>
@@ -1097,9 +1099,7 @@
                                                 <div class="column">
                                                     <h3>Student_Name</h3>
                                                 </div>
-                                                <div class="column">
-                                                    <h3>Rank</h3>
-                                                </div>
+                                                
                                                 <div class="column">
                                                     <h3>Score</h3>
                                                 </div>
@@ -1109,9 +1109,11 @@
 
                                             </div>
                                             <div class="table-ranking-content" id="dailyr" style="display:block">
-                                                {% for data in dr|slice:":10" %}
+                                                {% for data in interns_with_rankings|slice:":10" %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
-
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.rank_daily}}</div>
+                                                    </div>
                                                     <div class="column">
                                                         <div class="item-avatar">
                                                             <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
@@ -1121,16 +1123,16 @@
                                                         <div class="item-name">{{data.user_id}}</div>
                                                     </div>
                                                     <div class="column">
-                                                        <h6>{{data.student_name}}</h6>
+                                                        <h6>{{ data.student_Name|default:"Unknown" }}</h6>
+                                                    </div>
+                                                    
+                                                    <div class="column">
+                                                        <h6>{{data.score_daily}}</h6>
                                                     </div>
                                                     <div class="column">
-                                                        <div class="item-name">{{data.user_id}}</div>
-                                                    </div>
-                                                    <div class="column">
-                                                        <h6>{{data.entry_count}}</h6>
-                                                    </div>
-                                                    <div class="column">
+                                                        <a href="#">
                                                         <i class="fas fa-eye"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
 
@@ -1138,21 +1140,30 @@
 
                                             </div>
                                             <div class="table-ranking-content" id="weekr" style="display:none">
-                                                {% for data in wr|slice:":10" %}
+                                                {% for data in interns_with_rankings|slice:":10" %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
-
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.rank_weekly}}</div>
+                                                    </div>
                                                     <div class="column">
                                                         <div class="item-avatar">
                                                             <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
                                                         </div>
-
                                                     </div>
                                                     <div class="column">
                                                         <div class="item-name">{{data.user_id}}</div>
-
                                                     </div>
                                                     <div class="column">
-                                                        <h6>{{data.entry_count}}</h6>
+                                                        <h6>{{ data.student_Name|default:"Unknown" }}</h6>
+                                                    </div>
+                                                    
+                                                    <div class="column">
+                                                        <h6>{{data.score_weekly}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <a href="#">
+                                                        <i class="fas fa-eye"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
 
@@ -1160,8 +1171,11 @@
 
                                             </div>
                                             <div class="table-ranking-content" id="commonr" style="display:none">
-                                                {% for data in cr|slice:":10" %}
+                                                {% for data in interns_with_rankings|slice:":10" %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
+                                                    <div class="column">
+                                                        <div class="item-name">{{data.rank_common}}</div>
+                                                    </div>
                                                     <div class="column">
                                                         <div class="item-avatar">
                                                             <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
@@ -1171,7 +1185,16 @@
                                                         <div class="item-name">{{data.user_id}}</div>
                                                     </div>
                                                     <div class="column">
-                                                        <h6>{{data.entry_count}}</h6>
+                                                        <h6>{{ data.student_Name|default:"Unknown" }}</h6>
+                                                    </div>
+                                                    
+                                                    <div class="column">
+                                                        <h6>{{data.score_common}}</h6>
+                                                    </div>
+                                                    <div class="column">
+                                                        <a href="#">
+                                                        <i class="fas fa-eye"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
 
