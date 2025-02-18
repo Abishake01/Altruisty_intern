@@ -1,13 +1,6 @@
 // Select elements
-const submitIdeaBtn = document.getElementById("submit-idea-btn");
 const overlays = document.getElementById("student_details_overlay");
 const closeOverlayBtn = document.getElementById("close-overlay-btn");
-
-// Show overlay on button click
-submitIdeaBtn.addEventListener("click", (event) => {
-  event.preventDefault(); // Prevent default link behavior
-  overlays.style.display = "flex";
-});
 
 // Hide overlay on close button click
 closeOverlayBtn.addEventListener("click", () => {
@@ -280,15 +273,7 @@ document
     });
 
 document
-    .getElementById("submit-idea-btn")
-    .addEventListener("click", function (e) {
-        e.preventDefault();
-        document.getElementById("idea-form-container").style.display = "flex";
-    });
-
-document
     .getElementById("close-form-btn")
     .addEventListener("click", function () {
         document.getElementById("idea-form-container").style.display = "none";
     });
-

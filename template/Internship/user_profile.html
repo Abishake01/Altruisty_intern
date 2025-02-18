@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>User Profile: {{ user.student_Name }}</h2>
+    <p><strong>User ID:</strong> {{ user.user_id }}</p>
+    <p><strong>Email:</strong> {{ user.contact_email }}</p>
+    <h3>Total Score: {{ total_score }}</h3>
+
+    <a href="{% url 'college_home' %}" class="btn">Back to Rankings</a>
+</div>
+{% endblock %}
