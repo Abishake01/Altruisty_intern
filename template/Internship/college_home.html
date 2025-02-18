@@ -317,7 +317,8 @@
                                     <div class="author-avatar">
                                         <img src="{% static 'images/badges/avatar-09.png' %}"
                                              alt=""
-                                             class="avatar" />
+                                             class="avatar"
+                                              />
                                         <div class="hover-overlay">
                                             <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
                                         </div>
@@ -432,36 +433,16 @@
         </div>
     </div>
 
-    <div class="card" style="margin-left: 200px; margin-top: 30px;">
+    <div class="card" style="margin-left: 200px; " id="submit-idea-btn">
         <div class="card-content">
             <div id="line-chart"></div>
         </div>
     </div>
 
-    <div id="gender-pie-chart" style="max-width: 400px; margin-left: 950px; margin-top: -430px;"></div>
+    <div id="gender-pie-chart" style="max-width: 400px; margin-left: 950px; margin-top: -400px;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-    <div class="tf-section action" style="margin-top: 150px;">
-        <div class="themesflat-container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="action__body m-0">
-                        <div class="tf-tsparticles">
-                            <div id="tsparticles1"
-                                 data-color="#161616"
-                                 data-line="#000"></div>
-                        </div>
-                        <h2 class="text-center capitalize mx-auto mw-667"
-                            style="font-size: 24px" id="submit-idea-btn">
-                            "Empowering Insights into Every Student's Progress!"
-                        </h2>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- Overlay Container -->
     <div id="student_details_overlay" class="overlay">
@@ -920,7 +901,7 @@
             </div>
         </div>
     </div>
-    <div class="tf-section seller">
+    <div class="tf-section seller"> 
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
@@ -1330,7 +1311,6 @@ function getBadgeThreshold(badgeNumber) {
     };
     return thresholds[badgeNumber] || 0;
 }
-
 function showBadgePopup(element) {
     const popup = document.getElementById('badge-popup');
     const popupImg = document.getElementById('popup-badge-image');
