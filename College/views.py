@@ -83,10 +83,18 @@ def college_home(request):
     # Sort by total score (descending)
     top_participants = interns_with_scores.order_by('-total_score')[:10]  # Top 10 participants
     
+    # result = dailyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
+    # result2 = weeklyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
+    # result3 = commonquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
+
+    
     return render(request, 'Internship/college_home.html', {
         'user_id': user_id,
         'college': college,
         'banner': banner,
+        # "wr":result2,
+        # "dr":result,
+        # "cr":result3,
         'top_participants': top_participants,
         'search_query': search_query,
         'total_intern': total_intern,
