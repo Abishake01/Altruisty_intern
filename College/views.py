@@ -44,15 +44,6 @@ def college_home(request):
             ongoing_intern = interns.filter(status='accepted').count()
     
     search_query = request.GET.get('s', '')
-    user = get_object_or_404(InternRegistartion, user_id=user_id)
-
-    # Count problems solved in each category using user_id
-    daily_solved = dailyquestionanswer.objects.filter(user_id=user.user_id).count()
-    weekly_solved = weeklyquestionanswer.objects.filter(user_id=user.user_id).count()
-    common_solved = commonquestionanswer.objects.filter(user_id=user.user_id).count()
-
-    # Calculate total score
-    total_score = (daily_solved + weekly_solved + common_solved) * 5
 
     # Get total score (each problem solved is worth 5 points)
     interns_with_scores = InternRegistartion.objects.annotate(
@@ -104,11 +95,6 @@ def college_home(request):
         # "wr":result2,
         # "dr":result,
         # "cr":result3,
-        'user': user,
-        'daily_solved': daily_solved,
-        'weekly_solved': weekly_solved,
-        'common_solved': common_solved,
-        'total_score': total_score,
         'top_participants': top_participants,
         'search_query': search_query,
         'total_intern': total_intern,
