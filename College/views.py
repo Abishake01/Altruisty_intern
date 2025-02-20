@@ -14,7 +14,7 @@ from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
 
- 
+
  
 def progress(request, user_id):  
     # ✅ Fetch the correct student details using user_id from the URL
