@@ -1,15 +1,471 @@
-{% extends "base.html" %}
-
+{% extends 'internship/base.html' %}
 {% block content %}
-<div class="profile-container">
-    <h2>User Profile: {{ user.student_Name }}</h2>
-    <p><strong>User ID:</strong> {{ user.user_id }}</p>
-    <p><strong>Email:</strong> {{ user.contact_email }}</p>
-    <h3>Total Score: {{ total_score }}</h3>
+{% load static %}
+<div id="student_details_overlay" class="overlay">
+    <div class="student_details_inner_container">
+        <div class="tf-section-2 ranking">
+            <div class="themesflat-container">
+                <div class="row">
+                    <div class="col-12 mb-30">
+                        <div class="widget-tabs relative">
+                            <div class="tf-soft">
+                                <div class="soft-right">
 
-    <a href="{% url 'college_home' %}" class="btn">Back to Rankings</a>
+                                </div>
+                            </div>
+
+                            <div class="widget-content-tab pt-10">
+                                <div class="widget-content-inner active">
+                                    <div class="widget-table-ranking">
+                                        <div class="table-ranking-content">
+                                            <div id="student_view_details_overlay" style="display:block;">
+                                                <div id="student_view_details_inner_container">
+                                                    <div class="widget-edit mb-30 avatar" style="background-color: #232323;">
+                                                        <form action="#">
+                                                            <div class="uploadfile flex">
+                                                                {% if profile_image %}
+                                                                <img src="data:image/jpeg;base64,{{ profile_image }}"
+                                                                     alt=""
+                                                                     class="avatar"
+                                                                     style="width: 100px;" />
+                                                                {% else %}
+                                                                <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                                     alt=""
+                                                                     class="avatar"
+                                                                     style="width: 100px;" />
+                                                                {% endif %}
+                                                                <div class="student-basic-details mt-5">
+                                                                    <!-- Display student ID -->
+                                                                    <h6>Student ID: <span id="student-id">{{ id }}</span></h6>
+
+                                                                    <!-- Display student name -->
+                                                                    <h6>Name: <span id="student-name">{{ name }}</span></h6>
+
+
+                                                                </div>
+                                                                <div class="current-intern" style="font-size: 28px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; margin-left: 380px; margin-top: 40px;">Intern</div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="tf-section create-sell">
+                                                        <div class="themesflat-container">
+                                                            <div class="row">
+                                                                <div data-wow-delay="0s"
+                                                                     class="wow fadeInUp col-lg-3 col-md-6">
+                                                                    <div class="tf-box-icon style-1 step1 relative">
+                                                                        <div class="image">
+                                                                            <img src="{% static 'images/box-icon/icon-01.png' %}"
+                                                                                 alt="" />
+                                                                            <p>Attendance Percentage</p>
+                                                                        </div>
+                                                                        <h4 class="heading">
+                                                                            <a>
+                                                                                {{attendance_percentage}}
+                                                                            </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-wow-delay="0.1s"
+                                                                     class="wow fadeInUp col-lg-3 col-md-6">
+                                                                    <div class="tf-box-icon style-1 step2 relative">
+                                                                        <div class="image">
+                                                                            <img src="{% static 'images/box-icon/icon-02.png' %}"
+                                                                                 alt="" />
+                                                                            <p>TASKS COMPLETED</p>
+                                                                        </div>
+                                                                        <h4 class="heading">
+                                                                            <a>{{taskcom}}</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-wow-delay="0.2s"
+                                                                     class="wow fadeInUp col-lg-3 col-md-6">
+                                                                    <div class="tf-box-icon style-1 step3 relative">
+                                                                        <div class="image">
+                                                                            <img src="{% static 'images/box-icon/icon-03.png' %}"
+                                                                                 alt="" />
+                                                                            <p>CERTIFICATES EARNED</p>
+                                                                        </div>
+                                                                        <h4 class="heading">
+                                                                            <a>03</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div data-wow-delay="0.3s"
+                                                                     class="wow fadeInUp col-lg-3 col-md-6">
+                                                                    <div class="tf-box-icon style-1 step4 relative">
+                                                                        <div class="image">
+                                                                            <img src="{% static 'images/box-icon/icon-04.png' %}"
+                                                                                 alt="" />
+                                                                            <p>TOKENS</p>
+                                                                        </div>
+                                                                        <h4 class="heading">
+                                                                            <a>{{token}}</a>
+                                                                        </h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="internship-activity-status" style="width: 450px; background-color: #232323; border-radius: 20px; margin-top: -20px; height: 320px; overflow-y: auto;">
+                                                        <div class="widget widget-creators" style="padding: 20px;">
+                                                            <div class="flex items-center justify-between">
+                                                                <h5 class="title-widget" style="margin-bottom: -10px;">Active Internship </h5>
+
+                                                            </div>
+
+                                                            {% for data in internlist  %}
+                                                            <div class="widget-creators-item flex items-center mb-20 mt-5">
+                                                                <div class="order">1.</div>
+                                                                <div class="author flex items-center flex-grow">
+
+                                                                    <div class="info">
+                                                                        <h6><a href="#">{{data}}</a></h6>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            {% endfor %}
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="student-badge" style="background-color: #232323; width: 250px; border-radius: 20px; margin-left: 470px; margin-top: -320px; height: 320px; overflow-y: auto;">
+                                                        
+                                                        <div class="widget widget-coins" style="padding: 20px;">
+                                                            <h5 class="title-widget" style="text-align: left; margin-bottom: 30px;">Rewards earned</h5>
+
+                                                            {% if token >= 0 and token < 500 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">NO Badges Collected yet</a></p>
+                                                            </div>
+
+                                                            {% elif token >= 500 and token < 1000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+
+                                                            {% elif token >= 1000 and token < 2000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+
+
+                                                            {% elif token >= 2000 and token < 3000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+
+
+                                                            {% elif token >= 3000 and token < 5000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 4</a></p>
+                                                            </div>
+
+
+                                                            {% elif token >= 5000 and token < 7500 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 4</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 5</a></p>
+                                                            </div>
+
+
+                                                            {% elif token >= 7500 and token < 10000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 4</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 5</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 6</a></p>
+                                                            </div>
+
+                                                            {% elif token >= 10000 and token < 15000 %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 4</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 5</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 6</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 7</a></p>
+                                                            </div>
+
+
+                                                            {% else %}
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-09.png' %}" alt="" />
+                                                                <p><a href="#">Badge 1</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-08.png' %}" alt="" />
+                                                                <p><a href="#">Badge 2</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-10.png' %}" alt="" />
+                                                                <p><a href="#">Badge 3</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 4</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 5</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 6</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 7</a></p>
+                                                            </div>
+                                                            <div class="widget-coins-item flex items-center mb-20">
+                                                                <img src="{% static 'images/badges/avatar-11.png' %}" alt="" />
+                                                                <p><a href="#">Badge 8</a></p>
+                                                            </div>
+
+                                                            {% endif %}
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="internship-activity-status" style="width: 300px; background-color: #232323; border-radius: 20px; margin-left: 740px; margin-top: -320px; overflow-y: auto;">
+                                                        <div class="widget widget-creators" style="padding: 20px;">
+                                                            <div class="flex items-center justify-between">
+                                                                <h5 class="title-widget" style="margin-bottom: -10px;">Score</h5>
+
+                                                            </div>
+                                                            <div class="widget-creators-item flex items-center mt-5 mb-20">
+
+                                                                <div class="author flex items-center flex-grow">
+                                                                    {% if profile_image %}
+                                                                    <img src="data:image/jpeg;base64,{{profile_image}}" alt="" />
+                                                                    {% else %}
+                                                                    <img src="{% static 'images/avatar/avatar-small-01.png' %}" alt="" />
+                                                                    {% endif %}
+
+                                                                    <div class="info">
+                                                                        <h6><a href="#">Daily Challenge</h6>
+                                                                        <span><a style="font-size: 14px;">#{{ds}}</a></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="widget-creators-item flex items-center mb-20">
+
+                                                                <div class="author flex items-center flex-grow">
+                                                                    {% if profile_image %}
+                                                                    <img src="data:image/jpeg;base64,{{profile_image}}" alt="" />
+                                                                    {% else %}
+                                                                    <img src="{% static 'images/avatar/avatar-small-01.png' %}" alt="" />
+                                                                    {% endif %}
+
+                                                                    <div class="info">
+                                                                        <h6><a href="#">Weekly Challenge</a></h6>
+                                                                        <span><a>#{{ws}}</a></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="widget-creators-item flex items-center mb-20">
+
+                                                                <div class="author flex items-center flex-grow">
+                                                                    {% if profile_image %}
+                                                                    <img src="data:image/jpeg;base64,{{profile_image}}" alt="" />
+                                                                    {% else %}
+                                                                    <img src="{% static 'images/avatar/avatar-small-01.png' %}" alt="" />
+                                                                    {% endif %}
+
+                                                                    <div class="info">
+                                                                        <h6><a href="#">Common Challenge</a></h6>
+                                                                        <span><a href="#">#{{cs}}</a></span>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="student-attendance-chart" style="width: 600px; margin-top: 30px; background-color: #232323; border-radius: 20px;">
+                                                        <div style=" padding: 20px;">
+                                                            <h3 style="text-align: center;">Attendance Trends</h3>
+                                                            <canvas id="attendanceChart" style="max-width: 100%;
+  height: auto;"></canvas>
+                                                        </div>
+                                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                                                    </div>
+                                                    <div class="recent-projects-status" style="width: 400px; background-color: #232323; border-radius: 20px; margin-left: 630px; margin-top: -200px; overflow-y: auto;">
+                                                        <div class="widget widget-creators" style="padding: 20px;">
+                                                            <div class="flex items-center justify-between">
+                                                                <h5 class="title-widget" style="margin-bottom: -10px;">Recent Projects</h5>
+
+                                                            </div>
+                                                            {% if projects %}
+                                                            {% for entry in projects %}
+                                                            <div class="widget-creators-item flex items-center mt-5 mb-20">
+                                                                <div class="order">{{entry.statement_id}}</div>
+                                                                <div class="author flex items-center flex-grow">
+
+                                                                    <div class="info">
+                                                                        <h6><a href="#">{{entry.title_of_project}}</a></h6>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            {%  endfor  %}
+                                                            {% else %}
+                                                            <div class="widget-creators-item flex items-center mt-5 mb-20">
+                                                                <div>ideas are not submitted yet</div>
+
+
+                                                            </div>
+
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-{% endblock %}
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var ctx = document.getElementById('attendanceChart').getContext('2d');
+
+            var chartLabels = JSON.parse('{{ chart_labels|escapejs }}');  // Extracted from Django view
+            var chartData = JSON.parse('{{ chart_data|escapejs }}');
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartLabels,
+                    datasets: [{
+                        label: 'Attendance Percentage',
+                        data: chartData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+</script>
+
+
+
+
+
+
+<script src="{% static 'js/college_home.js' %}"></script>
+
+{% endblock %}

@@ -660,7 +660,7 @@
                                         </div>
                                         <div class="author-infor">
                                             <h5>
-                                                <a href="author-2.html">{{data.user_id}}</a>
+                                                <a href="{% url 'progress' user_id=data.user_id %}">{{data.user_id}}</a>
                                             </h5>
                                             <h6 class="price gem style-1">
                                                 <i class="icon-gem"></i>no of submission
@@ -1201,7 +1201,7 @@ height: auto;"></canvas>
     right: -15px;
     top: -15px;
     font-size: 24px;
-    color: white;
+    color: rgb(255, 255, 255);
     cursor: pointer;
     background: #232323;
     width: 30px;
