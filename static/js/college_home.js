@@ -1,23 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ================== View Details Overlay ================== //
-  const overlays = document.getElementById("student_view_details_overlay");
+  const studentOverlay = document.getElementById("student_view_details_overlay");
   const closeOverlayBtn = document.getElementById("close-view-details-button");
 
+  // Get the elements inside the overlay that will be updated
+  const studentIdSpan = document.getElementById("student-id"); 
+  const studentNameSpan = document.getElementById("student-name");
+  const studentProfileImg = document.getElementById("student-profile");
+
+  // Select all "View Details" buttons
   document.querySelectorAll(".view-details-btn").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.preventDefault();
-      overlays.style.display = "flex"; // Show overlay
+
+      // Get student data from button attributes
+      const userId = btn.getAttribute("data-user-id");
+      const studentName = btn.getAttribute("data-student-name");
+      const profileImage = btn.getAttribute("data-profile");
+
+      // Insert student data into the overlay
+      studentIdSpan.textContent = userId;
+      studentNameSpan.textContent = studentName;
+      studentProfileImg.src = profileImage; 
+
+      // Show the overlay
+      studentOverlay.style.display = "flex";
     });
   });
 
+  // Close overlay on button click
   closeOverlayBtn.addEventListener("click", () => {
-    overlays.style.display = "none"; // Hide overlay
+    studentOverlay.style.display = "none";
   });
 
-  // Close overlay when clicking outside of it
-  overlays.addEventListener("click", (event) => {
-    if (event.target === overlays) {
-      overlays.style.display = "none";
+  // Close overlay when clicking outside the inner container
+  studentOverlay.addEventListener("click", (event) => {
+    if (event.target === studentOverlay) {
+      studentOverlay.style.display = "none";
     }
   });
 
