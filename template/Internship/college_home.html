@@ -5,6 +5,98 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/college_home.css' %}" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet" />
+<style>
+    
+  /* Overlay Container Styles */
+  .updates-events-overlay-container {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Inner Container Styles */
+  .updates-events-inner-container {
+    width: 1000px;
+    height: 650px;
+    background-color: #434343;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Close Button Styles */
+  .update-events-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .update-events-close-btn:hover {
+    background-color: transparent;
+  }
+
+  .updates-events-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .updates-events {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+</style>
+<div
+      class="updates-events-overlay-container"
+      id="updates-events-overlay-container"
+    >
+      <div class="updates-events-inner-container">
+        <button class="update-events-close-btn" id="update-events-close-btn">
+          &times;
+        </button>
+    
+        <div class="updates-events">
+          <img
+            src="{% static 'images/box-item/web-development.jpg' %}"
+            alt="Image"
+          />
+        </div>
+      </div>
+</div>
+<script>
+     window.onload = function () {
+              document.getElementById(
+                "updates-events-overlay-container"
+              ).style.display = "flex";
+            };
+
+            // Function to close the pop-up when the close button is clicked
+            document.getElementById("update-events-close-btn").onclick =
+              function () {
+                document.getElementById(
+                  "updates-events-overlay-container"
+                ).style.display = "none";
+              };
+</script>
 <div class="flat-pages-title-home4 relative">
     <div class="themesflat-container w-full">
         <div class="row">

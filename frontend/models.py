@@ -213,3 +213,25 @@ class banneruploadstartup(models.Model):
         db_table = 'startupbanner'
 
 
+class InternNotification(models.Model):
+    user_id = models.CharField(max_length=255)  # CharField for user ID
+    notification = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'intern_notifications'
+        ordering = ['-created_at']  # Orders by creation time descending
+        verbose_name = 'Intern Notification'
+        verbose_name_plural = 'Intern Notifications'
+
+    def __str__(self):
+        return f"Notification for User {self.user_id}: {self.notification[:50]}"
+    
+class EventsAndUpdates(models.Model):
+    banner1 = models.ImageField(upload_to='banners/', verbose_name='Banner 1')
+    
+    def __str__(self):
+        return f"Banner uploaded with ID {self.id}"
+
+    class Meta:
+        db_table = 'eventsandupdates'   
