@@ -134,17 +134,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // ================== Discover More Section ================== //
   const discoverMoreBtn = document.getElementById("discover-more-btn");
   const discoverMoreContainer = document.getElementById("discover-more-container");
-  const closeBtn = document.getElementById("close-btn");
+  const closeBtn = document.getElementById("close-btns");  // ✅ Corrected ID
 
   if (discoverMoreBtn && discoverMoreContainer && closeBtn) {
-    discoverMoreBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      discoverMoreContainer.classList.add("active");
-    });
+      discoverMoreBtn.addEventListener("click", function (event) {
+          event.preventDefault();
+          discoverMoreContainer.classList.add("active");
+      });
 
-    closeBtn.addEventListener("click", function () {
-      discoverMoreContainer.classList.remove("active");
-    });
+      closeBtn.addEventListener("click", function () {
+          discoverMoreContainer.classList.remove("active");
+      });
   }
 
   // ================== Notification Toggle ================== //
