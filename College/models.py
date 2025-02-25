@@ -76,5 +76,15 @@ class bannerupload(models.Model):
         return self.id
     class Meta:
         db_table = 'collegebanner'
+ 
+class UploadedImage(models.Model):
+    image = models.ImageField(upload_to="uploads/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Image {self.id} - {self.uploaded_at}"
+
+    class Meta:
+        db_table = 'uploadimage'  
 
 

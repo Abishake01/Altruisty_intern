@@ -1,6 +1,6 @@
 import base64
 import json
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import redirect, render,get_object_or_404
 from django.utils.timezone import now
 from datetime import timedelta
 
@@ -14,18 +14,30 @@ from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
 
+from .models import UploadedImage
+from .forms import ImageUploadForm
 
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('college_home')  # Redirect to home after upload
+    else:
+        form = ImageUploadForm()
+    
+    return render(request, 'internship/upload_image.html', {'form': form})
  
 def progress(request, user_id):  
-    # ✅ Fetch the correct student details using user_id from the URL
+    #  Fetch the correct student details using user_id from the URL
     user = get_object_or_404(InternRegistartion, user_id=user_id)
 
-    # ✅ Fetch Daily, Weekly, and Common Challenge Answers for the Correct User
+    #  Fetch Daily, Weekly, and Common Challenge Answers for the Correct User
     ud = dailyquestionanswer.objects.filter(user_id=user_id).values()
     uw = weeklyquestionanswer.objects.filter(user_id=user_id).values()
     uc = commonquestionanswer.objects.filter(user_id=user_id).values()
 
-    # ✅ Compute token values correctly
+    #  Compute token values correctly
     udt = [int(i['token']) for i in ud]
     uwt = [int(i['token']) for i in uw]
     uct = [int(i['token']) for i in uc]
@@ -35,30 +47,30 @@ def progress(request, user_id):
     cs = sum(uct)
     score = ds + ws + cs
 
-    # ✅ Calculate completed tasks
+    #  Calculate completed tasks
     def add(a, b):
         return a + b
     
     taskcom = add(len(ud), len(uw))
     fullcom = add(taskcom, len(uc))
     
-    # ✅ Fetch ranking for the selected user
+    #  Fetch ranking for the selected user
     wr = weeklyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
     dr = dailyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
     cr = commonquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
 
-    # ✅ Fetch profile image
+    #  Fetch profile image
     try:
         pimage_data = user_detail.objects.get(user_id=user_id)
-        if pimage_data.profile_photo:  # ✅ Check if image exists
+        if pimage_data.profile_photo:  #  Check if image exists
             profile_image = base64.b64encode(pimage_data.profile_photo).decode('utf-8')
         else:
-            profile_image = None  # ✅ No profile image
+            profile_image = None  #  No profile image
     except user_detail.DoesNotExist:
-        profile_image = None  # ✅ Handle missing user details
+        profile_image = None  #  Handle missing user details
   
 
-    # ✅ Fetch user's team & projects
+    #  Fetch user's team & projects
     in_team = InternTeams.objects.filter(
         Q(member1=user_id) | Q(member2=user_id) | Q(member3=user_id) |
         Q(member4=user_id) | Q(member5=user_id)
@@ -66,7 +78,7 @@ def progress(request, user_id):
 
     projects = IdeaSubmission.objects.filter(user_id__in=in_team) if in_team else None
 
-    # ✅ Fetch user's internship details
+    #  Fetch user's internship details
     userinternship = get_object_or_404(InternRegistartion, user_id=user_id)
 
     internact = userinternship.ep2
@@ -77,10 +89,10 @@ def progress(request, user_id):
         internlist = []  # If parsing fails, default to empty list
 
 
-    # ✅ Attendance Data for the Last 12 Months
+    #  Attendance Data for the Last 12 Months
     current_date = now()
     monthly_attendance = (
-    Attendance.objects.filter(attendee=user_id, join_time__gte=current_date - timedelta(days=365))  # ✅ Fix here
+    Attendance.objects.filter(attendee=user_id, join_time__gte=current_date - timedelta(days=365))  #  Fix here
     .annotate(month=TruncMonth('join_time'))
     .values('month')
     .annotate(
@@ -90,11 +102,11 @@ def progress(request, user_id):
     .order_by('month')
 )
 
-    total_entries = Attendance.objects.filter(attendee=user_id).count()  # ✅ Fix here
+    total_entries = Attendance.objects.filter(attendee=user_id).count()  #  Fix here
 
     total_attendance_percentage = Attendance.objects.filter(attendee=user_id).aggregate(
         Sum('attendance_percentage')
-        )['attendance_percentage__sum'] or 0  # ✅ Fix here
+        )['attendance_percentage__sum'] or 0  #  Fix here
 
     # Normalize Attendance Data
     chart_labels = []
@@ -110,10 +122,10 @@ def progress(request, user_id):
     normalized_percentage = (total_attendance_percentage / (total_entries * 100)) * 100 if total_entries > 0 else 0
 
     context = {
-        "id": user.user_id,  # ✅ Ensure `id` is set correctly
-        "name": user.student_Name,  # ✅ Ensure `name` is set correctly
+        "id": user.user_id,  #  Ensure `id` is set correctly
+        "name": user.student_Name,  #  Ensure `name` is set correctly
         "user": user,
-        "profile_image": profile_image,  # ✅ Profile Image Handling
+        "profile_image": profile_image,  #  Profile Image Handling
         "token": score,
         "taskcom": fullcom,
         "projects": projects,
@@ -137,7 +149,8 @@ def college_home(request):
     completed_intern = 0
     ongoing_intern = 0
     banner = bannerupload.objects.all()
-    
+    images = UploadedImage.objects.all()  # Get all uploaded images
+
     if user_id: 
         college = collegeRegistartion.objects.filter(user_id=user_id).first()
         if college:
@@ -202,5 +215,6 @@ def college_home(request):
         'search_query': search_query,
         'total_intern': total_intern,
         'completed_intern': completed_intern,
-        'ongoing_intern': ongoing_intern
+        'ongoing_intern': ongoing_intern,
+        'images': images
     })

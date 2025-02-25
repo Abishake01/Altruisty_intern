@@ -1,0 +1,12 @@
+{% extends 'internship/base.html' %}
+{% block content %}
+{% load static %}
+    <h2>Upload an Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    
+    <a href="{% url 'college_home' %}">Go to Home Page</a>
+{% endblock content %}

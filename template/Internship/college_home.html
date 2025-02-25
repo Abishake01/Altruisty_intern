@@ -5,23 +5,25 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/college_home.css' %}" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet" />
-<div
-      class="updates-events-overlay-container"
-      id="updates-events-overlay-container"
-    >
-      <div class="updates-events-inner-container">
-        <button class="update-events-close-btn" id="update-events-close-btn">
-          &times;
-        </button>
-    
-        <div class="updates-events">
-          <img
-            src="{% static 'images/box-item/web-development.jpg' %}"
-            alt="Image"
-          />
+
+      
+      
+      <div class="updates-events-overlay-container" id="updates-events-overlay-container">
+        <div class="updates-events-inner-container">
+          <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
+      
+          <div class="updates-events">
+            {% if image %}
+              <img src="{{ image.image.url }}" alt="Uploaded Image">
+            {% else %}
+              <p>No image uploaded yet.</p>
+            {% endif %}
+            <br>
+            <a href="{% url 'upload_image' %}">Upload a new Image</a>
+          </div>
         </div>
       </div>
-</div>
+      
  
 <div class="flat-pages-title-home4 relative">
     <div class="themesflat-container w-full">
