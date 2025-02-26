@@ -14,12 +14,12 @@
       
           <div class="updates-events">
             {% if image %}
-              <img src="{{ image.image.url }}" alt="Uploaded Image">
+            <img src="{% url 'banner_image' %}" alt="College Banner" style="width:100%; height:auto;">
             {% else %}
               <p>No image uploaded yet.</p>
             {% endif %}
-            <br>
-            <a href="{% url 'upload_image' %}">Upload a new Image</a>
+            
+             
           </div>
         </div>
       </div>

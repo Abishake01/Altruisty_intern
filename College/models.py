@@ -70,21 +70,12 @@ class bannerupload(models.Model):
     banner1 = models.FileField(upload_to='banner/', null=True, blank=True)
     banner2= models.FileField(upload_to='banner/', null=True, blank=True)
     banner3 = models.FileField(upload_to='banner/', null=True, blank=True)
-    
+    image = models.BinaryField(blank=True, null=True)  # Store image as binary data
+    uploaded_at = models.DateTimeField(auto_now_add=True)  # ✅ Add this field
 
     def __str__(self):
-        return self.id
+        return f"Banner {self.id} - {self.uploaded_at}"
+
     class Meta:
         db_table = 'collegebanner'
- 
-class UploadedImage(models.Model):
-    image = models.ImageField(upload_to="uploads/")
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Image {self.id} - {self.uploaded_at}"
-
-    class Meta:
-        db_table = 'uploadimage'  
-
-
+#abi-123

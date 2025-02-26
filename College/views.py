@@ -1,5 +1,6 @@
 import base64
 import json
+
 from django.shortcuts import redirect, render,get_object_or_404
 from django.utils.timezone import now
 from datetime import timedelta
@@ -14,20 +15,15 @@ from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
 
-from .models import UploadedImage
-from .forms import ImageUploadForm
+from .models import bannerupload
+from django.http import HttpResponse
 
-def upload_image(request):
-    if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('college_home')  # Redirect to home after upload
-    else:
-        form = ImageUploadForm()
-    
-    return render(request, 'internship/upload_image.html', {'form': form})
- 
+def get_banner_image(request):
+    banner = bannerupload.objects.last()  # Get the latest uploaded image
+    if banner and banner.image:
+        return HttpResponse(banner.image, content_type="image/png")  # Adjust format if needed
+    return HttpResponse("No Banner Image", status=404)
+
 def progress(request, user_id):  
     #  Fetch the correct student details using user_id from the URL
     user = get_object_or_404(InternRegistartion, user_id=user_id)
@@ -149,8 +145,7 @@ def college_home(request):
     completed_intern = 0
     ongoing_intern = 0
     banner = bannerupload.objects.all()
-    images = UploadedImage.objects.all()  # Get all uploaded images
-
+ 
     if user_id: 
         college = collegeRegistartion.objects.filter(user_id=user_id).first()
         if college:
@@ -216,5 +211,5 @@ def college_home(request):
         'total_intern': total_intern,
         'completed_intern': completed_intern,
         'ongoing_intern': ongoing_intern,
-        'images': images
+ 
     })
