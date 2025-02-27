@@ -10,19 +10,20 @@
       
       <div class="updates-events-overlay-container" id="updates-events-overlay-container">
         <div class="updates-events-inner-container">
-          <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
-      
-          <div class="updates-events">
-            {% if image %}
-            <img src="{% url 'banner_image' %}" alt="College Banner" style="width:100%; height:auto;">
-            {% else %}
-              <p>No image uploaded yet.</p>
-            {% endif %}
-            
-             
-          </div>
+            <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
+    
+            <div class="updates-events">
+                {% for banner in banners %}
+                    {% if banner.open_image %}
+                        <img src="{{ banner.open_image.url }}" alt="Open Image">
+                    {% else %}
+                        <p alt="no image"></p>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-      </div>
+    </div>
+    
       
  
 <div class="flat-pages-title-home4 relative">
@@ -164,70 +165,76 @@
                 <div class="banner__right relative">
                     <div class="swiper-container swiper-3d-2card"
                          data-swiper='{
-                        "loop": true,
-                        "spaceBetween": 0,
-                        "slidesPerView": 1,
-                        "centeredSlides": true,
-                        "observer": true,
-                        "observeParents": true,
-                        "freeMode": false,
-                        "watchSlidesProgress": true,
-                        "grabCursor": true,
-                        "navigation": {
-                            "prevEl": ".swiper-button-prev",
-                            "nextEl": ".swiper-button-next"
-                        },
-                        "autoplay": {
-                            "delay": 2000,
-                            "disableOnInteraction": false
-                        }
-                    }'>
+                            "loop": true,
+                            "spaceBetween": 0,
+                            "slidesPerView": 1,
+                            "centeredSlides": true,
+                            "observer": true,
+                            "observeParents": true,
+                            "freeMode": false,
+                            "watchSlidesProgress": true,
+                            "grabCursor": true,
+                            "navigation": {
+                                "prevEl": ".swiper-button-prev",
+                                "nextEl": ".swiper-button-next"
+                            },
+                            "autoplay": {
+                                "delay": 2000,
+                                "disableOnInteraction": false
+                            }
+                        }'>
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="tf-card-box style-2 type-2">
-                                    <div class="card-media">
-                                        <a href="#">
-                                            <img src="http://127.0.0.1:8000/media/{{banner.banner1}}"
-                                                 alt="" />
-                                        </a>
+                            {% for banner in banners %}
+                                {% if banner.banner1 %}
+                                    <div class="swiper-slide">
+                                        <div class="tf-card-box style-2 type-2">
+                                            <div class="card-media">
+                                                <a href="#">
+                                                    <img src="{{ banner.banner1.url }}" alt="Banner 1">
+                                                </a>
+                                            </div>
+                                            <div class="button-place-bid">
+                                                <a href="#" class="tf-button"><span>Join Now</span></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="button-place-bid">
-                                        <a href="#" class="tf-button"><span>Join Now</span></a>
+                                {% endif %}
+            
+                                {% if banner.banner2 %}
+                                    <div class="swiper-slide">
+                                        <div class="tf-card-box style-2 type-2">
+                                            <div class="card-media">
+                                                <a href="#">
+                                                    <img src="{{ banner.banner2.url }}" alt="Banner 2">
+                                                </a>
+                                            </div>
+                                            <div class="button-place-bid">
+                                                <a href="#" class="tf-button"><span>Register Now</span></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tf-card-box style-2 type-2">
-                                    <div class="card-media">
-                                        <a href="#">
-                                            <img src="http://127.0.0.1:8000/media/{{banner.banner2}}" alt="" />
-                                        </a>
+                                {% endif %}
+            
+                                {% if banner.banner3 %}
+                                    <div class="swiper-slide">
+                                        <div class="tf-card-box style-2 type-2">
+                                            <div class="card-media">
+                                                <a href="#">
+                                                    <img src="{{ banner.banner3.url }}" alt="Banner 3">
+                                                </a>
+                                            </div>
+                                            <div class="button-place-bid">
+                                                <a href="#" class="tf-button"><span>Register Now</span></a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="button-place-bid">
-                                        <a href="#" class="tf-button"><span>Register Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tf-card-box style-2 type-2">
-                                    <div class="card-media">
-                                        <a href="#">
-                                            <img src="http://127.0.0.1:8000/media/{{banner.banner3}}" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="button-place-bid">
-                                        <a href="#" class="tf-button"><span>Register Now</span></a>
-                                    </div>
-                                </div>
-                            </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
-
-                    <!-- Swiper Navigation Buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
                 </div>
             </div>
+            
 
         </div>
         

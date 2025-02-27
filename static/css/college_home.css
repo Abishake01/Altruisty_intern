@@ -235,14 +235,7 @@
     background-color: red;
   }
 
-.updates-events-container {
-    background-color: #434343;
-    width: 100%;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-  }
+ 
 
 .related-posts-item {
     width: 600px;
@@ -318,13 +311,31 @@
     text-align: center;
   }
 
-.updates-events {
+  .updates-events {
     background-color: #fff;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-  }
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
+    padding: 20px;
+}
+
+.updates-events img {
+    width: 90%; /* Adjust width to fit container */
+    max-height: 90%; /* Ensure it doesn't overflow */
+    object-fit: contain; /* Show full image without cropping */
+    border-radius: 10px; /* Optional rounded corners */
+}
+
+.updates-events p {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    margin-top: 10px; /* Add spacing below the image */
+}
+
 
 
 

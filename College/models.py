@@ -66,16 +66,18 @@ class InternRegistartion(models.Model):
     class Meta:
         db_table = 'intern_registartion'  # Specify custom table name here
        
-class bannerupload(models.Model):
-    banner1 = models.FileField(upload_to='banner/', null=True, blank=True)
-    banner2= models.FileField(upload_to='banner/', null=True, blank=True)
-    banner3 = models.FileField(upload_to='banner/', null=True, blank=True)
-    image = models.BinaryField(blank=True, null=True)  # Store image as binary data
-    uploaded_at = models.DateTimeField(auto_now_add=True)  # ✅ Add this field
+
+class BannerUpload(models.Model):
+    banner1 = models.ImageField(upload_to='banner/', null=True, blank=True)
+    banner2 = models.ImageField(upload_to='banner/', null=True, blank=True)
+    banner3 = models.ImageField(upload_to='banner/', null=True, blank=True)
+    open_image = models.ImageField(upload_to='banner/',blank=True, null=True)  # Store image as binary
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'collegebanner'
 
     def __str__(self):
         return f"Banner {self.id} - {self.uploaded_at}"
 
-    class Meta:
-        db_table = 'collegebanner'
 #abi-123

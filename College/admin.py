@@ -1,12 +1,8 @@
 from django.contrib import admin
-from .models import bannerupload
+from .models import BannerUpload
 
-class CollegeBannerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'uploaded_at')
+@admin.register(BannerUpload)
+class BannerUploadAdmin(admin.ModelAdmin):
+    list_display = ('id', 'uploaded_at','banner1','banner2','banner3','open_image')
+
     
-    def save_model(self, request, obj, form, change):
-        if request.FILES.get('image'): 
-            obj.image = request.FILES['image'].read()  # Convert image to binary
-        super().save_model(request, obj, form, change)
-
-admin.site.register(bannerupload, CollegeBannerAdmin)

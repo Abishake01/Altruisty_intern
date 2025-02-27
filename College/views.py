@@ -1,6 +1,7 @@
 import base64
 import json
 
+from django.http import HttpResponse
 from django.shortcuts import redirect, render,get_object_or_404
 from django.utils.timezone import now
 from datetime import timedelta
@@ -8,21 +9,21 @@ from datetime import timedelta
 from IdeaSubmission.models import IdeaSubmission
 from community.models import user_detail
 from video_call.models import Attendance
-from .models import bannerupload
+ 
 from internship.models import InternTeams, commonquestionanswer,dailyquestionanswer,weeklyquestionanswer
 from .models import InternRegistartion
 from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
+import base64
+from .models import BannerUpload
 
-from .models import bannerupload
-from django.http import HttpResponse
-
-def get_banner_image(request):
-    banner = bannerupload.objects.last()  # Get the latest uploaded image
-    if banner and banner.image:
-        return HttpResponse(banner.image, content_type="image/png")  # Adjust format if needed
-    return HttpResponse("No Banner Image", status=404)
+def get_open_image(request, banner_id):
+    banner = get_object_or_404(BannerUpload, id=banner_id)
+    if banner.open_image:
+        with open(banner.open_image.path, "rb") as img_file:
+            return HttpResponse(img_file.read(), content_type="image/png")
+    return HttpResponse("No Image", status=404)
 
 def progress(request, user_id):  
     #  Fetch the correct student details using user_id from the URL
@@ -132,7 +133,7 @@ def progress(request, user_id):
         "attendance_percentage": normalized_percentage,
         "chart_labels": json.dumps(chart_labels),
         "chart_data": json.dumps(chart_data),
-        "banner": bannerupload.objects.all(),
+        "banner": BannerUpload.objects.all(),
 }
 
     return render(request, "internship/user_profile.html", context)
@@ -144,7 +145,7 @@ def college_home(request):
     total_intern = 0
     completed_intern = 0
     ongoing_intern = 0
-    banner = bannerupload.objects.all()
+    banners = BannerUpload.objects.all()
  
     if user_id: 
         college = collegeRegistartion.objects.filter(user_id=user_id).first()
@@ -202,7 +203,7 @@ def college_home(request):
     return render(request, 'Internship/college_home.html', {
         'user_id': user_id,
         'college': college,
-        'banner': banner,
+        'banners': banners,
         # "wr":result2,
         # "dr":result,
         # "cr":result3,
