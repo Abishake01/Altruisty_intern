@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -66,18 +67,27 @@ class InternRegistartion(models.Model):
     class Meta:
         db_table = 'intern_registartion'  # Specify custom table name here
        
-
-class BannerUpload(models.Model):
-    banner1 = models.ImageField(upload_to='banner/', null=True, blank=True)
-    banner2 = models.ImageField(upload_to='banner/', null=True, blank=True)
-    banner3 = models.ImageField(upload_to='banner/', null=True, blank=True)
-    open_image = models.ImageField(upload_to='banner/',blank=True, null=True)  # Store image as binary
+class Banner(models.Model):
+    banner1 = models.BinaryField(null=True, blank=True)
+    banner2 = models.BinaryField(null=True, blank=True)
+    banner3 = models.BinaryField(null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'collegebanner'
+        managed = False  # Important: tells Django not to manage this table
 
     def __str__(self):
         return f"Banner {self.id} - {self.uploaded_at}"
 
+class HomeImage(models.Model):
+    open_image = models.BinaryField(null=True, blank=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        db_table = 'homeimage'
+        managed = False  
+
+    def __str__(self):
+        return f"Banner {self.id} - {self.uploaded_at}"
 #abi-123

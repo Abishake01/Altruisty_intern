@@ -15,16 +15,13 @@ from .models import InternRegistartion
 from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
-import base64
-from .models import BannerUpload
+ 
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from .models import Banner, HomeImage
+ 
 
-def get_open_image(request, banner_id):
-    banner = get_object_or_404(BannerUpload, id=banner_id)
-    if banner.open_image:
-        with open(banner.open_image.path, "rb") as img_file:
-            return HttpResponse(img_file.read(), content_type="image/png")
-    return HttpResponse("No Image", status=404)
-
+ 
 def progress(request, user_id):  
     #  Fetch the correct student details using user_id from the URL
     user = get_object_or_404(InternRegistartion, user_id=user_id)
@@ -133,11 +130,10 @@ def progress(request, user_id):
         "attendance_percentage": normalized_percentage,
         "chart_labels": json.dumps(chart_labels),
         "chart_data": json.dumps(chart_data),
-        "banner": BannerUpload.objects.all(),
+         
 }
 
     return render(request, "internship/user_profile.html", context)
-
 
 def college_home(request):
     user_id = request.session.get('user_id', None)
@@ -145,7 +141,6 @@ def college_home(request):
     total_intern = 0
     completed_intern = 0
     ongoing_intern = 0
-    banners = BannerUpload.objects.all()
  
     if user_id: 
         college = collegeRegistartion.objects.filter(user_id=user_id).first()
@@ -195,22 +190,56 @@ def college_home(request):
     # Sort by total score (descending)
     top_participants = interns_with_scores.order_by('-total_score')[:10]  # Top 10 participants
     
-    # result = dailyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
-    # result2 = weeklyquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
-    # result3 = commonquestionanswer.objects.values('user_id').annotate(entry_count=Count('user_id')).order_by('-entry_count')
-
-    
-    return render(request, 'Internship/college_home.html', {
+    # Initialize the context dictionary
+    context = {
         'user_id': user_id,
         'college': college,
-        'banners': banners,
-        # "wr":result2,
-        # "dr":result,
-        # "cr":result3,
         'top_participants': top_participants,
         'search_query': search_query,
         'total_intern': total_intern,
         'completed_intern': completed_intern,
         'ongoing_intern': ongoing_intern,
- 
-    })
+        'banner_images': {},
+        'has_images': False,
+        'home_image': None,
+        'has_image': False
+    }
+    
+    # Add banner images to context if they exist
+    try:
+        # Get the latest banner
+        latest_banner = Banner.objects.latest('uploaded_at')
+        
+        # Convert binary data to base64 for HTML display
+        banner_images = {}
+        if latest_banner.banner1:
+            banner_images['banner1'] = base64.b64encode(latest_banner.banner1).decode('utf-8')
+        if latest_banner.banner2:
+            banner_images['banner2'] = base64.b64encode(latest_banner.banner2).decode('utf-8')
+        if latest_banner.banner3:
+            banner_images['banner3'] = base64.b64encode(latest_banner.banner3).decode('utf-8')
+            
+        context['banner_images'] = banner_images
+        context['has_images'] = any(banner_images.values())
+        
+    except Banner.DoesNotExist:
+        # Keep default values in context
+        pass
+    
+    # Add home image to context if it exists
+    try:
+        # Get the latest home image
+        latest_home_image = HomeImage.objects.latest('uploaded_at')
+        
+        # Convert binary data to base64 for HTML display
+        if latest_home_image.open_image:
+            home_image = base64.b64encode(latest_home_image.open_image).decode('utf-8')
+            context['home_image'] = home_image
+            context['has_image'] = True
+        
+    except HomeImage.DoesNotExist:
+        # Keep default values in context
+        pass
+    
+     
+    return render(request, 'Internship/college_home.html', context)

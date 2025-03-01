@@ -13,13 +13,11 @@
             <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
     
             <div class="updates-events">
-                {% for banner in banners %}
-                    {% if banner.open_image %}
-                        <img src="{{ banner.open_image.url }}" alt="Open Image">
-                    {% else %}
-                        <p alt="no image"></p>
-                    {% endif %}
-                {% endfor %}
+                {% if has_image %}
+                <img src="data:image/jpeg;base64,{{ home_image }}" alt="Home Image">
+                {% else %}
+                <p>No home image uploaded yet.</p>
+            {% endif %}
             </div>
         </div>
     </div>
@@ -184,13 +182,13 @@
                             }
                         }'>
                         <div class="swiper-wrapper">
-                            {% for banner in banners %}
-                                {% if banner.banner1 %}
+                            {% if has_images %}
+                                {% if banner_images.banner1 %}
                                     <div class="swiper-slide">
                                         <div class="tf-card-box style-2 type-2">
                                             <div class="card-media">
                                                 <a href="#">
-                                                    <img src="{{ banner.banner1.url }}" alt="Banner 1">
+                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner1 }}" alt="Banner 1">
                                                 </a>
                                             </div>
                                             <div class="button-place-bid">
@@ -200,12 +198,13 @@
                                     </div>
                                 {% endif %}
             
-                                {% if banner.banner2 %}
+                                {% if banner_images.banner2 %}
                                     <div class="swiper-slide">
                                         <div class="tf-card-box style-2 type-2">
                                             <div class="card-media">
                                                 <a href="#">
-                                                    <img src="{{ banner.banner2.url }}" alt="Banner 2">
+                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner2 }}" alt="Banner 2">
+
                                                 </a>
                                             </div>
                                             <div class="button-place-bid">
@@ -215,12 +214,13 @@
                                     </div>
                                 {% endif %}
             
-                                {% if banner.banner3 %}
+                                {% if banner_images.banner3 %}
                                     <div class="swiper-slide">
                                         <div class="tf-card-box style-2 type-2">
                                             <div class="card-media">
                                                 <a href="#">
-                                                    <img src="{{ banner.banner3.url }}" alt="Banner 3">
+                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner3 }}" alt="Banner 3">
+
                                                 </a>
                                             </div>
                                             <div class="button-place-bid">
@@ -229,7 +229,9 @@
                                         </div>
                                     </div>
                                 {% endif %}
-                            {% endfor %}
+                                {% else %}
+                                <p>No banner images uploaded yet.</p>
+                                {% endif %}
                         </div>
                     </div>
                 </div>
