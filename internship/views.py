@@ -18,9 +18,6 @@ groq_client = Groq(api_key="gsk_zdSylW8RytlQIQ0vH8RaWGdyb3FYyEUwOfJmZ1hSIGGfEF74
 
 # Create your views here.
 
-
-
-
 def realtimeintern_apply(request):
     pk = request.session.get('user_id', None)
 
@@ -479,3 +476,41 @@ def connect_user(request, user_id):
         )
         messages.success(request, "New team created and you have been assigned as member2.")
         return redirect('internship_home')
+    
+    #   # Add banner images to context if they exist
+    # try:
+    #     # Get the latest banner
+    #     latest_banner = Banner.objects.latest('uploaded_at')
+        
+    #     # Convert binary data to base64 for HTML display
+    #     banner_images = {}
+    #     if latest_banner.banner1:
+    #         banner_images['banner1'] = base64.b64encode(latest_banner.banner1).decode('utf-8')
+    #     if latest_banner.banner2:
+    #         banner_images['banner2'] = base64.b64encode(latest_banner.banner2).decode('utf-8')
+    #     if latest_banner.banner3:
+    #         banner_images['banner3'] = base64.b64encode(latest_banner.banner3).decode('utf-8')
+            
+    #     context['banner_images'] = banner_images
+    #     context['has_images'] = any(banner_images.values())
+        
+    # except Banner.DoesNotExist:
+    #     # Keep default values in context
+    #     pass
+    
+    # # Add home image to context if it exists
+    # try:
+    #     # Get the latest home image
+    #     latest_home_image = HomeImage.objects.latest('uploaded_at')
+        
+    #     # Convert binary data to base64 for HTML display
+    #     if latest_home_image.open_image:
+    #         home_image = base64.b64encode(latest_home_image.open_image).decode('utf-8')
+    #         context['home_image'] = home_image
+    #         context['has_image'] = True
+        
+    # except HomeImage.DoesNotExist:
+    #     # Keep default values in context
+    #     pass
+    
+     
