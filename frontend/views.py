@@ -1,6 +1,7 @@
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from College.models import HomeImage
 from internship.models import weeklyquestion,weeklyquestionanswer,commonquestion,commonquestionanswer,dailyquestionanswer, dailyquestionanswer,bannerupload
 from IdeaSubmission.models import statementshowcaseform,statementshowcasecategoryform
 from django.db.models import Count
@@ -466,9 +467,25 @@ def internship_home(request):
         "taskcom": fullcom,
         'statements': statement,
         'courses':courses,
+        'home_image': None,
+        'has_image': False,
         'in_team': 'yes' if in_team else 'no'
          # Ensure statement is included here
     }
+     # Add home image to context if it exists
+    try:
+        # Get the latest home image
+        latest_home_image = HomeImage.objects.latest('uploaded_at')
+        
+        # Convert binary data to base64 for HTML display
+        if latest_home_image.open_image:
+            home_image = base64.b64encode(latest_home_image.open_image).decode('utf-8')
+            context['home_image'] = home_image
+            context['has_image'] = True
+        
+    except HomeImage.DoesNotExist:
+        # Keep default values in context
+        pass
     return render(request, 'Internship/internship_home.html', context)
 
 

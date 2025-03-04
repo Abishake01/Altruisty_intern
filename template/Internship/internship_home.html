@@ -240,11 +240,12 @@
     </button>
 
     <div class="updates-events">
-      <img
-        src="{% static 'images/box-item/web-development.jpg' %}"
-        alt="Image"
-      />
-    </div>
+      {% if has_image %}
+      <img src="data:image/jpeg;base64,{{ home_image }}" alt="Home Image">
+      {% else %}
+      <p>No home image uploaded yet.</p>
+  {% endif %}
+  </div>
   </div>
 </div>
 
