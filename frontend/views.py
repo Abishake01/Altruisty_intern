@@ -1,7 +1,7 @@
 from django.utils import timezone
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from College.models import HomeImage
+from College.models import HomeImage, Events_update
 from internship.models import weeklyquestion,weeklyquestionanswer,commonquestion,commonquestionanswer,dailyquestionanswer, dailyquestionanswer,bannerupload
 from IdeaSubmission.models import statementshowcaseform,statementshowcasecategoryform
 from django.db.models import Count
@@ -256,8 +256,6 @@ def index(request):
 
     
     # Convert QuerySet to a list of dictionaries for JSON response
-    
-    
     return render(request, 'index.html',context)
 
 from .models import Member
@@ -467,6 +465,8 @@ def internship_home(request):
         "taskcom": fullcom,
         'statements': statement,
         'courses':courses,
+        'event_image': None,
+        'has_images': False,
         'home_image': None,
         'has_image': False,
         'in_team': 'yes' if in_team else 'no'
@@ -478,14 +478,28 @@ def internship_home(request):
         latest_home_image = HomeImage.objects.latest('uploaded_at')
         
         # Convert binary data to base64 for HTML display
-        if latest_home_image.open_image:
-            home_image = base64.b64encode(latest_home_image.open_image).decode('utf-8')
+        if latest_home_image.intern_home:
+            home_image = base64.b64encode(latest_home_image.intern_home).decode('utf-8')
             context['home_image'] = home_image
             context['has_image'] = True
         
     except HomeImage.DoesNotExist:
         # Keep default values in context
         pass
+    try:
+        # Get the latest event image
+        latest_Event_image = Events_update.objects.latest('uploaded_at')
+        
+        # Convert binary data to base64 for HTML display
+        if latest_Event_image.events:
+            event_image = base64.b64encode(latest_Event_image.events).decode('utf-8')
+            context['event_image'] = event_image
+            context['has_images'] = True
+        
+    except Events_update.DoesNotExist:
+        # Keep default values in context
+        pass
+    
     return render(request, 'Internship/internship_home.html', context)
 
 

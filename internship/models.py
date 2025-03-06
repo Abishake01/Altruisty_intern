@@ -128,8 +128,6 @@ class bannerupload(models.Model):
         return f"Banner {self.id} - {self.uploaded_at}"
 
 
-
-
 class InternTeams(models.Model):
     team_id = models.AutoField(primary_key=True)
     member1 = models.CharField(max_length=45, null=True, blank=True)

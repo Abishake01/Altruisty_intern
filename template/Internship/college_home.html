@@ -3,53 +3,238 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/internship_home.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/college_home.css' %}" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-      
-      
-      <div class="updates-events-overlay-container" id="updates-events-overlay-container">
-        <div class="updates-events-inner-container">
-            <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
-    
-            <div class="updates-events">
-                {% if has_image %}
-                <img src="data:image/jpeg;base64,{{ home_image }}" alt="Home Image">
-                {% else %}
-                <p>No home image uploaded yet.</p>
+<style>
+    .custom-slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      /* Adjust height as needed */
+      overflow: hidden;
+    }
+  
+    .custom-slider-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+  
+    .custom-slider-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .custom-slider-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+    }
+  
+    /* Overlay Container */
+    .notification-overlay-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      /* Hidden by default */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+  
+    .card-content .item {
+      margin-top: 10px;
+    }
+  
+    /* Inner Container */
+    .notification-inner-container {
+      background-color: #434343;
+      width: 1100px;
+      height: 650px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      position: relative;
+      overflow-y: auto;
+    }
+  
+    /* Close Button */
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: black;
+      font-size: 24px;
+    }
+  
+    .close-btn:hover {
+      background-color: transparent;
+    }
+  
+    .updates-events-container {
+      background-color: #434343;
+      width: 100%;
+      height: 600px;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+  
+    .related-posts-item {
+      width: 600px;
+      height: 80px;
+    }
+  
+    .notification-div-container {
+      background-color: #434343;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      height: 400px;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  
+    .notification-header {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  
+    /* For modern browsers */
+    ::-webkit-scrollbar {
+      width: 6px;
+      /* Width of the vertical scrollbar */
+      height: 6px;
+      /* Height of the horizontal scrollbar */
+    }
+  
+    ::-webkit-scrollbar-thumb {
+      background-color: #393939;
+      /* Color of the scrollbar thumb */
+      border-radius: 10px;
+      /* Round corners of the scrollbar thumb */
+    }
+  
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #232323;
+      /* Color when hovering over the scrollbar thumb */
+    }
+  
+    ::-webkit-scrollbar-track {
+      background: #616060;
+      /* Color of the scrollbar track */
+    }
+  
+    /* Overlay Container Styles */
+    .updates-events-overlay-container {
+      display: none;
+      /* Initially hidden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      /* Semi-transparent background */
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    /* Inner Container Styles */
+    .updates-events-inner-container {
+      width: 1000px;
+      height: 650px;
+      background-color: #434343;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    /* Close Button Styles */
+    .update-events-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #fff;
+      font-size: 24px;
+    }
+  
+    .update-events-close-btn:hover {
+      background-color: transparent;
+    }
+  
+    .updates-events-header {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+    .updates-events {
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+
+<div class="updates-events-overlay-container" id="updates-events-overlay-container">
+    <div class="updates-events-inner-container">
+        <button class="update-events-close-btn" id="update-events-close-btn">&times;</button>
+
+        <div class="updates-events">
+            {% if has_image %}
+            <img src="data:image/jpeg;base64,{{ home_image }}" alt="Home Image">
+            {% else %}
+            <p>No home image uploaded yet.</p>
             {% endif %}
-            </div>
         </div>
     </div>
-    
-      
- 
+</div>
+
+
+
 <div class="flat-pages-title-home4 relative">
     <div class="themesflat-container w-full">
         <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-12"
-                 style="margin-top: -70px">
+            <div class="col-xl-6 col-lg-6 col-md-12" style="margin-top: -70px">
                 <div class="content">
-                    <div class="author flex items-center"
-                         style="margin-bottom: 40px">
+                    <div class="author flex items-center" style="margin-bottom: 40px">
                         <div class="avatar" style="width: 60px">
-                            <img src="{% static 'images/box-item/rank-01.jpg' %}"
-                                 alt="Image" />
+                            <img src="{% static 'images/box-item/rank-01.jpg' %}" alt="Image" />
                         </div>
                         <div class="info">
                             <span>{{user_id}}</span>
                             <h6><a href="author-2.html">{{college.College_name}}</a></h6>
                         </div>
                     </div>
-                    <h1 data-wow-delay="0s"
-                        class="wow fadeInUp">
+                    <h1 data-wow-delay="0s" class="wow fadeInUp">
                         Empower Progress, Track Excellence
                     </h1>
                     <p data-wow-delay="0.1s" class="wow fadeInUp">
                         Your Gateway to Student Success!
                     </p>
-                    <div data-wow-delay="0.2s"
-                         class="wow fadeInUp flat-button flex items-center">
+                    <div data-wow-delay="0.2s" class="wow fadeInUp flat-button flex items-center">
 
                         <a href="#" class="tf-button style-1 h50 w140 active" id="discover-more-btn">
                             Progress<i class="icon-arrow-up-right2"></i>
@@ -62,107 +247,96 @@
                 </div>
             </div>
 
-            <div
-            class="notification-overlay-container"
-            id="notification-overlay-container"
-          >
-            <div class="notification-inner-container">
-              <button class="close-btn" id="close-btn">&times;</button>
-              <div class="notification-header" style="margin-top: 20px">
-                Notifications
-              </div>
-              <div class="notification-div-container">
-                {% for noti in notifications %}
-                <div class="related-posts-item" style="margin-top: 20px">
-                  <div class="item-avatar">
-                    <img
-                      src="{% static 'images/avatar/avatar-04.png' %}"
-                      alt="Profile"
-                    />
-                  </div>
-                  <div class="card-content">
-                    <h5>
-                      <a href="nft-detail-2.html">{{noti.notification}}</a>
-                    </h5>
-                    <div class="item date">{{noti.created_at}}</div>
-                  </div>
-                  <div class="delete-icon">
-                    <i class="fas fa-trash-alt"></i>
-                  </div>
-                </div>
-                {% endfor %}
-
-              </div>
-              <div class="notification-header" style="margin-top: 40px">
-                Updates and Events
-              </div>
-              <div class="updates-events-container">
-                <div class="custom-slider">
-                  <div class="custom-slider-wrapper">
-                    <!-- Custom Slider Slides -->
-                    {% for event in events %}
-                    <div class="custom-slider-slide">
-                      <img
-                        src="{{ event.banner1.url }}"
-                        alt="Banner {{ event.id }}"
-                        class="banner-image"
-                      />
+            <div class="notification-overlay-container" id="notification-overlay-container">
+                <div class="notification-inner-container">
+                    <button class="close-btn" id="close-btn">&times;</button>
+                    <div class="notification-header" style="margin-top: 20px">
+                        Notifications
                     </div>
-                    {% endfor %}
-                    
-                    
-                  </div>
+                    <div class="notification-div-container">
+                        {% for noti in notifications %}
+                        <div class="related-posts-item" style="margin-top: 20px">
+                            <div class="item-avatar">
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile" />
+                            </div>
+                            <div class="card-content">
+                                <h5>
+                                    <a href="nft-detail-2.html">{{noti.notification}}</a>
+                                </h5>
+                                <div class="item date">{{noti.created_at}}</div>
+                            </div>
+                            <div class="delete-icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="notification-header" style="margin-top: 40px">
+                        Updates and Events
+                    </div>
+                    <div class="updates-events-container">
+                        <div class="custom-slider">
+                            <div class="custom-slider-wrapper">
+                                <!-- Custom Slider Slides -->
+
+                                <div class="custom-slider-slide">
+                                    {% if has_image %}
+                                    <img src="data:image/jpeg;base64,{{ event_image }}" alt="Event Images">
+                                    {% else %}
+                                    <p>No Events image uploaded yet.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const notificationIcon =
+                        document.getElementById("notification-icon");
+                    const overlayContainer = document.getElementById(
+                        "notification-overlay-container"
+                    );
+                    const closeButton = document.getElementById("close-btn");
 
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const notificationIcon =
-                document.getElementById("notification-icon");
-              const overlayContainer = document.getElementById(
-                "notification-overlay-container"
-              );
-              const closeButton = document.getElementById("close-btn");
+                    // Open the overlay container when the notification icon is clicked
+                    notificationIcon.addEventListener("click", function () {
+                        overlayContainer.style.display = "flex";
+                    });
 
-              // Open the overlay container when the notification icon is clicked
-              notificationIcon.addEventListener("click", function () {
-                overlayContainer.style.display = "flex";
-              });
+                    // Close the overlay container when the close button is clicked
+                    closeButton.addEventListener("click", function () {
+                        overlayContainer.style.display = "none";
+                    });
 
-              // Close the overlay container when the close button is clicked
-              closeButton.addEventListener("click", function () {
-                overlayContainer.style.display = "none";
-              });
+                    // Optional: Close the overlay when clicking outside the inner container
+                    overlayContainer.addEventListener("click", function (event) {
+                        if (event.target === overlayContainer) {
+                            overlayContainer.style.display = "none";
+                        }
+                    });
+                });
 
-              // Optional: Close the overlay when clicking outside the inner container
-              overlayContainer.addEventListener("click", function (event) {
-                if (event.target === overlayContainer) {
-                  overlayContainer.style.display = "none";
-                }
-              });
-            });
+                // Function to show the pop-up overlay on page load
+                window.onload = function () {
+                    document.getElementById(
+                        "updates-events-overlay-container"
+                    ).style.display = "flex";
+                };
 
-            // Function to show the pop-up overlay on page load
-            window.onload = function () {
-              document.getElementById(
-                "updates-events-overlay-container"
-              ).style.display = "flex";
-            };
-
-            // Function to close the pop-up when the close button is clicked
-            document.getElementById("update-events-close-btn").onclick =
-              function () {
-                document.getElementById(
-                  "updates-events-overlay-container"
-                ).style.display = "none";
-              };
-          </script>
+                // Function to close the pop-up when the close button is clicked
+                document.getElementById("update-events-close-btn").onclick =
+                    function () {
+                        document.getElementById(
+                            "updates-events-overlay-container"
+                        ).style.display = "none";
+                    };
+            </script>
             <div class="col-xl-6 col-lg-6 col-md-12">
                 <div class="banner__right relative">
-                    <div class="swiper-container swiper-3d-2card"
-                         data-swiper='{
+                    <div class="swiper-container swiper-3d-2card" data-swiper='{
                             "loop": true,
                             "spaceBetween": 0,
                             "slidesPerView": 1,
@@ -183,72 +357,73 @@
                         }'>
                         <div class="swiper-wrapper">
                             {% if has_images %}
-                                {% if banner_images.banner1 %}
-                                    <div class="swiper-slide">
-                                        <div class="tf-card-box style-2 type-2">
-                                            <div class="card-media">
-                                                <a href="#">
-                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner1 }}" alt="Banner 1">
-                                                </a>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" class="tf-button"><span>Join Now</span></a>
-                                            </div>
-                                        </div>
+                            {% if banner_images.banner1 %}
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{ banner_images.banner1 }}"
+                                                alt="Banner 1">
+                                        </a>
                                     </div>
-                                {% endif %}
-            
-                                {% if banner_images.banner2 %}
-                                    <div class="swiper-slide">
-                                        <div class="tf-card-box style-2 type-2">
-                                            <div class="card-media">
-                                                <a href="#">
-                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner2 }}" alt="Banner 2">
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Join Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
 
-                                                </a>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" class="tf-button"><span>Register Now</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-            
-                                {% if banner_images.banner3 %}
-                                    <div class="swiper-slide">
-                                        <div class="tf-card-box style-2 type-2">
-                                            <div class="card-media">
-                                                <a href="#">
-                                                    <img src="data:image/jpeg;base64,{{ banner_images.banner3 }}" alt="Banner 3">
+                            {% if banner_images.banner2 %}
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{ banner_images.banner2 }}"
+                                                alt="Banner 2">
 
-                                                </a>
-                                            </div>
-                                            <div class="button-place-bid">
-                                                <a href="#" class="tf-button"><span>Register Now</span></a>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
-                                {% endif %}
-                                {% else %}
-                                <p>No banner images uploaded yet.</p>
-                                {% endif %}
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if banner_images.banner3 %}
+                            <div class="swiper-slide">
+                                <div class="tf-card-box style-2 type-2">
+                                    <div class="card-media">
+                                        <a href="#">
+                                            <img src="data:image/jpeg;base64,{{ banner_images.banner3 }}"
+                                                alt="Banner 3">
+
+                                        </a>
+                                    </div>
+                                    <div class="button-place-bid">
+                                        <a href="#" class="tf-button"><span>Register Now</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% else %}
+                            <p>No banner images uploaded yet.</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
-        
+
         <div class="tf-section create-sell" style="margin-top: 100px">
             <div class="themesflat-container">
                 <div class="row">
-                    <div data-wow-delay="0s"
-                         class="wow fadeInUp col-lg-3 col-md-6">
+                    <div data-wow-delay="0s" class="wow fadeInUp col-lg-3 col-md-6">
                         <div class="tf-box-icon style-1 step1 relative">
                             <div class="image">
-                                <img src="{% static 'images/box-icon/icon-01.png' %}"
-                                     alt="" />
+                                <img src="{% static 'images/box-icon/icon-01.png' %}" alt="" />
                                 <p>Total Number of Students Enrolled</p>
                             </div>
                             <h4 class="heading">
@@ -258,12 +433,10 @@
                             </h4>
                         </div>
                     </div>
-                    <div data-wow-delay="0.1s"
-                         class="wow fadeInUp col-lg-3 col-md-6">
+                    <div data-wow-delay="0.1s" class="wow fadeInUp col-lg-3 col-md-6">
                         <div class="tf-box-icon style-1 step2 relative">
                             <div class="image">
-                                <img src="{% static 'images/box-icon/icon-02.png' %}"
-                                     alt="" />
+                                <img src="{% static 'images/box-icon/icon-02.png' %}" alt="" />
                                 <p>Number of students COMPLETED INTERNSHIPS</p>
                             </div>
                             <h4 class="heading">
@@ -273,12 +446,10 @@
                             </h4>
                         </div>
                     </div>
-                    <div data-wow-delay="0.2s"
-                         class="wow fadeInUp col-lg-3 col-md-6">
+                    <div data-wow-delay="0.2s" class="wow fadeInUp col-lg-3 col-md-6">
                         <div class="tf-box-icon style-1 step3 relative">
                             <div class="image">
-                                <img src="{% static 'images/box-icon/icon-03.png' %}"
-                                     alt="" />
+                                <img src="{% static 'images/box-icon/icon-03.png' %}" alt="" />
                                 <p>Number of students Ongoing Internships</p>
                             </div>
                             <h4 class="heading">
@@ -286,12 +457,10 @@
                             </h4>
                         </div>
                     </div>
-                    <div data-wow-delay="0.3s"
-                         class="wow fadeInUp col-lg-3 col-md-6">
+                    <div data-wow-delay="0.3s" class="wow fadeInUp col-lg-3 col-md-6">
                         <div class="tf-box-icon style-1 step4 relative">
                             <div class="image">
-                                <img src="{% static 'images/box-icon/icon-04.png' %}"
-                                     alt="" />
+                                <img src="{% static 'images/box-icon/icon-04.png' %}" alt="" />
                                 <p>Average Attendance Percentage</p>
                             </div>
                             <h4 class="heading">
@@ -303,7 +472,7 @@
             </div>
         </div>
     </div>
-     <div class="tf-section seller">
+    <div class="tf-section seller">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
@@ -312,8 +481,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="swiper-container seller seller-slider2"
-                         data-swiper='{
+                    <div class="swiper-container seller seller-slider2" data-swiper='{
                     "loop": true,
                     "slidesPerView": 6,
                     "observer": true,
@@ -344,11 +512,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-08.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-08.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -360,12 +527,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-09.png' %}"
-                                             alt=""
-                                             class="avatar"
-                                              />
+                                        <img src="{% static 'images/badges/avatar-09.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -377,11 +542,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-10.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-10.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -393,11 +557,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-11.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -409,11 +572,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-12.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -425,11 +587,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-13.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-13.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -441,11 +602,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-14.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-14.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -457,11 +617,10 @@
                             <div class="swiper-slide">
                                 <div class="tf-author-box style-3 text-center">
                                     <div class="author-avatar">
-                                        <img src="{% static 'images/badges/avatar-15.png' %}"
-                                             alt=""
-                                             class="avatar" />
+                                        <img src="{% static 'images/badges/avatar-15.png' %}" alt="" class="avatar" />
                                         <div class="hover-overlay">
-                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View Badge</span>
+                                            <span class="view-badge-text" onclick="showBadgePopup(this)">View
+                                                Badge</span>
                                         </div>
                                     </div>
                                     <div class="author-infor">
@@ -487,7 +646,7 @@
     <div id="gender-pie-chart" style="max-width: 400px; margin-left: 950px; margin-top: -400px;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
- 
+
 
     <!-- Overlay Container -->
     <div id="student_details_overlay" class="overlay">
@@ -503,9 +662,14 @@
                                 <div class="tf-soft">
                                     <div class="soft-right">
                                         <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10"
+                                                        stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
                                                 </svg>
                                                 <span>Department</span>
                                             </button>
@@ -556,7 +720,9 @@
                                 <ul class="widget-menu-tab">
                                     <div class="widget-search">
                                         <form action="#" method="get" role="search" class="search-form relative">
-                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="" name="s" title="Search for" required="">
+                                            <input type="search" id="search" class="search-field style-1"
+                                                placeholder="Search..." value="" name="s" title="Search for"
+                                                required="">
                                             <button class="search search-submit" type="submit" title="Search">
                                                 <i class="icon-search"></i>
                                             </button>
@@ -602,7 +768,8 @@
                                                     </div>
                                                     <div class="column">
                                                         <div class="item-avatar">
-                                                            <img src="{% static 'assets/images/avatar/avatar-05.png' %}" alt="" />
+                                                            <img src="{% static 'assets/images/avatar/avatar-05.png' %}"
+                                                                alt="" />
                                                         </div>
 
                                                     </div>
@@ -664,21 +831,20 @@
             </div>
         </div>
     </div>
-    <div class="tf-section seller"> 
+    <div class="tf-section seller">
         <div class="themesflat-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading-section">
                         <h2 class="tf-title pb-30">
                             Top participants
-                             
+
                         </h2>
-                         
+
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="swiper-container seller seller-slider"
-                         data-swiper='{
+                    <div class="swiper-container seller seller-slider" data-swiper='{
                           "loop":false,
                           "slidesPerView": 1,
                           "observer": true,
@@ -697,9 +863,8 @@
                                     {% for data in top_participants|slice:':6'%}
                                     <div class="tf-author-box style-2 type-1 mb-30">
                                         <div class="author-avatar">
-                                            <img src="{% static 'images/avatar/avatar-04.png' %}"
-                                                 alt=""
-                                                 class="avatar" />
+                                            <img src="{% static 'images/avatar/avatar-04.png' %}" alt=""
+                                                class="avatar" />
                                         </div>
                                         <div class="author-infor">
                                             <h5>
@@ -714,7 +879,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                             
+
                         </div>
                     </div>
                 </div>
@@ -729,29 +894,28 @@
                 <form action="#">
                     <div class="uploadfile flex">
                         <img id="student-profile" src="" alt="Profile Picture" class="avatar" style="width: 100px;" />
-                        
+
                         <div class="student-basic-details">
                             <h6>Student ID: <span id="student-id"></span></h6>
                             <h6>Name: <span id="student-name"></span></h6>
                         </div>
-    
-                        <div class="current-intern" style="font-size: 28px; font-weight: bold; margin-left: 380px; margin-top: 40px;">
+
+                        <div class="current-intern"
+                            style="font-size: 28px; font-weight: bold; margin-left: 380px; margin-top: 40px;">
                             Python Developer
                         </div>
                     </div>
-                     
+
                 </form>
             </div>
 
             <div class="tf-section create-sell">
                 <div class="themesflat-container">
                     <div class="row">
-                        <div data-wow-delay="0s"
-                             class="wow fadeInUp col-lg-3 col-md-6">
+                        <div data-wow-delay="0s" class="wow fadeInUp col-lg-3 col-md-6">
                             <div class="tf-box-icon style-1 step1 relative">
                                 <div class="image">
-                                    <img src="{% static 'images/box-icon/icon-01.png' %}"
-                                         alt="" />
+                                    <img src="{% static 'images/box-icon/icon-01.png' %}" alt="" />
                                     <p>days attended</p>
                                 </div>
                                 <h4 class="heading">
@@ -761,12 +925,10 @@
                                 </h4>
                             </div>
                         </div>
-                        <div data-wow-delay="0.1s"
-                             class="wow fadeInUp col-lg-3 col-md-6">
+                        <div data-wow-delay="0.1s" class="wow fadeInUp col-lg-3 col-md-6">
                             <div class="tf-box-icon style-1 step2 relative">
                                 <div class="image">
-                                    <img src="{% static 'images/box-icon/icon-02.png' %}"
-                                         alt="" />
+                                    <img src="{% static 'images/box-icon/icon-02.png' %}" alt="" />
                                     <p>TASKS COMPLETED</p>
                                 </div>
                                 <h4 class="heading">
@@ -776,12 +938,10 @@
                                 </h4>
                             </div>
                         </div>
-                        <div data-wow-delay="0.2s"
-                             class="wow fadeInUp col-lg-3 col-md-6">
+                        <div data-wow-delay="0.2s" class="wow fadeInUp col-lg-3 col-md-6">
                             <div class="tf-box-icon style-1 step3 relative">
                                 <div class="image">
-                                    <img src="{% static 'images/box-icon/icon-03.png' %}"
-                                         alt="" />
+                                    <img src="{% static 'images/box-icon/icon-03.png' %}" alt="" />
                                     <p>CERTIFICATES EARNED</p>
                                 </div>
                                 <h4 class="heading">
@@ -789,12 +949,10 @@
                                 </h4>
                             </div>
                         </div>
-                        <div data-wow-delay="0.3s"
-                             class="wow fadeInUp col-lg-3 col-md-6">
+                        <div data-wow-delay="0.3s" class="wow fadeInUp col-lg-3 col-md-6">
                             <div class="tf-box-icon style-1 step4 relative">
                                 <div class="image">
-                                    <img src="{% static 'images/box-icon/icon-04.png' %}"
-                                         alt="" />
+                                    <img src="{% static 'images/box-icon/icon-04.png' %}" alt="" />
                                     <p>TOKENS</p>
                                 </div>
                                 <h4 class="heading">
@@ -806,7 +964,8 @@
                 </div>
             </div>
 
-            <div class="internship-activity-status" style="width: 450px; background-color: #232323; border-radius: 20px; margin-top: -20px; height: 320px; overflow-y: auto;">
+            <div class="internship-activity-status"
+                style="width: 450px; background-color: #232323; border-radius: 20px; margin-top: -20px; height: 320px; overflow-y: auto;">
                 <div class="widget widget-creators" style="padding: 20px;">
                     <div class="flex items-center justify-between">
                         <h5 class="title-widget" style="margin-bottom: -10px;">Internship Activity</h5>
@@ -860,7 +1019,8 @@
                 </div>
             </div>
 
-            <div class="student-badge" style="background-color: #232323; width: 250px; border-radius: 20px; margin-left: 470px; margin-top: -320px; height: 320px; overflow-y: auto;">
+            <div class="student-badge"
+                style="background-color: #232323; width: 250px; border-radius: 20px; margin-left: 470px; margin-top: -320px; height: 320px; overflow-y: auto;">
                 <div class="widget widget-coins" style="padding: 20px;">
                     <h5 class="title-widget" style="text-align: left; margin-bottom: 30px;">Rewards earned</h5>
                     <div class="widget-coins-item flex items-center mb-20">
@@ -882,7 +1042,8 @@
                 </div>
             </div>
 
-            <div class="internship-activity-status" style="width: 300px; background-color: #232323; border-radius: 20px; margin-left: 740px; margin-top: -320px; overflow-y: auto; ">
+            <div class="internship-activity-status"
+                style="width: 300px; background-color: #232323; border-radius: 20px; margin-left: 740px; margin-top: -320px; overflow-y: auto; ">
                 <div class="widget widget-creators" style="padding: 20px;">
                     <div class="flex items-center justify-between">
                         <h5 class="title-widget" style="margin-bottom: -10px;">Rankings</h5>
@@ -924,7 +1085,8 @@
                 </div>
             </div>
 
-            <div class="student-attendance-chart" style="width: 600px; margin-top: 30px; background-color: #232323; border-radius: 20px;">
+            <div class="student-attendance-chart"
+                style="width: 600px; margin-top: 30px; background-color: #232323; border-radius: 20px;">
                 <div style=" padding: 20px;">
                     <h3 style="text-align: center;">Attendance Trends</h3>
                     <canvas id="attendanceChart" style="max-width: 100%;
@@ -933,7 +1095,8 @@ height: auto;"></canvas>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
             </div>
-            <div class="recent-projects-status" style="width: 400px; background-color: #232323; border-radius: 20px; height: 340px; margin-left: 630px; margin-top: -340px; overflow-y: auto;">
+            <div class="recent-projects-status"
+                style="width: 400px; background-color: #232323; border-radius: 20px; height: 340px; margin-left: 630px; margin-top: -340px; overflow-y: auto;">
                 <div class="widget widget-creators" style="padding: 20px;">
                     <div class="flex items-center justify-between">
                         <h5 class="title-widget" style="margin-bottom: -10px;">Recent Projects</h5>
@@ -999,7 +1162,7 @@ height: auto;"></canvas>
         </div>
     </div>
     <div id="discover-more-container" class="hidden-container">
-        
+
         <div class="inner-container">
             <button class="close-btns" id="close-btns">&times;</button>
             <div class="tf-section-2 ranking">
@@ -1009,8 +1172,11 @@ height: auto;"></canvas>
                             <div class="widget-tabs relative">
                                 <ul class="widget-menu-tab">
                                     <div class="widget-search">
-                                        <form action="{% url 'college_home' %}" method="get" role="search" class="search-form relative">
-                                            <input type="search" id="search" class="search-field style-1" placeholder="Search..." value="{{ search_query }}" name="s" title="Search for" required="">
+                                        <form action="{% url 'college_home' %}" method="get" role="search"
+                                            class="search-form relative">
+                                            <input type="search" id="search" class="search-field style-1"
+                                                placeholder="Search..." value="{{ search_query }}" name="s"
+                                                title="Search for" required="">
                                             <button class="search search-submit" type="submit" title="Search">
                                                 <i class="icon-search"></i>
                                             </button>
@@ -1040,7 +1206,8 @@ height: auto;"></canvas>
                                                     <h3>View</h3>
                                                 </div>
                                             </div>
-                                            <div class="table-ranking-content" id="top_participants" style="display:block">
+                                            <div class="table-ranking-content" id="top_participants"
+                                                style="display:block">
                                                 {% for data in top_participants %}
                                                 <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
                                                     <div class="column">
@@ -1048,7 +1215,8 @@ height: auto;"></canvas>
                                                     </div>
                                                     <div class="column">
                                                         <div class="item-avatar">
-                                                            <img src="{% static 'images/avatar/avatar-04.png' %}" alt="">
+                                                            <img src="{% static 'images/avatar/avatar-04.png' %}"
+                                                                alt="">
                                                         </div>
                                                     </div>
                                                     <div class="column">
@@ -1058,18 +1226,17 @@ height: auto;"></canvas>
                                                         <h6>{{ data.student_Name|default:"Unknown" }}</h6>
                                                     </div>
                                                     <div class="column">
-                                                        <h6>{{ data.total_score }}</h6>  <!-- Total score shown here -->
+                                                        <h6>{{ data.total_score }}</h6> <!-- Total score shown here -->
                                                     </div>
                                                     <div class="column">
-                                                        <button class="view-details-btn"
-                                                                title="View Full Details"
-                                                                data-user-id="{{ data.user_id }}"
-                                                                data-student-name="{{ data.student_Name }}"
-                                                                data-profile="{% static 'images/avatar/avatar-04.png' %}">
+                                                        <button class="view-details-btn" title="View Full Details"
+                                                            data-user-id="{{ data.user_id }}"
+                                                            data-student-name="{{ data.student_Name }}"
+                                                            data-profile="{% static 'images/avatar/avatar-04.png' %}">
                                                             <i class="fa fa-eye"></i>
                                                         </button>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 {% endfor %}
                                             </div>
@@ -1084,22 +1251,15 @@ height: auto;"></canvas>
         </div>
     </div>
 </div>
-         
+
 <!-- /#footer -->
 
 <!-- /#page -->
 <!-- Modal Popup Bid -->
-<div class="modal fade popup"
-     id="popup_bid"
-     tabindex="-1"
-     role="dialog"
-     aria-hidden="true">
+<div class="modal fade popup" id="popup_bid" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <button type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
@@ -1107,22 +1267,13 @@ height: auto;"></canvas>
                     <img src="assets/images/backgroup-section/popup.png" alt="" />
                 </div>
                 <div class="logo-rotate">
-                    <img class=""
-                         src="assets/images/item-background/item6-img.png"
-                         alt="" />
+                    <img class="" src="assets/images/item-background/item6-img.png" alt="" />
                 </div>
                 <h2>Subscribe to our newsletter</h2>
                 <p>Subscribe for our newsletter to stay in the loop</p>
                 <fieldset class="email">
-                    <input type="email"
-                           class="style-1"
-                           id="email"
-                           placeholder="Email address*"
-                           name="email"
-                           tabindex="2"
-                           value=""
-                           aria-required="true"
-                           required="" />
+                    <input type="email" class="style-1" id="email" placeholder="Email address*" name="email"
+                        tabindex="2" value="" aria-required="true" required="" />
                 </fieldset>
                 <a href class="tf-button style-1 h50">
                     Subscribe<i class="icon-arrow-up-right2"></i>
@@ -1131,19 +1282,15 @@ height: auto;"></canvas>
         </div>
     </div>
 </div>
-    
+
 <!-- /#wrapper -->
 
 <div class="tf-mouse tf-mouse-outer"></div>
 <div class="tf-mouse tf-mouse-inner"></div>
 
 <div class="progress-wrap active-progress">
-    <svg class="progress-circle svg-content"
-         width="100%"
-         height="100%"
-         viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-              style="
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="
             transition: stroke-dashoffset 10ms linear 0s;
             stroke-dasharray: 307.919, 307.919;
             stroke-dashoffset: 286.138;
@@ -1164,130 +1311,131 @@ height: auto;"></canvas>
 </div>
 
 <style>
-.badge-popup {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-}
+    .badge-popup {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 
-.badge-popup-content {
-    position: relative;
-    background: #1D1D1D;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    margin: 20px auto;
-}
+    .badge-popup-content {
+        position: relative;
+        background: #1D1D1D;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: 20px auto;
+    }
 
-.badge-popup-content img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
+    .badge-popup-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
 
-.badge-stats {
-    background: #232323;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
+    .badge-stats {
+        background: #232323;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 10px;
+        text-align: center;
+    }
 
-.badge-stats p {
-    color: white;
-    margin: 0;
-    font-size: 18px;
-}
+    .badge-stats p {
+        color: white;
+        margin: 0;
+        font-size: 18px;
+    }
 
-.close-badge-popup {
-    position: absolute;
-    right: -15px;
-    top: -15px;
-    font-size: 24px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    background: #232323;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
+    .close-badge-popup {
+        position: absolute;
+        right: -15px;
+        top: -15px;
+        font-size: 24px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        background: #232323;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
 
-.close-badge-popup:hover {
-    background: #444;
-}
+    .close-badge-popup:hover {
+        background: #444;
+    }
 
-/* Add styles for locked badges */
-.badge-locked {
-    filter: grayscale(100%) brightness(40%);
-    position: relative;
-}
+    /* Add styles for locked badges */
+    .badge-locked {
+        filter: grayscale(100%) brightness(40%);
+        position: relative;
+    }
 
-.lock-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 24px;
-    z-index: 1;
-}
+    .lock-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        z-index: 1;
+    }
 
-.threshold-not-met {
-    color: #ff4444;
-}
+    .threshold-not-met {
+        color: #ff4444;
+    }
 
-.threshold-met {
-    color: #44ff44;
-}
+    .threshold-met {
+        color: #44ff44;
+    }
 </style>
 
 <script>
-// Update the event listeners for closing the popup
-document.addEventListener('DOMContentLoaded', function() {
-    // Close popup when clicking the X button
-    const closeButton = document.querySelector('.close-badge-popup');
-    if (closeButton) {
-        closeButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            document.getElementById('badge-popup').style.display = 'none';
-        });
-    }
+    // Update the event listeners for closing the popup
+    document.addEventListener('DOMContentLoaded', function () {
+        // Close popup when clicking the X button
+        const closeButton = document.querySelector('.close-badge-popup');
+        if (closeButton) {
+            closeButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                document.getElementById('badge-popup').style.display = 'none';
+            });
+        }
 
-    // Close popup when clicking outside the content
-    const popup = document.getElementById('badge-popup');
-    if (popup) {
-        popup.addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
-        });
-    }
+        // Close popup when clicking outside the content
+        const popup = document.getElementById('badge-popup');
+        if (popup) {
+            popup.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        }
 
-    // Updated badge initialization
-    const badges = document.querySelectorAll('.tf-author-box.style-3');
-    const total = {{ cr|length }} + {{ dr|length }} + {{ wr|length }};
-    
+        // Updated badge initialization
+        const badges = document.querySelectorAll('.tf-author-box.style-3');
+        const total = {{ cr| length
+    }} + {{ dr| length }} + {{ wr| length }};
+
     badges.forEach((badge) => {
         const badgeTitle = badge.querySelector('.author-infor h5 a').textContent;
         const badgeNumber = parseInt(badgeTitle.replace('Badge ', ''));
         const threshold = getBadgeThreshold(badgeNumber);
-        
+
         if (total < threshold) {
             const avatarDiv = badge.querySelector('.author-avatar');
             const img = avatarDiv.querySelector('img');
             img.classList.add('badge-locked');
-            
+
             // Check if lock icon already exists before adding
             if (!avatarDiv.querySelector('.lock-icon')) {
                 const lockIcon = document.createElement('i');
@@ -1298,68 +1446,69 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function getBadgeThreshold(badgeNumber) {
-    const thresholds = {
-        1: 5000,
-        2: 10000,
-        3: 20000,
-        4: 40000,
-        5: 50000,
-        6: 75000,
-        7: 100000,
-        8: 150000
-    };
-    return thresholds[badgeNumber] || 0;
-}
-function showBadgePopup(element) {
-    const popup = document.getElementById('badge-popup');
-    const popupImg = document.getElementById('popup-badge-image');
-    const badgeImg = element.parentElement.parentElement.querySelector('img');
-    
-    // Calculate total score from the variables passed from views.py
-    const cr = {{ cr|length }};
-    const dr = {{ dr|length }};
-    const wr = {{ wr|length }};
+    function getBadgeThreshold(badgeNumber) {
+        const thresholds = {
+            1: 5000,
+            2: 10000,
+            3: 20000,
+            4: 40000,
+            5: 50000,
+            6: 75000,
+            7: 100000,
+            8: 150000
+        };
+        return thresholds[badgeNumber] || 0;
+    }
+    function showBadgePopup(element) {
+        const popup = document.getElementById('badge-popup');
+        const popupImg = document.getElementById('popup-badge-image');
+        const badgeImg = element.parentElement.parentElement.querySelector('img');
+
+        // Calculate total score from the variables passed from views.py
+        const cr = {{ cr| length
+    }};
+    const dr = {{ dr| length }};
+    const wr = {{ wr| length }};
     const total = cr + dr + wr;
-    
+
     // Get badge number from the badge title
     const badgeTitle = element.parentElement.parentElement.parentElement.querySelector('.author-infor h5 a').textContent;
     const badgeNumber = parseInt(badgeTitle.replace('Badge ', ''));
     const threshold = getBadgeThreshold(badgeNumber);
-    
+
     popupImg.src = badgeImg.src;
-    
+
     // Update popup content to show threshold information
     const statsHtml = `
         <p>Your Total Score: <span class="${total >= threshold ? 'threshold-met' : 'threshold-not-met'}">${total}</span></p>
         <p>Required Score: ${threshold}</p>
         <p>Status: ${total >= threshold ? '<span class="threshold-met">Unlocked</span>' : '<span class="threshold-not-met">Locked</span>'}</p>
     `;
-    
+
     document.querySelector('.badge-stats').innerHTML = statsHtml;
     popup.style.display = 'block';
 }
 
-let showingFirstSet = true;
+    let showingFirstSet = true;
 
-function toggleBadgeSets() {
-    const firstSetBadges = document.querySelectorAll('.badge-set-1');
-    const secondSetBadges = document.querySelectorAll('.badge-set-2');
-    
-    if (showingFirstSet) {
-        // Hide first set
-        firstSetBadges.forEach(badge => badge.style.display = 'none');
-        // Show second set
-        secondSetBadges.forEach(badge => badge.style.display = 'block');
-    } else {
-        // Show first set
-        firstSetBadges.forEach(badge => badge.style.display = 'block');
-        // Hide second set
-        secondSetBadges.forEach(badge => badge.style.display = 'none');
+    function toggleBadgeSets() {
+        const firstSetBadges = document.querySelectorAll('.badge-set-1');
+        const secondSetBadges = document.querySelectorAll('.badge-set-2');
+
+        if (showingFirstSet) {
+            // Hide first set
+            firstSetBadges.forEach(badge => badge.style.display = 'none');
+            // Show second set
+            secondSetBadges.forEach(badge => badge.style.display = 'block');
+        } else {
+            // Show first set
+            firstSetBadges.forEach(badge => badge.style.display = 'block');
+            // Hide second set
+            secondSetBadges.forEach(badge => badge.style.display = 'none');
+        }
+
+        showingFirstSet = !showingFirstSet;
     }
-    
-    showingFirstSet = !showingFirstSet;
-}
 </script>
 
 {% endblock %}

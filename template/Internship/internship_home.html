@@ -1,24 +1,17 @@
-{% extends 'internship/base.html' %} 
+{% extends 'internship/base.html' %}
 {% block menu_items %}
 {% if in_team == 'yes' %}
 <li class="menu-item">
-    <a href="{% url 'ai_tools' %}">Workspace</a>
+  <a href="{% url 'ai_tools' %}">Workspace</a>
 
 </li>
 {% endif %}
 {% endblock %}
 {% block content %} {% load static %}
 
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  rel="stylesheet"
-/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/internship_home.css' %}"
-/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/internship_home.css' %}" />
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -50,7 +43,8 @@
   .custom-slider {
     position: relative;
     width: 100%;
-    height: 500px; /* Adjust height as needed */
+    height: 500px;
+    /* Adjust height as needed */
     overflow: hidden;
   }
 
@@ -69,7 +63,7 @@
   .custom-slider-slide img {
     width: 100%;
     height: 500px;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   /* Overlay Container */
@@ -80,7 +74,8 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -154,32 +149,40 @@
 
   /* For modern browsers */
   ::-webkit-scrollbar {
-    width: 6px; /* Width of the vertical scrollbar */
-    height: 6px; /* Height of the horizontal scrollbar */
+    width: 6px;
+    /* Width of the vertical scrollbar */
+    height: 6px;
+    /* Height of the horizontal scrollbar */
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #393939; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Round corners of the scrollbar thumb */
+    background-color: #393939;
+    /* Color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Round corners of the scrollbar thumb */
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #232323; /* Color when hovering over the scrollbar thumb */
+    background-color: #232323;
+    /* Color when hovering over the scrollbar thumb */
   }
 
   ::-webkit-scrollbar-track {
-    background: #616060; /* Color of the scrollbar track */
+    background: #616060;
+    /* Color of the scrollbar track */
   }
 
   /* Overlay Container Styles */
   .updates-events-overlay-container {
-    display: none; /* Initially hidden */
+    display: none;
+    /* Initially hidden */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent background */
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -230,10 +233,7 @@
   }
 </style>
 
-<div
-  class="updates-events-overlay-container"
-  id="updates-events-overlay-container"
->
+<div class="updates-events-overlay-container" id="updates-events-overlay-container">
   <div class="updates-events-inner-container">
     <button class="update-events-close-btn" id="update-events-close-btn">
       &times;
@@ -244,8 +244,8 @@
       <img src="data:image/jpeg;base64,{{ home_image }}" alt="Home Image">
       {% else %}
       <p>No home image uploaded yet.</p>
-  {% endif %}
-  </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
@@ -256,36 +256,22 @@
         <div class="content">
           <div class="author flex items-center" style="margin-bottom: 40px">
             <div class="avatar" style="width: 60px">
-              <img
-                src="{% static 'images/avatar/avatar-box-02.jpg' %}"
-                alt="Image"
-              />
+              <img src="{% static 'images/avatar/avatar-box-02.jpg' %}" alt="Image" />
             </div>
             <div class="info">
               <span>{{id}}</span>
               <h6><a href="author-2.html">{{name}}</a></h6>
             </div>
           </div>
-          <h1
-            data-wow-delay="0s"
-            class="wow fadeInUp"
-            style="margin-left: -100px"
-          >
+          <h1 data-wow-delay="0s" class="wow fadeInUp" style="margin-left: -100px">
             Track, Learn, and <br />
             Thrive!
           </h1>
           <p data-wow-delay="0.1s" class="wow fadeInUp">
             Your Internship Journey Starts Here
           </p>
-          <div
-            data-wow-delay="0.2s"
-            class="wow fadeInUp flat-button flex items-center"
-          >
-            <a
-              href="#"
-              class="tf-button style-1 h50 w140 mr-16"
-              id="joinClassButton"
-            >
+          <div data-wow-delay="0.2s" class="wow fadeInUp flat-button flex items-center">
+            <a href="#" class="tf-button style-1 h50 w140 mr-16" id="joinClassButton">
               Join class<i class="icon-arrow-up-right2"></i>
             </a>
             <a href="#" class="tf-button style-1 h50 w140 active">
@@ -299,10 +285,7 @@
             </div>
           </div>
 
-          <div
-            class="notification-overlay-container"
-            id="notification-overlay-container"
-          >
+          <div class="notification-overlay-container" id="notification-overlay-container">
             <div class="notification-inner-container">
               <button class="close-btn" id="close-btn">&times;</button>
               <div class="notification-header" style="margin-top: 20px">
@@ -312,10 +295,7 @@
                 {% for noti in notifications %}
                 <div class="related-posts-item" style="margin-top: 20px">
                   <div class="item-avatar">
-                    <img
-                      src="{% static 'images/avatar/avatar-04.png' %}"
-                      alt="Profile"
-                    />
+                    <img src="{% static 'images/avatar/avatar-04.png' %}" alt="Profile" />
                   </div>
                   <div class="card-content">
                     <h5>
@@ -337,17 +317,17 @@
                 <div class="custom-slider">
                   <div class="custom-slider-wrapper">
                     <!-- Custom Slider Slides -->
-                    {% for event in events %}
+
                     <div class="custom-slider-slide">
-                      <img
-                        src="{{ event.banner1.url }}"
-                        alt="Banner {{ event.id }}"
-                        class="banner-image"
-                      />
+                      {% if has_image %}
+                      <img src="data:image/jpeg;base64,{{ event_image }}" alt="Event Images">
+                      {% else %}
+                      <p>No Events image uploaded yet.</p>
+                      {% endif %}
                     </div>
-                    {% endfor %}
-                    
-                    
+
+
+
                   </div>
                 </div>
               </div>
@@ -399,14 +379,8 @@
 
           <div class="real-time-container" id="realtimeContainer">
             <div class="overlay-realtime"></div>
-            <img
-              src="{% static 'images/box-item/real-time-internship.gif' %}"
-              alt=""
-            />
-            <div
-              class="text-overlay-realtime"
-              style="line-height: 30px; text-align: center"
-            >
+            <img src="{% static 'images/box-item/real-time-internship.gif' %}" alt="" />
+            <div class="text-overlay-realtime" style="line-height: 30px; text-align: center">
               Apply for Real Time<br />Internship
               <i class="icon-arrow-up-right2"></i>
             </div>
@@ -427,8 +401,7 @@
 
       <div class="col-xl-6 col-lg-6 col-md-12">
         <div class="banner__right relative">
-            <div class="swiper-container swiper-3d-2card"
-                 data-swiper='{
+          <div class="swiper-container swiper-3d-2card" data-swiper='{
     "loop": true,
     "spaceBetween": 0,
     "slidesPerView": 1,
@@ -447,57 +420,54 @@
         "disableOnInteraction": false
     }
 }'>
-                <div class="swiper-wrapper">
-                    {% for data in banner|slice:':1' %}
-                    <div class="swiper-slide">
-                        <div class="tf-card-box style-2 type-2">
-                            <div class="card-media">
-                                <a href="#">
-                                    <img src="data:image/jpeg;base64,{{data.banner1}}"
-                                         alt="" />
-                                </a>
-                            </div>
-                            <div class="button-place-bid">
-                                <a href="#" class="tf-button"><span>Join Now</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tf-card-box style-2 type-2">
-                            <div class="card-media">
-                                <a href="#">
-                                    <img src="data:image/jpeg;base64,{{data.banner3}}"
-                                         alt="" />
-                                </a>
-                            </div>
-                            <div class="button-place-bid">
-                                <a href="#" class="tf-button"><span>Join Now</span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tf-card-box style-2 type-2">
-                            <div class="card-media">
-                                <a href="#">
-                                    <img src="data:image/jpeg;base64,{{data.banner2}}"
-                                         alt="" />
-                                </a>
-                            </div>
-                            <div class="button-place-bid">
-                                <a href="#" class="tf-button"><span>Join Now</span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %}
+            <div class="swiper-wrapper">
+              {% for data in banner|slice:':1' %}
+              <div class="swiper-slide">
+                <div class="tf-card-box style-2 type-2">
+                  <div class="card-media">
+                    <a href="#">
+                      <img src="data:image/jpeg;base64,{{data.banner1}}" alt="" />
+                    </a>
+                  </div>
+                  <div class="button-place-bid">
+                    <a href="#" class="tf-button"><span>Join Now</span></a>
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="tf-card-box style-2 type-2">
+                  <div class="card-media">
+                    <a href="#">
+                      <img src="data:image/jpeg;base64,{{data.banner3}}" alt="" />
+                    </a>
+                  </div>
+                  <div class="button-place-bid">
+                    <a href="#" class="tf-button"><span>Join Now</span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="tf-card-box style-2 type-2">
+                  <div class="card-media">
+                    <a href="#">
+                      <img src="data:image/jpeg;base64,{{data.banner2}}" alt="" />
+                    </a>
+                  </div>
+                  <div class="button-place-bid">
+                    <a href="#" class="tf-button"><span>Join Now</span></a>
+                  </div>
+                </div>
+              </div>
 
-            <!-- Swiper Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- Swiper Navigation Buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
-    </div>
+      </div>
     </div>
 
     <div id="overlay" class="overlay"></div>
@@ -586,9 +556,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <div
-            class="swiper-container seller seller-slider2"
-            data-swiper='{
+          <div class="swiper-container seller seller-slider2" data-swiper='{
                     "loop":false,
                     "slidesPerView": 2,
                     "observer": true,
@@ -614,18 +582,13 @@
                             "slidesPerView": 6
                         }
                     }
-                }'
-          >
+                }'>
             <div class="swiper-wrapper">
               {% if token == 0 %}
               <div class="swiper-slide" id="badgeContainer">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -639,11 +602,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-09.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-09.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -660,11 +619,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-10.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-10.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -680,11 +635,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -700,11 +651,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -720,11 +667,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-13.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-13.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -740,11 +683,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -760,11 +699,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -781,11 +716,7 @@
               <div class="swiper-slide" id="badgeContainer">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -799,11 +730,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-09.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-09.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -819,11 +746,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-10.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-10.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -839,11 +762,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -859,11 +778,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -879,11 +794,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-13.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-13.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -899,11 +810,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -919,11 +826,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -940,11 +843,7 @@
               <div class="swiper-slide" id="badgeContainer">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -958,11 +857,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-09.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-09.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -978,11 +873,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar">
-                    <img
-                      src="{% static 'images/badges/avatar-10.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-10.png' %}" alt="" class="avatar" />
                     <div class="hover-overlay">
                       <span class="view-badge-text">View Badge</span>
                     </div>
@@ -997,11 +888,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -1017,11 +904,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -1037,11 +920,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-13.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-13.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -1057,11 +936,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-11.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-11.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -1077,11 +952,7 @@
               <div class="swiper-slide">
                 <div class="tf-author-box style-3 text-center">
                   <div class="author-avatar locked">
-                    <img
-                      src="{% static 'images/badges/avatar-12.png' %}"
-                      alt=""
-                      class="avatar"
-                    />
+                    <img src="{% static 'images/badges/avatar-12.png' %}" alt="" class="avatar" />
                     <div class="lock-overlay">
                       <i class="fas fa-lock"></i>
                       <!-- Lock icon -->
@@ -1110,24 +981,13 @@
         <div class="col-md-12">
           <div class="action__body m-0">
             <div class="tf-tsparticles">
-              <div
-                id="tsparticles1"
-                data-color="#161616"
-                data-line="#000"
-              ></div>
+              <div id="tsparticles1" data-color="#161616" data-line="#000"></div>
             </div>
-            <h2
-              class="text-center capitalize mx-auto mw-667"
-              style="font-size: 24px"
-            >
+            <h2 class="text-center capitalize mx-auto mw-667" style="font-size: 24px">
               "Unlock Innovation – Submit Your Idea Today!"
             </h2>
             <div class="flat-button flex justify-center">
-              <a
-                href="#"
-                class="tf-button style-2 h50 w190"
-                id="submit-idea-btn"
-              >
+              <a href="#" class="tf-button style-2 h50 w190" id="submit-idea-btn">
                 View Problems<i class="icon-arrow-up-right2"></i>
               </a>
             </div>
@@ -1150,34 +1010,19 @@
                     <span class="dropdown-text">All Category</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li
-                      class="dropdown-item"
-                      onclick="selectCategory('Education')"
-                    >
+                    <li class="dropdown-item" onclick="selectCategory('Education')">
                       Education
                     </li>
-                    <li
-                      class="dropdown-item"
-                      onclick="selectCategory('Healthcare')"
-                    >
+                    <li class="dropdown-item" onclick="selectCategory('Healthcare')">
                       Healthcare
                     </li>
-                    <li
-                      class="dropdown-item"
-                      onclick="selectCategory('Environment')"
-                    >
+                    <li class="dropdown-item" onclick="selectCategory('Environment')">
                       Environment
                     </li>
-                    <li
-                      class="dropdown-item"
-                      onclick="selectCategory('Technology')"
-                    >
+                    <li class="dropdown-item" onclick="selectCategory('Technology')">
                       Technology
                     </li>
-                    <li
-                      class="dropdown-item"
-                      onclick="selectCategory('Craft & Culture')"
-                    >
+                    <li class="dropdown-item" onclick="selectCategory('Craft & Culture')">
                       Craft & Culture
                     </li>
                   </ul>
@@ -1189,10 +1034,7 @@
                       <div class="table-ranking-content">
                         {% for statement in statements %} {% for data in
                         statement %}
-                        <div
-                          data-wow-delay="0s"
-                          class="wow fadeInUp fl-row-ranking"
-                        >
+                        <div data-wow-delay="0s" class="wow fadeInUp fl-row-ranking">
                           <div class="td1">
                             <div class="item-rank">1.</div>
                             <!-- Serial Number -->
@@ -1210,10 +1052,8 @@
                             </div>
                           </div>
                           <div class="td4">
-                            <button
-                              onclick="navigate('{{ data.statement_id }}')"
-                              class="btn btn-primary submit-idea-btn"
-                            >
+                            <button onclick="navigate('{{ data.statement_id }}')"
+                              class="btn btn-primary submit-idea-btn">
                               Submit Idea
                             </button>
                             <!-- Submit Idea Button -->
@@ -1271,9 +1111,7 @@
         </div>
       </div>
       <div class="col-md-12">
-        <div
-          class="featured pt-10 swiper-container carousel3"
-          data-swiper='{
+        <div class="featured pt-10 swiper-container carousel3" data-swiper='{
                         "loop":false,
                         "slidesPerView": 1,
                         "spaceBetween": 30,
@@ -1287,39 +1125,22 @@
                                 "slidesPerView": 3
                             }
                         }
-                    }'
-        >
+                    }'>
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="tf-card-collection">
                 <a href="http://127.0.0.1:8000/showdaily_challenges/">
                   <div class="media-images-collection">
-                    <img
-                      src="{% static 'images/box-item/img-collection-09.jpg' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/img-collection-09.jpg' %}" alt="" />
 
-                    <img
-                      src="{% static 'images/box-item/img-collection-10.jpg' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/img-collection-10.jpg' %}" alt="" />
 
-                    <img
-                      src="{% static 'images/box-item/python-development-challenge.png' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/python-development-challenge.png' %}" alt="" />
 
-                    <img
-                      src="{% static 'images/box-item/java-development-challenge.jpeg' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/java-development-challenge.jpeg' %}" alt="" />
 
                     <div class="author-poster">
-                      <img
-                        src="{% static 'images/avatar/avatar-01.png' %}"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="{% static 'images/avatar/avatar-01.png' %}" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1329,28 +1150,12 @@
               <div class="tf-card-collection">
                 <a href="http://127.0.0.1:8000/showweekly_challenges/">
                   <div class="media-images-collection">
-                    <img
-                      src="{% static 'images/box-item/weekly-challenge-04.jpeg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/weekly-challenge-01.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/weekly-challenge-02.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/weekly-challenge-03.png' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/weekly-challenge-04.jpeg' %}" alt="" />
+                    <img src="{% static 'images/box-item/weekly-challenge-01.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/weekly-challenge-02.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/weekly-challenge-03.png' %}" alt="" />
                     <div class="author-poster">
-                      <img
-                        src="{% static 'images/avatar/avatar-03.png' %}"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="{% static 'images/avatar/avatar-03.png' %}" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1360,28 +1165,12 @@
               <div class="tf-card-collection">
                 <a href="http://127.0.0.1:8000/showcommon_challenges/">
                   <div class="media-images-collection">
-                    <img
-                      src="{% static 'images/box-item/general-challenge-01.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-02.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-03.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-04.jpg' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/general-challenge-01.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-02.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-03.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-04.jpg' %}" alt="" />
                     <div class="author-poster">
-                      <img
-                        src="{% static 'images/avatar/avatar-02.png' %}"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="{% static 'images/avatar/avatar-02.png' %}" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1391,28 +1180,12 @@
               <div class="tf-card-collection">
                 <a href="author-2.html">
                   <div class="media-images-collection">
-                    <img
-                      src="{% static 'images/box-item/general-challenge-01.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-02.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-03.jpg' %}"
-                      alt=""
-                    />
-                    <img
-                      src="{% static 'images/box-item/general-challenge-04.jpg' %}"
-                      alt=""
-                    />
+                    <img src="{% static 'images/box-item/general-challenge-01.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-02.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-03.jpg' %}" alt="" />
+                    <img src="{% static 'images/box-item/general-challenge-04.jpg' %}" alt="" />
                     <div class="author-poster">
-                      <img
-                        src="{% static 'images/avatar/avatar-03.png' %}"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="{% static 'images/avatar/avatar-03.png' %}" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1424,20 +1197,10 @@
                   <div class="bottom-right">
                     <div class="shop">
                       <div class="icon">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M16.875 6.25L16.3542 15.11C16.3261 15.5875 16.1166 16.0363 15.7685 16.3644C15.4204 16.6925 14.96 16.8752 14.4817 16.875H5.51833C5.03997 16.8752 4.57962 16.6925 4.23152 16.3644C3.88342 16.0363 3.6739 15.5875 3.64583 15.11L3.125 6.25M8.33333 9.375H11.6667M2.8125 6.25H17.1875C17.705 6.25 18.125 5.83 18.125 5.3125V4.0625C18.125 3.545 17.705 3.125 17.1875 3.125H2.8125C2.295 3.125 1.875 3.545 1.875 4.0625V5.3125C1.875 5.83 2.295 6.25 2.8125 6.25Z"
-                            stroke="white"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                       </div>
                       <p>12 Item</p>
@@ -1459,11 +1222,7 @@
                     <img src="images/box-item/img-collection-03.jpg" alt="" />
                     <img src="images/box-item/img-collection-04.jpg" alt="" />
                     <div class="author-poster">
-                      <img
-                        src="images/avatar/avatar-01.png"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="images/avatar/avatar-01.png" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1475,20 +1234,10 @@
                   <div class="bottom-right">
                     <div class="shop">
                       <div class="icon">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M16.875 6.25L16.3542 15.11C16.3261 15.5875 16.1166 16.0363 15.7685 16.3644C15.4204 16.6925 14.96 16.8752 14.4817 16.875H5.51833C5.03997 16.8752 4.57962 16.6925 4.23152 16.3644C3.88342 16.0363 3.6739 15.5875 3.64583 15.11L3.125 6.25M8.33333 9.375H11.6667M2.8125 6.25H17.1875C17.705 6.25 18.125 5.83 18.125 5.3125V4.0625C18.125 3.545 17.705 3.125 17.1875 3.125H2.8125C2.295 3.125 1.875 3.545 1.875 4.0625V5.3125C1.875 5.83 2.295 6.25 2.8125 6.25Z"
-                            stroke="white"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                       </div>
                       <p>12 Item</p>
@@ -1510,11 +1259,7 @@
                     <img src="images/box-item/img-collection-03.jpg" alt="" />
                     <img src="images/box-item/img-collection-04.jpg" alt="" />
                     <div class="author-poster">
-                      <img
-                        src="images/avatar/avatar-01.png"
-                        alt=""
-                        class="w-full"
-                      />
+                      <img src="images/avatar/avatar-01.png" alt="" class="w-full" />
                     </div>
                   </div>
                 </a>
@@ -1526,20 +1271,10 @@
                   <div class="bottom-right">
                     <div class="shop">
                       <div class="icon">
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M16.875 6.25L16.3542 15.11C16.3261 15.5875 16.1166 16.0363 15.7685 16.3644C15.4204 16.6925 14.96 16.8752 14.4817 16.875H5.51833C5.03997 16.8752 4.57962 16.6925 4.23152 16.3644C3.88342 16.0363 3.6739 15.5875 3.64583 15.11L3.125 6.25M8.33333 9.375H11.6667M2.8125 6.25H17.1875C17.705 6.25 18.125 5.83 18.125 5.3125V4.0625C18.125 3.545 17.705 3.125 17.1875 3.125H2.8125C2.295 3.125 1.875 3.545 1.875 4.0625V5.3125C1.875 5.83 2.295 6.25 2.8125 6.25Z"
-                            stroke="white"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                       </div>
                       <p>12 Item</p>
@@ -1581,15 +1316,11 @@
                   </ul>
                 </span>
               </h2>
-              <a href="#" id="discover-more-btn"
-                >Discover more <i class="icon-arrow-right2"></i
-              ></a>
+              <a href="#" id="discover-more-btn">Discover more <i class="icon-arrow-right2"></i></a>
             </div>
           </div>
           <div class="col-md-12">
-            <div
-              class="swiper-container seller seller-slider"
-              data-swiper='{
+            <div class="swiper-container seller seller-slider" data-swiper='{
                                 "loop":false,
                                 "slidesPerView": 1,
                                 "observer": true,
@@ -1601,19 +1332,14 @@
                                     "nextEl": ".main-next",
                                     "prevEl": ".main-prev"
                                 }
-                            }'
-            >
+                            }'>
               <div class="swiper-wrapper">
                 <div class="swiper-slide" id="daily">
                   <div class="grid-author-box">
                     {% for data in dr|slice:':6'%}
                     <div class="tf-author-box style-2 type-1 mb-30">
                       <div class="author-avatar">
-                        <img
-                          src="{% static 'images/avatar/avatar-04.png' %}"
-                          alt=""
-                          class="avatar"
-                        />
+                        <img src="{% static 'images/avatar/avatar-04.png' %}" alt="" class="avatar" />
                       </div>
                       <div class="author-infor">
                         <h5>
@@ -1633,11 +1359,7 @@
                     {% for data in wr|slice:':6'%}
                     <div class="tf-author-box style-2 type-1 mb-30">
                       <div class="author-avatar">
-                        <img
-                          src="{% static 'images/avatar/avatar-01.png' %}"
-                          alt=""
-                          class="avatar"
-                        />
+                        <img src="{% static 'images/avatar/avatar-01.png' %}" alt="" class="avatar" />
                       </div>
                       <div class="author-infor">
                         <h5>
@@ -1657,11 +1379,7 @@
                     {% for data in wr|slice:':6'%}
                     <div class="tf-author-box style-2 type-1 mb-30">
                       <div class="author-avatar">
-                        <img
-                          src="images/avatar/avatar-01.png"
-                          alt=""
-                          class="avatar"
-                        />
+                        <img src="images/avatar/avatar-01.png" alt="" class="avatar" />
                       </div>
                       <div class="author-infor">
                         <h5>
@@ -1694,67 +1412,36 @@
                   <div class="tf-soft">
                     <div class="soft-right">
                       <div class="dropdown">
-                        <button
-                          class="btn btn-secondary dropdown-toggle"
-                          type="button"
-                          id="dropdownMenuButton4"
-                          data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10"
-                              stroke="white"
-                              stroke-width="1.5"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            />
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.125 5.625H16.875M3.125 10H16.875M3.125 14.375H10" stroke="white"
+                              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                           </svg>
                           <span>Daily</span>
                         </button>
-                        <div
-                          class="dropdown-menu"
-                          aria-labelledby="dropdownMenuButton"
-                        >
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <h6>Select</h6>
-                          <a
-                            onclick="document.getElementById('dailyr').style.display = 'block';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'none';"
-                            class="dropdown-item"
-                          >
+                          <a onclick="document.getElementById('dailyr').style.display = 'block';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'none';"
+                            class="dropdown-item">
                             <div class="sort-filter active">
                               <span>Daily</span>
-                              <span class="icon-tick"
-                                ><span class="path2"></span
-                              ></span>
+                              <span class="icon-tick"><span class="path2"></span></span>
                             </div>
                           </a>
-                          <a
-                            onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'block';document.getElementById('commonr').style.display = 'none';"
-                            class="dropdown-item"
-                          >
+                          <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'block';document.getElementById('commonr').style.display = 'none';"
+                            class="dropdown-item">
                             <div class="sort-filter" href="#">
                               <span>Weekly</span>
-                              <span class="icon-tick"
-                                ><span class="path2"></span
-                              ></span>
+                              <span class="icon-tick"><span class="path2"></span></span>
                             </div>
                           </a>
-                          <a
-                            onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'block';"
-                            class="dropdown-item"
-                          >
+                          <a onclick="document.getElementById('dailyr').style.display = 'none';document.getElementById('weekr').style.display = 'none';document.getElementById('commonr').style.display = 'block';"
+                            class="dropdown-item">
                             <div class="sort-filter" href="#">
                               <span>Common</span>
-                              <span class="icon-tick"
-                                ><span class="path2"></span
-                              ></span>
+                              <span class="icon-tick"><span class="path2"></span></span>
                             </div>
                           </a>
                         </div>
@@ -1764,27 +1451,10 @@
 
                   <ul class="widget-menu-tab">
                     <div class="widget-search">
-                      <form
-                        action="#"
-                        method="get"
-                        role="search"
-                        class="search-form relative"
-                      >
-                        <input
-                          type="search"
-                          id="search"
-                          class="search-field style-1"
-                          placeholder="Search..."
-                          value=""
-                          name="s"
-                          title="Search for"
-                          required=""
-                        />
-                        <button
-                          class="search search-submit"
-                          type="submit"
-                          title="Search"
-                        >
+                      <form action="#" method="get" role="search" class="search-form relative">
+                        <input type="search" id="search" class="search-field style-1" placeholder="Search..." value=""
+                          name="s" title="Search for" required="" />
+                        <button class="search search-submit" type="submit" title="Search">
                           <i class="icon-search"></i>
                         </button>
                       </form>
@@ -1793,10 +1463,7 @@
                   <div class="widget-content-tab pt-10">
                     <div class="widget-content-inner active">
                       <div class="widget-table-ranking">
-                        <div
-                          data-wow-delay="0s"
-                          class="wow fadeInUp table-ranking-heading"
-                        >
+                        <div data-wow-delay="0s" class="wow fadeInUp table-ranking-heading">
                           <div class="column">
                             <h3>Profile</h3>
                           </div>
@@ -1808,22 +1475,12 @@
                             <h3>Score</h3>
                           </div>
                         </div>
-                        <div
-                          class="table-ranking-content"
-                          id="dailyr"
-                          style="display: block"
-                        >
+                        <div class="table-ranking-content" id="dailyr" style="display: block">
                           {% for data in dr|slice:":10" %}
-                          <div
-                            data-wow-delay="0s"
-                            class="wow fadeInUp fl-row-rankings"
-                          >
+                          <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
                             <div class="column">
                               <div class="item-avatar">
-                                <img
-                                  src="{% static 'images/avatar/avatar-04.png' %}"
-                                  alt=""
-                                />
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="" />
                               </div>
                             </div>
                             <div class="column">
@@ -1837,22 +1494,12 @@
 
                           {% endfor %}
                         </div>
-                        <div
-                          class="table-ranking-content"
-                          id="weekr"
-                          style="display: none"
-                        >
+                        <div class="table-ranking-content" id="weekr" style="display: none">
                           {% for data in wr|slice:":10" %}
-                          <div
-                            data-wow-delay="0s"
-                            class="wow fadeInUp fl-row-rankings"
-                          >
+                          <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
                             <div class="column">
                               <div class="item-avatar">
-                                <img
-                                  src="{% static 'images/avatar/avatar-04.png' %}"
-                                  alt=""
-                                />
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="" />
                               </div>
                             </div>
                             <div class="column">
@@ -1866,22 +1513,12 @@
 
                           {% endfor %}
                         </div>
-                        <div
-                          class="table-ranking-content"
-                          id="commonr"
-                          style="display: none"
-                        >
+                        <div class="table-ranking-content" id="commonr" style="display: none">
                           {% for data in cr|slice:":10" %}
-                          <div
-                            data-wow-delay="0s"
-                            class="wow fadeInUp fl-row-rankings"
-                          >
+                          <div data-wow-delay="0s" class="wow fadeInUp fl-row-rankings">
                             <div class="column">
                               <div class="item-avatar">
-                                <img
-                                  src="{% static 'images/avatar/avatar-04.png' %}"
-                                  alt=""
-                                />
+                                <img src="{% static 'images/avatar/avatar-04.png' %}" alt="" />
                               </div>
                             </div>
                             <div class="column">
@@ -1918,9 +1555,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <div
-              class="featured pt-10 swiper-container carousel"
-              data-swiper='{
+            <div class="featured pt-10 swiper-container carousel" data-swiper='{
                                 "loop":false,
                                 "slidesPerView": 1,
                                 "observer": true,
@@ -1949,17 +1584,13 @@
                                         "spaceBetween": 30
                                     }
                                 }
-                            }'
-            >
+                            }'>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div class="tf-card-box style-4">
                     <div class="card-media">
                       <a href="#">
-                        <img
-                          src="{% static 'images/box-item/web-development.jpg' %}"
-                          alt=""
-                        />
+                        <img src="{% static 'images/box-item/web-development.jpg' %}" alt="" />
                       </a>
                     </div>
                     <h5 class="name">
@@ -1967,11 +1598,8 @@
                     </h5>
                     <div class="meta-info flex items-center justify-between">
                       <div class="button-place-bid">
-                        <a
-                          onclick="appintern('Webdevelopment')"
-                          class="tf-button"
-                          ><span class="text-dark">Join now</span></a
-                        >
+                        <a onclick="appintern('Webdevelopment')" class="tf-button"><span class="text-dark">Join
+                            now</span></a>
                       </div>
                     </div>
                   </div>
@@ -1980,11 +1608,8 @@
                   <div class="tf-card-box style-4">
                     <div class="card-media">
                       <a href="#">
-                        <img
-                          src="{% static 'images/box-item/ai and ml development-banner.jpg' %}"
-                          alt=""
-                          style="height: 130px"
-                        />
+                        <img src="{% static 'images/box-item/ai and ml development-banner.jpg' %}" alt=""
+                          style="height: 130px" />
                       </a>
                     </div>
                     <h5 class="name">
@@ -1992,9 +1617,7 @@
                     </h5>
                     <div class="meta-info flex items-center justify-between">
                       <div class="button-place-bid">
-                        <a onclick="appintern('AI&ML')" class="tf-button"
-                          ><span class="text-dark">Join now</span></a
-                        >
+                        <a onclick="appintern('AI&ML')" class="tf-button"><span class="text-dark">Join now</span></a>
                       </div>
                     </div>
                   </div>
@@ -2003,10 +1626,7 @@
                   <div class="tf-card-box style-4">
                     <div class="card-media">
                       <a href="#">
-                        <img
-                          src="{% static 'images/box-item/python-development-banner.png' %}"
-                          alt=""
-                        />
+                        <img src="{% static 'images/box-item/python-development-banner.png' %}" alt="" />
                       </a>
                     </div>
                     <h5 class="name">
@@ -2014,11 +1634,8 @@
                     </h5>
                     <div class="meta-info flex items-center justify-between">
                       <div class="button-place-bid">
-                        <a
-                          onclick="appintern('pythondevelopment')"
-                          class="tf-button"
-                          ><span class="text-dark">Join Now</span></a
-                        >
+                        <a onclick="appintern('pythondevelopment')" class="tf-button"><span class="text-dark">Join
+                            Now</span></a>
                       </div>
                     </div>
                   </div>
@@ -2027,10 +1644,7 @@
                   <div class="tf-card-box style-4">
                     <div class="card-media">
                       <a href="#">
-                        <img
-                          src="{% static 'images/box-item/java-development-banner.jpeg' %}"
-                          alt=""
-                        />
+                        <img src="{% static 'images/box-item/java-development-banner.jpeg' %}" alt="" />
                       </a>
                     </div>
                     <h5 class="name">
@@ -2038,11 +1652,8 @@
                     </h5>
                     <div class="meta-info flex items-center justify-between">
                       <div class="button-place-bid">
-                        <a
-                          onclick="appintern('Javadevelopment')"
-                          class="tf-button"
-                          ><span class="text-dark">Join Now</span></a
-                        >
+                        <a onclick="appintern('Javadevelopment')" class="tf-button"><span class="text-dark">Join
+                            Now</span></a>
                       </div>
                     </div>
                   </div>
@@ -2051,10 +1662,7 @@
                   <div class="tf-card-box style-4">
                     <div class="card-media">
                       <a href="#">
-                        <img
-                          src="{% static 'images/box-item/web-development.jpg' %}"
-                          alt=""
-                        />
+                        <img src="{% static 'images/box-item/web-development.jpg' %}" alt="" />
                       </a>
                     </div>
                     <h5 class="name">
@@ -2062,23 +1670,15 @@
                     </h5>
                     <div class="meta-info flex items-center justify-between">
                       <div class="button-place-bid">
-                        <a
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#popup_bid"
-                          class="tf-button"
-                          ><span>Place Bid</span></a
-                        >
+                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"><span>Place
+                            Bid</span></a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="swiper-pagination"></div>
-              <div
-                class="slider-next swiper-button-next"
-                style="margin-bottom: -15px"
-              ></div>
+              <div class="slider-next swiper-button-next" style="margin-bottom: -15px"></div>
             </div>
           </div>
         </div>
@@ -2405,17 +2005,11 @@
               </div>
             </div>
           </div>
-          <div
-            data-wow-delay="0s"
-            class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6"
-          >
+          <div data-wow-delay="0s" class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6">
             <div class="tf-card-box style-4">
               <div class="card-media">
                 <a href="#">
-                  <img
-                    src="{% static 'images/box-item/web-development-course.jpg' %}"
-                    alt=""
-                  />
+                  <img src="{% static 'images/box-item/web-development-course.jpg' %}" alt="" />
                 </a>
                 <span class="wishlist-button icon-heart"></span>
               </div>
@@ -2424,28 +2018,16 @@
               </h5>
               <div class="meta-info flex items-center justify-between">
                 <div class="button-place-bid">
-                  <a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#popup_bid"
-                    class="tf-button"
-                    ><span>Buy Now</span></a
-                  >
+                  <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"><span>Buy Now</span></a>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            data-wow-delay="0.1s"
-            class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6"
-          >
+          <div data-wow-delay="0.1s" class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6">
             <div class="tf-card-box style-4">
               <div class="card-media">
                 <a href="#">
-                  <img
-                    src="{% static 'images/box-item/card-item-27.jpg' %}"
-                    alt=""
-                  />
+                  <img src="{% static 'images/box-item/card-item-27.jpg' %}" alt="" />
                 </a>
                 <span class="wishlist-button icon-heart"></span>
               </div>
@@ -2454,28 +2036,16 @@
               </h5>
               <div class="meta-info flex items-center justify-between">
                 <div class="button-place-bid">
-                  <a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#popup_bid"
-                    class="tf-button"
-                    ><span>Buy Now</span></a
-                  >
+                  <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"><span>Buy Now</span></a>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            data-wow-delay="0.2s"
-            class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6"
-          >
+          <div data-wow-delay="0.2s" class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6">
             <div class="tf-card-box style-4">
               <div class="card-media">
                 <a href="#">
-                  <img
-                    src="{% static 'images/box-item/python-development-course.png' %}"
-                    alt=""
-                  />
+                  <img src="{% static 'images/box-item/python-development-course.png' %}" alt="" />
                 </a>
                 <span class="wishlist-button icon-heart"></span>
               </div>
@@ -2484,29 +2054,17 @@
               </h5>
               <div class="meta-info flex items-center justify-between">
                 <div class="button-place-bid">
-                  <a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#popup_bid"
-                    class="tf-button"
-                    ><span>Buy Now</span></a
-                  >
+                  <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"><span>Buy Now</span></a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div
-            data-wow-delay="0.3s"
-            class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6"
-          >
+          <div data-wow-delay="0.3s" class="wow fadeInUp col-xl-3 col-lg-4 col-md-6 col-sm-6">
             <div class="tf-card-box style-4">
               <div class="card-media">
                 <a href="#">
-                  <img
-                    src="{% static 'images/box-item/java-development-course.jpeg' %}"
-                    alt=""
-                  />
+                  <img src="{% static 'images/box-item/java-development-course.jpeg' %}" alt="" />
                 </a>
                 <span class="wishlist-button icon-heart"></span>
               </div>
@@ -2515,13 +2073,7 @@
               </h5>
               <div class="meta-info flex items-center justify-between">
                 <div class="button-place-bid">
-                  <a
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#popup_bid"
-                    class="tf-button"
-                    ><span>Buy Now</span></a
-                  >
+                  <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"><span>Buy Now</span></a>
                 </div>
               </div>
             </div>

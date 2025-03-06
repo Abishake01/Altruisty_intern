@@ -1,25 +1,19 @@
 import base64
 import json
-
 from django.http import HttpResponse
 from django.shortcuts import redirect, render,get_object_or_404
 from django.utils.timezone import now
 from datetime import timedelta
-
 from IdeaSubmission.models import IdeaSubmission
 from community.models import user_detail
 from video_call.models import Attendance
- 
 from internship.models import InternTeams, commonquestionanswer,dailyquestionanswer,weeklyquestionanswer
 from .models import InternRegistartion
 from College.models import collegeRegistartion
 from django.db.models import Count, OuterRef, Subquery, Value, IntegerField, Q, Sum
 from django.db.models.functions import Coalesce, TruncMonth
- 
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponse
-from .models import Banner, HomeImage
- 
+from .models import Banner, HomeImage , Events_update
 
  
 def progress(request, user_id):  
@@ -202,7 +196,9 @@ def college_home(request):
         'banner_images': {},
         'has_images': False,
         'home_image': None,
-        'has_image': False
+        'has_image': False,
+        'event_image': None,
+        'has_image': False,
     }
     
     # Add banner images to context if they exist
@@ -232,8 +228,8 @@ def college_home(request):
         latest_home_image = HomeImage.objects.latest('uploaded_at')
         
         # Convert binary data to base64 for HTML display
-        if latest_home_image.open_image:
-            home_image = base64.b64encode(latest_home_image.open_image).decode('utf-8')
+        if latest_home_image.college_home:
+            home_image = base64.b64encode(latest_home_image.college_home).decode('utf-8')
             context['home_image'] = home_image
             context['has_image'] = True
         
@@ -241,5 +237,19 @@ def college_home(request):
         # Keep default values in context
         pass
     
-     
+    try:
+        # Get the latest home image
+        latest_Event_image = Events_update.objects.latest('uploaded_at')
+        
+        # Convert binary data to base64 for HTML display
+        if latest_Event_image.events:
+            event_image = base64.b64encode(latest_Event_image.events).decode('utf-8')
+            context['event_image'] = event_image
+            context['has_image'] = True
+        
+    except Events_update.DoesNotExist:
+        # Keep default values in context
+        pass
+    
+    
     return render(request, 'Internship/college_home.html', context)
